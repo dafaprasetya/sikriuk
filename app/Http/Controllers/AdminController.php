@@ -11,6 +11,7 @@ use App\Models\Promo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+
 class AdminController extends Controller
 {
     // ABOUTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
@@ -82,7 +83,7 @@ class AdminController extends Controller
         $about->moto = $validatedData['moto'];
         $about->total_mitra = $validatedData['total_mitra'];
         $about->save();
-        
+
         return response()->json([
             'message' => 'Data berhasil diubah',
         ]);
@@ -104,7 +105,7 @@ class AdminController extends Controller
             'gambar' => 'nullable',
         ]);
         $promo = new Promo();
-        $promo->nama = $validatedData['nama']; 
+        $promo->nama = $validatedData['nama'];
         $promo->deskripsi = $validatedData['deskripsi'];
         $gambar = $request->file('gambar');
         $nama_file = str_replace(" ", "_", $validatedData['nama']).time().'.'.$gambar->extension();
@@ -121,7 +122,7 @@ class AdminController extends Controller
         Storage::delete('public/promo_image/'.$promo->gambar);
         $promo->delete();
         return redirect()->back()->with('message', 'Data berhasil dihapus');
-        
+
     }
     // ENDOFPROMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     // MENUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU

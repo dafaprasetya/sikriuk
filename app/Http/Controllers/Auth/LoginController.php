@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\AccessToken;
+
 
 class LoginController extends Controller
 {
@@ -25,6 +27,17 @@ class LoginController extends Controller
      *
      * @var string
      */
+    public function showLoginForm()
+    {
+        $token = session('token');
+
+        $accesstoken = AccessToken::where('token', $token)->first();
+        if (!$accesstoken) {
+            return redirect()->route('gettoken');
+        }
+        $data = ['title' => 'login'];
+        return view('auth.login', $data);
+    }
     protected $redirectTo = '/admin';
 
     /**

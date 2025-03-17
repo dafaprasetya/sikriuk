@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class TokenController extends Controller
 {
-    
+
     public function index() {
         $token = session('token');
         $accesstoken = AccessToken::where('token', $token)->first();
