@@ -54,13 +54,13 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-center justify-content-center gap-3 mt-9">
-                            <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8"> 
+                            <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8">
                                 Simpan Perubahan
                             </button>
                         </div>
                     </div>
                 </form>
-                
+
                 <!-- Toast -->
                 <div class="toast-container position-fixed bottom-0 end-0 p-3">
                     <div id="successToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
@@ -72,13 +72,13 @@
                         </div>
                     </div>
                 </div>
-  
+
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script>
                     $(document).ready(function () {
-                        $('#aboutForm').submit(function (e) { 
+                        $('#aboutForm').submit(function (e) {
                             e.preventDefault();
-                            let aboutId = $(this).data("id"); 
+                            let aboutId = $(this).data("id");
                             $.ajax({
                                 url: aboutId,
                                 type: "POST",
@@ -95,7 +95,7 @@
                                     var toastEl = document.getElementById('successToast');
                                     var toast = new bootstrap.Toast(toastEl);
                                     toast.show();
-                                    
+
                                 },error: function (xhr) {
                                     console.log(xhr.responseText);
                                     console.log("Terjadi kesalahan: " + xhr.responseText);
@@ -112,7 +112,7 @@
                                 <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Email</label>
                                 <table class="table bordered-table mb-8" id="dataTable" data-page-length='10'>
                                     <tbody id="emailTableBody">
-                                        @foreach ($email as $emaill)    
+                                        @foreach ($email as $emaill)
                                         <tr>
                                             <td>{{ $emaill->email }}</td>
                                             <td style="width: 10px">
@@ -129,15 +129,15 @@
                                     </tbody>
                                 </table>
                                 <input type="email" name="total_mitra" class="form-control radius-8" id="email" placeholder="Masukan email baru" >
-                                <button type="submit" class="btn btn-primary btn-sm mt-8"> 
+                                <button type="submit" class="btn btn-primary btn-sm mt-8">
                                     Tambah Email
                                 </button>
                             </form>
                             <script>
                                 $(document).ready(function () {
-                                    $('#emailForm').submit(function (e) { 
+                                    $('#emailForm').submit(function (e) {
                                         e.preventDefault();
-                                        let aboutId = $(this).data("id"); 
+                                        let aboutId = $(this).data("id");
                                         let email = $("#email").val();
                                         $.ajax({
                                             url: aboutId,
@@ -152,7 +152,7 @@
                                                     <tr>
                                                         <td>${email}</td>
                                                         <td style="width: 10px">
-                                                            
+
                                                         </td>
                                                     </tr>
                                                 `);
@@ -162,7 +162,7 @@
                                                 var toastEl = document.getElementById('successToast');
                                                 var toast = new bootstrap.Toast(toastEl);
                                                 toast.show();
-                                                
+
                                             },error: function (xhr) {
                                                 console.log(xhr.responseText);
                                                 console.log("Terjadi kesalahan: " + xhr.responseText);
@@ -179,7 +179,7 @@
                                 <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Nomor Telpon</label>
                                 <table class="table bordered-table mb-8" id="dataTable" data-page-length='10'>
                                     <tbody id="phoneTableBody">
-                                        @foreach ($phone as $phones)    
+                                        @foreach ($phone as $phones)
                                         <tr>
                                             <td>{{ $phones->phone }}</td>
                                             <td style="width: 10px">
@@ -196,15 +196,15 @@
                                     </tbody>
                                 </table>
                                 <input type="number" name="total_mitra" class="form-control radius-8" id="phone" placeholder="Masukan nomor telpon baru">
-                                <button type="submit" class="btn btn-primary btn-sm mt-8"> 
+                                <button type="submit" class="btn btn-primary btn-sm mt-8">
                                     Tambah Nomor Telpon
                                 </button>
                             </form>
                             <script>
                                 $(document).ready(function () {
-                                    $('#phoneForm').submit(function (e) { 
+                                    $('#phoneForm').submit(function (e) {
                                         e.preventDefault();
-                                        let aboutId = $(this).data("id"); 
+                                        let aboutId = $(this).data("id");
                                         let phone = $("#phone").val();
                                         $.ajax({
                                             url: aboutId,
@@ -219,7 +219,7 @@
                                                     <tr>
                                                         <td>${phone}</td>
                                                         <td style="width: 10px">
-                                                            
+
                                                         </td>
                                                     </tr>
                                                 `);
@@ -229,7 +229,7 @@
                                                 var toastEl = document.getElementById('successToast');
                                                 var toast = new bootstrap.Toast(toastEl);
                                                 toast.show();
-                                                
+
                                             },error: function (xhr) {
                                                 console.log(xhr.responseText);
                                                 console.log("Terjadi kesalahan: " + xhr.responseText);

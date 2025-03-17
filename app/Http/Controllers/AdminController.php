@@ -157,6 +157,12 @@ class AdminController extends Controller
         $menu->save();
         return response()->json([
             'message' => 'Data berhasil ditambahkan',
+            'id' => $menu->id,
+            'nama' => $menu->nama,
+            'harga' => $menu->harga,
+            'gambar' => $menu->gambar,
+            'deskripsi' => $menu->deskripsi,
+            'kategori' => $menu->product_kategori_id,
         ]);
     }
     public function createKategori(Request $request) {

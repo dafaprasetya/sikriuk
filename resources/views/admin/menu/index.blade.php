@@ -26,7 +26,7 @@
                         List Menu
                       </button>
                     </li>
-                    
+
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-ui-design-tab" data-bs-toggle="pill" data-bs-target="#pills-tambah-menu" type="button" role="tab" aria-controls="pills-ui-design" aria-selected="false" tabindex="-1">
                           Tambah Menu
@@ -40,7 +40,7 @@
                 </ul>
              </div>
             <div class="card-body p-24">
-                <div class="tab-content" id="pills-tabContent">   
+                <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab" tabindex="0">
                         <div class="row gy-4">
                             <div class="table-responsive">
@@ -71,17 +71,17 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="dataMenuTable">
                                         @php
                                             $no = 1;
                                         @endphp
-                                        @foreach ($menu as $menus)    
+                                        @foreach ($menu as $menus)
                                         <tr>
                                             <td>
                                                 {{ $no++ }}
                                             </td>
                                             <td>
-                                                <img src="{{ asset('storage/product_image/'.$menus->gambar) }}" style="width: 90px;" alt="" class="flex-shrink-0 me-12 radius-8">
+                                                <img src="{{ asset('storage/product_image/'.$menus->gambar) }}" style="width: 90px;" alt="" id="gambarmenu" class="flex-shrink-0 me-12 radius-8">
                                             </td>
                                             <td>
                                                 {{ $menus->nama }}
@@ -111,7 +111,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-tambah-menu" role="tabpanel" aria-labelledby="pills-tambah-meaanu" tabindex="0">
@@ -139,7 +139,7 @@
                                     document.getElementById('gambar').addEventListener('change', function(event) {
                                         let file = event.target.files[0]; // Ambil file
                                         let previewImg = document.getElementById('previewImg');
-                                
+
                                         if (file) {
                                             let reader = new FileReader();
                                             reader.onload = function(e) {
@@ -152,17 +152,17 @@
                                         }
                                     });
                                 </script>
-                                                                
+
                                 <div class="col-sm-6">
                                     <div class="mb-20">
-                                        <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Harga <span class="text-danger-600">*</span></label>
+                                        <label for="harga" class="form-label fw-semibold text-primary-light text-sm mb-8">Harga <span class="text-danger-600">*</span></label>
                                         <input type="text" name="harga" class="form-control radius-8" id="harga" placeholder="Masukan harga produk" value="">
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-sm-6">
                                     <div class="mb-20">
-                                        <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Kategori <span class="text-danger-600">*</span></label>
+                                        <label for="product_kategori_id" class="form-label fw-semibold text-primary-light text-sm mb-8">Kategori <span class="text-danger-600">*</span></label>
                                         <select class="form-control radius-8" name="product_kategori_id" id="product_kategori_id">
                                             @foreach ($kategori as $kategorii)
                                                 <option value="{{ $kategorii->id }}">{{ $kategorii->nama }}</option>
@@ -172,12 +172,12 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="mb-20">
-                                        <label for="email" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi<span class="text-danger-600">*</span></label>
-                                        <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan deskripsi perusahaan" id="deskripsi"></textarea>
+                                        <label for="deskripsi" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi<span class="text-danger-600">*</span></label>
+                                        <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan deskripsi menu" id="deskripsi"></textarea>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center gap-3 mt-9">
-                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8"> 
+                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8">
                                         Save Change
                                     </button>
                                 </div>
@@ -199,10 +199,15 @@
                             $(document).ready(function () {
                                 $("#productForm").submit(function (e) {
                                     e.preventDefault();
-                        
+
                                     let formData = new FormData(this);
                                     let url = $(this).data("id"); // Ambil URL dari data-id
-                                    
+                                    let nama = $('#name').val();
+                                    let harga = $('#harga').val();
+                                    let kategori = $('#product_kategori_id option:selected').text();
+                                    let deskripsi = $('#deskripsi').val();
+                                    let gambarmenu = document.getElementById('gambarmenu');
+                                    let gambarupload = document.getElementById('gambar');
                                     $.ajax({
                                         url: url, // Gunakan URL dari data-id
                                         type: "POST",
@@ -211,12 +216,28 @@
                                         contentType: false,
                                         headers: { "X-CSRF-TOKEN": "{{ csrf_token() }}" }, // CSRF Token untuk Laravel
                                         success: function (response) {
-                                            console.log("Success:", response);
+
+                                            console.log(response.id);
                                             var toastEl = document.getElementById('successToast');
                                             var toast = new bootstrap.Toast(toastEl);
                                             toast.show();
                                             $("#productForm")[0].reset();
                                             $("#previewImg").attr("src", "").hide();
+                                            $("#dataMenuTable").append(`
+                                                <tr>
+                                                    <td>#</td>
+                                                    <td>
+                                                        <img src="{{ asset('storage/product_image/'.${response.gambar}) }}" style="width: 90px;" alt="" id="gambarmenu" class="flex-shrink-0 me-12 radius-8">
+                                                    </td>
+                                                    <td>${nama}</td>
+                                                    <td>${harga}</td>
+                                                    <td>${kategori}</td>
+                                                    <td>${deskripsi}</td>
+                                                    <td>
+                                                        refresh to see
+                                                    </td>
+                                                </tr>
+                                            `);
                                         },
                                         error: function (xhr) {
                                             console.log("Error:", xhr.responseText);
@@ -226,7 +247,7 @@
                                 });
                             });
                         </script>
-                        
+
                     </div>
                     <div class="tab-pane fade" id="pills-web-design" role="tabpanel" aria-labelledby="pills-web-design-tab" tabindex="0">
                         <form id="kategoriForm" method="POST" action="{{ route('createKategori') }}">
@@ -242,9 +263,9 @@
                                     <label for="email" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi<span class="text-danger-600">*</span></label>
                                     <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan deskripsi perusahaan" id="deskripsi"></textarea>
                                 </div>
-                                
+
                                 <div class="d-flex align-items-center justify-content-center gap-3 mt-9">
-                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8"> 
+                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8">
                                         Save Change
                                     </button>
                                 </div>
