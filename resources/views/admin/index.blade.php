@@ -241,6 +241,87 @@
                         </div>
                     </div>
                 </div>
+                <div class="row mt-24">
+                    <div class="col-sm-12">
+                        <div class="mb-20">
+                            <form id="emailForm" data-id="{{ route('editAbout', encrypt($about->id)) }}">
+                                @csrf
+                                <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Sosmed</label>
+                                <table class="table bordered-table mb-8" id="dataTable" data-page-length='10'>
+                                    <tbody id="emailTableBody">
+                                        @foreach ($sosmed as $sosmeds)
+                                        <tr>
+                                            <td style="width: 20px"><img src="{{ asset('storage/sosmed_logo'.$sosmeds->logo) }}"></td>
+                                            <td><a href="{{ $sosmeds->link }}">{{ $sosmeds->nama }}</a></td>
+                                            <td style="width: 10px">
+                                                <form action="{{ route('delPhonenMail', encrypt($sosmeds->id)) }}" method="post">
+                                                    @csrf
+                                                    <input type="text" name="email" value="email" hidden>
+                                                    <button type="submit" href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                                        <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="text" name="nama" class="form-control radius-8" id="nama" placeholder="Masukan jenis sosmed" >
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="file" name="logo" class="form-control radius-8" id="logo">
+                                    </div>
+                                    <div class="col-sm-12 mt-8">
+                                        <input type="text" name="link" class="form-control radius-8" id="link" placeholder="Masukan link sosmed" >
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm mt-8">
+                                    Tambah Sosmed
+                                </button>
+                            </form>
+                            <script>
+                                $(document).ready(function () {
+                                    $('#emailForm').submit(function (e) {
+                                        e.preventDefault();
+                                        let aboutId = $(this).data("id");
+                                        let email = $("#email").val();
+                                        $.ajax({
+                                            url: aboutId,
+                                            type: "POST",
+                                            data: {
+                                                "_token": "{{ csrf_token() }}",
+                                                "email": $("#email").val(),
+                                            },
+                                            success: function (response) {
+                                                console.log('success');
+                                                $("#emailTableBody").append(`
+                                                    <tr>
+                                                        <td>${email}</td>
+                                                        <td style="width: 10px">
+
+                                                        </td>
+                                                    </tr>
+                                                `);
+
+                                                // Kosongkan input setelah menambahkan
+                                                $("#email").val('');
+                                                var toastEl = document.getElementById('successToast');
+                                                var toast = new bootstrap.Toast(toastEl);
+                                                toast.show();
+
+                                            },error: function (xhr) {
+                                                console.log(xhr.responseText);
+                                                console.log("Terjadi kesalahan: " + xhr.responseText);
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

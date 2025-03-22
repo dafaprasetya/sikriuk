@@ -31,20 +31,24 @@
           </a>
         </li>
         <li>
-          <a href="chat-message.html">
+          <a href="{{ route('pencapaian') }}" class="{{ Route::is('pencapaian') ? 'active-page' : '' }}">
             <iconify-icon icon="mdi:achievement-outline" class="menu-icon"></iconify-icon>
             <span>Pencapaian</span> 
           </a>
         </li>
         <li class="sidebar-menu-group-title">Kemitraan</li>
         <li>
-          <a href="chat-message.html">
+          <a href="{{ route('calonMitra') }}" class="{{ Route::is('calonMitra') ? 'active-page' : '' }}">
             <iconify-icon icon="material-symbols:mail-outline" class="menu-icon"></iconify-icon>
-            <span>Calon Mitra</span> 
+            <span>Calon Mitra</span>
+            @if ($unread > 0)
+                
+              <iconify-icon icon="mdi:dot" class="text-primary" width="24" height="24"></iconify-icon>
+            @endif
           </a>
         </li>
         <li>
-          <a href="chat-message.html">
+          <a href="{{ route('gerobak') }}" class="{{ Route::is('gerobak') ? 'active-page' : '' }}">
             <iconify-icon icon="solar:box-linear" class="menu-icon"></iconify-icon>
             <span>Gerobak</span> 
           </a>

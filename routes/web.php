@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\EditUserController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,7 +43,29 @@ Route::middleware(['auth', 'role:admin,user'])->group(function () {
     Route::get('/admin/menu', [AdminController::class, 'menu'])->name('menu');
     Route::post('/admin/menu/create', [AdminController::class, 'createMenu'])->name('createMenu');
     Route::post('/admin/menu/kategori/create', [AdminController::class, 'createKategori'])->name('createKategori');
+    Route::post('/admin/menu/kategori/{id}/update', [AdminController::class, 'updateMenu'])->name('updateMenu');
+    
+    Route::get('/admin/pencapaian', [AdminController::class, 'pencapaian'])->name('pencapaian');
+    Route::post('/admin/pencapaian/create', [AdminController::class, 'createPencapaian'])->name('createPencapaian');
+    Route::post('/admin/pencapaian/{id}/delete', [AdminController::class, 'deletePencapaian'])->name('deletePencapaian');
+    Route::post('/admin/pencapaian/{id}/update', [AdminController::class, 'updatePencapaian'])->name('updatePencapaian');
+
+    Route::get('/admin/calonmitra', [AdminController::class, 'calonMitra'])->name('calonMitra');
+    Route::get('/admin/calonmitra/{id}', [AdminController::class, 'detailCalonMitra'])->name('detailCalonMitra');
+    Route::post('/admin/calonmitra/{id}/chat', [AdminController::class, 'editCalonMitra'])->name('editCalonMitra');
+    Route::post('/admin/calonmitra/{id}/chat/delete', [AdminController::class, 'deleteCalonMitra'])->name('deleteCalonMitra');
+
+    Route::get('/admin/gerobak',[AdminController::class, 'gerobak'])->name('gerobak');
+    Route::post('/admin/gerobak/create',[AdminController::class, 'createGerobak'])->name('createGerobak');
+    Route::post('/admin/gerobak/create/benefit',[AdminController::class, 'createBenefitGerobak'])->name('createBenefitGerobak');
+    Route::post('/admin/gerobak/{id}/edit',[AdminController::class, 'editGerobak'])->name('editGerobak');
+    Route::post('/admin/gerobak/{id}/delete',[AdminController::class, 'deleteGerobak'])->name('deleteGerobak');
+    Route::post('/admin/gerobak/{id}/delete/benefit',[AdminController::class, 'deleteBenefit'])->name('deleteBenefit');
 
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/dummycalonmitra', [MainController::class,'dummyCalonMitra'])->name('dummyCalonMitra');
+
+Route::post('/send/calonmitra', [MainController::class,'sendCalonMitra'])->name('sendCalonMitra');

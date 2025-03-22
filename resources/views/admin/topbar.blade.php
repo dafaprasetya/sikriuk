@@ -10,7 +10,7 @@
             <iconify-icon icon="heroicons:bars-3-solid" class="icon"></iconify-icon>
           </button>
           <form class="navbar-search">
-            <input type="text" name="search" placeholder="Search">
+            <input type="text" name="search" placeholder="Search" value="{{ $search ?? '' }}">
             <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
           </form>
         </div>
@@ -29,27 +29,26 @@
                 <div>
                   <h6 class="text-lg text-primary-light fw-semibold mb-0">Notifications</h6>
                 </div>
-                <span class="text-primary-600 fw-semibold text-lg w-40-px h-40-px rounded-circle bg-base d-flex justify-content-center align-items-center">05</span>
+                
               </div>
               
              <div class="max-h-400-px overflow-y-auto scroll-sm pe-4">
-              <a href="javascript:void(0)" class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
+              @if ($unread > 0)
+                  
+              <a href="{{ route('calonMitra') }}?linkunread=linkunread" class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
                 <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3"> 
                   <span class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
-                    <iconify-icon icon="bitcoin-icons:verify-outline" class="icon text-xxl"></iconify-icon>
+                    <iconify-icon icon="line-md:email" class="icon text-xxl"></iconify-icon>
                   </span> 
                   <div>
-                    <h6 class="text-md fw-semibold mb-4">Congratulations</h6>
-                    <p class="mb-0 text-sm text-secondary-light text-w-200-px">Your profile has been Verified. Your profile has been Verified</p>
+                    <h6 class="text-md fw-semibold mb-4">Pesan Baru</h6>
+                    <p class="mb-0 text-sm text-secondary-light text-w-200-px">Ada {{ $unread }} pesan yang belum dibaca dan ditanggapi</p>
                   </div>
                 </div>
-                <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                <span class="text-sm text-secondary-light flex-shrink-0">Calon Mitra</span>
               </a>
+              @endif
              </div>
-  
-              <div class="text-center py-12 px-16"> 
-                  <a href="javascript:void(0)" class="text-primary-600 fw-semibold text-md">See All Notification</a>
-              </div>
   
             </div>
           </div><!-- Notification dropdown end -->

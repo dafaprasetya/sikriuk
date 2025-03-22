@@ -14562,7 +14562,7 @@ td.fc-header-center {
 }
 
 .form-wizard-list__item {
-  width: 20%;
+  width: 50%;
 }
 
 .form-wizard-list__item.active .count {

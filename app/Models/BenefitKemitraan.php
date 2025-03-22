@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CalonMitra extends Model
+class BenefitKemitraan extends Model
 {
     use HasFactory;
-    protected $fillable = ['readby', 'status'];
+    function kemitraan() {
+        return $this->belongsTo(Kemitraan::class, 'kemitraan_id');
+    }
 }

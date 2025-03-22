@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CalonMitra extends Model
+class Pencapaian extends Model
 {
     use HasFactory;
-    protected $fillable = ['readby', 'status'];
 }

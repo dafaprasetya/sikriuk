@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('calon_mitras', function (Blueprint $table) {
+        Schema::create('benefit_kemitraans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('email');
-            $table->string('nik');
-            $table->string('lokasi');
+            $table->string('benefit');
+            $table->unsignedBigInteger('kemitraan_id');
+            $table->foreign('kemitraan_id')->references('id')->on('kemitraans')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('calon_mitras');
+        Schema::dropIfExists('benefit_kemitraans');
     }
 };

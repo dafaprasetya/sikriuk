@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('calon_mitras', function (Blueprint $table) {
+        Schema::create('pencapaians', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('email');
-            $table->string('nik');
-            $table->string('lokasi');
+            $table->string('gambar');
+            $table->string('deskripsi')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('calon_mitras');
+        Schema::dropIfExists('pencapaians');
     }
 };

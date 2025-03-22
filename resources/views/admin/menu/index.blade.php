@@ -96,17 +96,95 @@
                                                 {{ $menus->deskripsi }}
                                             </td>
                                             <td>
-                                                <a href="javascript:void(0)" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
-                                                    <iconify-icon icon="iconamoon:eye-light"></iconify-icon>
-                                                </a>
-                                                <a href="javascript:void(0)" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                                <button data-bs-toggle="modal" data-bs-target="#{{ $menus->id }}" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                                     <iconify-icon icon="lucide:edit"></iconify-icon>
-                                                </a>
+                                                </button>
                                                 <a href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                                     <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                                 </a>
                                             </td>
                                         </tr>
+                                        <div class="modal fade" id="{{ $menus->id }}" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="modalLabel">Edit {{ $menus->nama }}</h5>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="editproductForm{{ $menus->id }}" enctype="multipart/form-data" action="{{ route('updateMenu',encrypt($menus->id)) }}" method="POST">
+                                                        @csrf
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="mb-20">
+                                                                    <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Nama <span class="text-danger-600">*</span></label>
+                                                                    <input type="text" name="nama" class="form-control radius-8" id="name" placeholder="Masukan nama Produk" value="{{ $menus->nama }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="mb-20">
+                                                                    <label for="gambar" class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                                                        Gambar <span class="text-danger-600">*</span>
+                                                                    </label>
+                                                                    <div class="imagePreview d-flex justify-content-center align-items-center">
+                                                                        <img id="previewImg" class="rounded" style="display: none; max-width: 200px; height: auto;">
+                                                                    </div>
+                                                                    <input type="file" name="gambar" class="form-control radius-8 mt-3" id="gambar" accept="image/*">
+                                                                </div>
+                                                            </div>
+                                                            <script>
+                                                                document.getElementById('gambar').addEventListener('change', function(event) {
+                                                                    let file = event.target.files[0]; // Ambil file
+                                                                    let previewImg = document.getElementById('previewImg');
+                            
+                                                                    if (file) {
+                                                                        let reader = new FileReader();
+                                                                        reader.onload = function(e) {
+                                                                            previewImg.src = e.target.result; // Update src gambar
+                                                                            previewImg.style.display = "block"; // Tampilkan gambar
+                                                                        };
+                                                                        reader.readAsDataURL(file);
+                                                                    } else {
+                                                                        previewImg.style.display = "none"; // Sembunyikan jika tidak ada file
+                                                                    }
+                                                                });
+                                                            </script>
+                            
+                                                            <div class="col-sm-6">
+                                                                <div class="mb-20">
+                                                                    <label for="harga" class="form-label fw-semibold text-primary-light text-sm mb-8">Harga <span class="text-danger-600">*</span></label>
+                                                                    <input type="text" name="harga" class="form-control radius-8" id="harga" placeholder="Masukan harga produk" value="{{ $menus->harga }}">
+                                                                </div>
+                                                            </div>
+                            
+                                                            <div class="col-sm-6">
+                                                                <div class="mb-20">
+                                                                    <label for="product_kategori_id" class="form-label fw-semibold text-primary-light text-sm mb-8">Kategori <span class="text-danger-600">*</span></label>
+                                                                    <select class="form-control radius-8" name="product_kategori_id" id="product_kategori_id">
+                                                                        <option value="{{ $menus->kategori->id }}">{{ $menus->kategori->nama }}</option>
+                                                                        @foreach ($kategori as $kategorii)
+                                                                            <option value="{{ $kategorii->id }}">{{ $kategorii->nama }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="mb-20">
+                                                                    <label for="deskripsi" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi<span class="text-danger-600">*</span></label>
+                                                                    <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan deskripsi menu" id="deskripsi">{{ $menus->deskripsi }}</textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                  <button type="button" class="btn btn-primary" onclick="event.preventDefault();
+                                                     document.getElementById('editproductForm{{ $menus->id }}').submit();">Simpan</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -194,6 +272,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                            <div id="errorToast" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex">
+                                    <div class="toast-body">
+                                        Kesalahan dalam membuat data
+                                    </div>
+                                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                                </div>
+                            </div>
+                        </div>
                         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                         <script>
                             $(document).ready(function () {
@@ -227,21 +315,29 @@
                                                 <tr>
                                                     <td>#</td>
                                                     <td>
-                                                        <img src="{{ asset('storage/product_image/'.${response.gambar}) }}" style="width: 90px;" alt="" id="gambarmenu" class="flex-shrink-0 me-12 radius-8">
+                                                        <img src="{{ asset('storage/product_image/') }}/${response.gambar}" style="width: 90px;" alt="" id="gambarmenu" class="flex-shrink-0 me-12 radius-8">
                                                     </td>
-                                                    <td>${nama}</td>
-                                                    <td>${harga}</td>
+                                                    <td>${response.nama}</td>
+                                                    <td>${response.harga}</td>
                                                     <td>${kategori}</td>
-                                                    <td>${deskripsi}</td>
+                                                    <td>${response.deskripsi}</td>
                                                     <td>
-                                                        refresh to see
+                                                        <button href="javascript:void(0)" class="w-32-px h-32-px bg-secondary-focus text-secondary-main rounded-circle d-inline-flex align-items-center justify-content-center" disabled>
+                                                            <iconify-icon icon="lucide:edit"></iconify-icon>
+                                                        </button>
+                                                        <a href="javascript:void(0)" class="w-32-px h-32-px bg-secondary-focus text-secondary-main rounded-circle d-inline-flex align-items-center justify-content-center" disabled>
+                                                            <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                                                        </a>
                                                     </td>
                                                 </tr>
+                                                
                                             `);
                                         },
                                         error: function (xhr) {
                                             console.log("Error:", xhr.responseText);
-                                            alert("Terjadi kesalahan saat membuat promo.");
+                                            var toastEl = document.getElementById('errorToast');
+                                            var toast = new bootstrap.Toast(toastEl);
+                                            toast.show();
                                         }
                                     });
                                 });
@@ -250,7 +346,7 @@
 
                     </div>
                     <div class="tab-pane fade" id="pills-web-design" role="tabpanel" aria-labelledby="pills-web-design-tab" tabindex="0">
-                        <form id="kategoriForm" method="POST" action="{{ route('createKategori') }}">
+                        <form id="kategoriForm" data-id="{{ route('createKategori') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-sm-12">
@@ -271,6 +367,59 @@
                                 </div>
                             </div>
                         </form>
+                        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                            <div id="successToastkategori" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex">
+                                    <div class="toast-body">
+                                        Data Berhasil Dibuat
+                                    </div>
+                                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                            <div id="errorToastKategori" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex">
+                                    <div class="toast-body">
+                                        Kesalahan dalam membuat data
+                                    </div>
+                                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            $(document).ready(function () {
+                                $("#kategoriForm").submit(function (e) {
+                                    e.preventDefault();
+
+                                    let formData = new FormData(this);
+                                    let url = $(this).data("id"); // Ambil URL dari data-id
+                                    let selectKategori = $('#product_kategori_id');
+                                    $.ajax({
+                                        url: url, // Gunakan URL dari data-id
+                                        type: "POST",
+                                        data: formData,
+                                        processData: false,
+                                        contentType: false,
+                                        headers: { "X-CSRF-TOKEN": "{{ csrf_token() }}" }, // CSRF Token untuk Laravel
+                                        success: function (response) {
+                                            console.log(response.id);
+                                            $("#kategoriForm")[0].reset();
+                                            var toastEl = document.getElementById('successToastkategori');
+                                            var toast = new bootstrap.Toast(toastEl);
+                                            toast.show();
+                                            selectKategori.append(`<option value="${response.id}">${response.nama}</option>`);
+                                        },
+                                        error: function (xhr) {
+                                            console.log("Error:", xhr.responseText);
+                                            var toastEl = document.getElementById('errorToastKategori');
+                                            var toast = new bootstrap.Toast(toastEl);
+                                            toast.show();
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
