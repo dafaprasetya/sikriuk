@@ -7,12 +7,16 @@ use App\Models\BenefitKemitraan;
 use App\Models\CalonMitra;
 use App\Models\EmailAbout;
 use App\Models\Kemitraan;
+use App\Models\KeunggulanMitra;
 use App\Models\Pencapaian;
 use App\Models\PhoneAbout;
 use App\Models\Product;
 use App\Models\ProductKatergori;
 use App\Models\Promo;
 use App\Models\SosmedAbout;
+use App\Models\StepKemitraan;
+use App\Models\SyaratMitra;
+use App\Models\Testimonial;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -529,6 +533,250 @@ class AdminController extends Controller
         
     }
     // ENDOFGEROBAKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+    // STEPBYSTEPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+    public function stepByStep(Request $request) {
+        $step = StepKemitraan::all();
+        $data = [
+            'title'=>'Admin Step By Step',
+            'step' => $step,
+        ];
+        return view('admin/step/index', $this->data, $data);
+    }
+    public function createStepByStep(Request $request) {
+        $validatedData = $request->validate([
+            'nomor' => 'required|unique:step_kemitraans,nomor',
+            'nama' => 'required',
+            'gambar' => 'nullable',
+        ]);
+        $step = new StepKemitraan();
+        $step->nomor = $validatedData['nomor'];
+        $step->nama = $validatedData['nama'];
+        $gambar = $request->file('gambar');
+        if(!$gambar) {
+            $step->gambar = 'default.jpg';
+        }
+        $nama_file = str_replace(" ","_",$validatedData['nama']).time().$validatedData['nomor'].'.'.$gambar->extension();
+        $gambar->storeAs('public/step_image/',$nama_file);
+        $step->gambar = $nama_file;
+        $step->save();
+        return response()->json([
+            'success' => 'Data berhasil ditambahkan',
+            'id' => $step->id,
+            'nomor' => $step->nomor,
+            'nama' => $step->nama,
+            'gambar' => $step->gambar,
+        ]);
+    }
+    public function editStepByStep(Request $request, $id) {
+        $validatedData = $request->validate([
+            'nomor' => 'required|unique:step_kemitraans,nomor',
+            'nama' => 'required',
+            'gambar' => 'nullable',
+        ]);
+        $step = StepKemitraan::find(decrypt($id));
+        $step->nomor = $validatedData['nomor'];
+        $step->nama = $validatedData['nama'];
+        $gambar = $request->file('gambar');
+        if($gambar) {
+            Storage::delete('public/step_image/'.$step->gambar);
+            $nama_file = str_replace(" ","_",$validatedData['nama']).time().$validatedData['nomor'].'.'.$gambar->extension();
+            $gambar->storeAs('public/step_image/',$nama_file);
+            $step->gambar = $nama_file;
+        }
+        $step->save();
+        return redirect()->back()->with('success', 'Data berhasil diubah');
+    }
+    public function deleteStepByStep(Request $request, $id) {
+        $step = StepKemitraan::find($id);
+        $step->delete();
+        Storage::delete('public/step_image/'.$step->gambar);
+        return response()->json([
+            'success' => 'data berhasil dihapus',
+        ]);
+    }
+    // ENDOFSTEPBYSTEPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+    // TESTIMONIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+    public function testimoni(Request $request) {
+        $testimoni = Testimonial::all();
+        $data = [
+            'title' => 'Admin Testimoni',
+            'testimoni' => $testimoni,
+        ];
+        return view('admin/testimoni/index',$this->data, $data);
+    }
+    public function createTestimoni(Request $request) {
+        $testimoni = new Testimonial();
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'pekerjaan' => 'required',
+            'kata' => 'required',
+            'foto' => 'nullable',
+        ]);
+        $testimoni->nama = $validatedData['nama'];
+        $testimoni->pekerjaan = $validatedData['pekerjaan'];
+        $testimoni->kata = $validatedData['kata'];
+        $gambar = $request->file('foto');
+        $nama_file = str_replace(" ", "_", $validatedData['nama']).time().'.'.$gambar->extension();
+        $gambar->storeAs('public/testimoni_image/',$nama_file);
+        $testimoni->foto = $nama_file;
+        $testimoni->save();
+        return response()->json([
+            'success' => 'Data berhasil ditambahkan',
+            'id' => $testimoni->id,
+            'nama' => $testimoni->nama,
+            'kata' => $testimoni->kata,
+            'foto' => $testimoni->foto,
+        ]);
+    }
+    public function editTestimoni(Request $request, $id) {
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'pekerjaan' => 'required',
+            'kata' => 'required',
+            'foto' => 'nullable',
+        ]);
+        $testimoni = Testimonial::find(decrypt($id));
+        $testimoni->nama = $validatedData['nama'];
+        $testimoni->pekerjaan = $validatedData['pekerjaan'];
+        $testimoni->kata = $validatedData['kata'];
+        $gambar = $request->file('foto');
+        if ($gambar) {
+            Storage::delete('public/testimoni_image/'. $testimoni->foto);
+            $nama_file = str_replace(" ", "_", $validatedData['nama']).time().'.'.$gambar->extension();
+            $gambar->storeAs('public/testimoni_image/',$nama_file);
+            $testimoni->foto = $nama_file;
+        }
+        $testimoni->save();
+        return redirect()->back()->with('success', 'Data berhasil diubah');
+    }
+    public function deleteTestimoni(Request $request, $id) {
+        $testimoni = Testimonial::find(decrypt($id));
+        Storage::delete('public/testimoni_image/'. $testimoni->foto);
+        $testimoni->delete();
+        return redirect()->back()->with('success', 'Data berhasil diubah');
+    }
+    // ENDOFTESTIMONIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+    // KEUNGGULANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+    public function keunggulan(Request $request) {
+        $keunggulan = KeunggulanMitra::all();
+        $data = [
+            'title' => 'Admin Keunggulan',
+            'keunggulan' => $keunggulan,
+        ];
+        return view('admin/keunggulan/index',$this->data, $data);
+    }
+    public function createKeunggulan(Request $request) {
+        $keunggulan = new KeunggulanMitra();
+        $validatedData = $request->validate([
+            'nomor' => 'required|integer',
+            'nama' => 'required',
+            'deskripsi' => 'required',
+        ]);
+        $keunggulan->nomor = $validatedData['nomor'];
+        $keunggulan->nama = $validatedData['nama'];
+        $keunggulan->deskripsi = $validatedData['deskripsi'];
+        // $gambar = $request->file('foto');
+        // $nama_file = str_replace(" ", "_", $validatedData['nama']).time().'.'.$gambar->extension();
+        // $gambar->storeAs('public/keunggulan_image/',$nama_file);
+        // $keunggulan->foto = $nama_file;
+        $keunggulan->save();
+        return response()->json([
+            'success' => 'Data berhasil ditambahkan',
+            'id' => $keunggulan->id,
+            'nomor' => $keunggulan->nomor,
+            'nama' => $keunggulan->nama,
+            'deskripsi' => $keunggulan->deskripsi,
+        ]);
+    }
+    public function editKeunggulan(Request $request, $id) {
+        $keunggulan = KeunggulanMitra::find(decrypt($id));
+        $validatedData = $request->validate([
+            'nomor' => 'required|integer|unique:keunggulan_mitras,nomor',
+            'nama' => 'required',
+            'deskripsi' => 'required',
+        ]);
+        $keunggulan->nomor = $validatedData['nomor'];
+        $keunggulan->nama = $validatedData['nama'];
+        $keunggulan->deskripsi = $validatedData['deskripsi'];
+        // $gambar = $request->file('foto');
+        // if ($gambar) {
+        //     Storage::delete('public/keunggulan_image/'. $keunggulan->foto);
+        //     $nama_file = str_replace(" ", "_", $validatedData['nama']).time().'.'.$gambar->extension();
+        //     $gambar->storeAs('public/keunggulan_image/',$nama_file);
+        //     $keunggulan->foto = $nama_file;
+        // }
+        $keunggulan->save();
+        return redirect()->back()->with('success', 'Data berhasil diubah');
+    }
+    
+    public function deleteKeunggulan(Request $request, $id) {
+        $keunggulan = KeunggulanMitra::find(decrypt($id));
+        // Storage::delete('public/testimoni_image/'. $keunggulan->foto);
+        $keunggulan->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
+    // ENDOFKEUNGGULANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+    // SYARATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+    public function syarat(Request $request) {
+        $syarat = SyaratMitra::all();
+        $data = [
+            'title' => 'Admin Keunggulan',
+            'syarat' => $syarat,
+        ];
+        return view('admin/syarat/index',$this->data, $data);
+    }
+    public function createSyarat(Request $request) {
+        $syarat = new SyaratMitra();
+        $validatedData = $request->validate([
+            'nomor' => 'required|integer|unique:syarat_mitras,nomor',
+            'nama' => 'required',
+            'deskripsi' => 'required',
+        ]);
+        $syarat->nomor = $validatedData['nomor'];
+        $syarat->nama = $validatedData['nama'];
+        $syarat->deskripsi = $validatedData['deskripsi'];
+        // $gambar = $request->file('foto');
+        // $nama_file = str_replace(" ", "_", $validatedData['nama']).time().'.'.$gambar->extension();
+        // $gambar->storeAs('public/syarat_image/',$nama_file);
+        // $syarat->foto = $nama_file;
+        $syarat->save();
+        return response()->json([
+            'success' => 'Data berhasil ditambahkan',
+            'id' => $syarat->id,
+            'nomor' => $syarat->nomor,
+            'nama' => $syarat->nama,
+            'deskripsi' => $syarat->deskripsi,
+        ]);
+    }
+    public function editSyarat(Request $request, $id) {
+        $syarat = SyaratMitra::find(decrypt($id));
+        $validatedData = $request->validate([
+            'nomor' => 'required|integer',
+            'nama' => 'required',
+            'deskripsi' => 'required',
+        ]);
+        // dd($validatedData);
+        $syarat->nomor = $validatedData['nomor'];
+        $syarat->nama = $validatedData['nama'];
+        $syarat->deskripsi = $validatedData['deskripsi'];
+        // $gambar = $request->file('foto');
+        // if ($gambar) {
+        //     Storage::delete('public/syarat_image/'. $syarat->foto);
+        //     $nama_file = str_replace(" ", "_", $validatedData['nama']).time().'.'.$gambar->extension();
+        //     $gambar->storeAs('public/syarat_image/',$nama_file);
+        //     $syarat->foto = $nama_file;
+        // }
+        $syarat->save();
+        return redirect()->back()->with('success', 'Data berhasil diubah');
+    }
+    
+    public function deleteSyarat(Request $request, $id) {
+        $syarat = KeunggulanMitra::find(decrypt($id));
+        // Storage::delete('public/testimoni_image/'. $keunggulan->foto);
+        $syarat->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
+    // ENDOFSYARATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
     public function userProfile() {
         $data = [
             'title' => 'Admin Profile',

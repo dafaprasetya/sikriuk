@@ -124,7 +124,7 @@
                                                             <div class="col-sm-12">
                                                                 <div class="mb-20">
                                                                     <label for="gambar" class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                                                        Gambar <span class="text-danger-600">*</span>
+                                                                        Gambar <span class="text-danger-600">*188x181</span>
                                                                     </label>
                                                                     <div class="imagePreview d-flex justify-content-center align-items-center">
                                                                         <img id="previewImg" class="rounded" style="display: none; max-width: 200px; height: auto;">
@@ -205,7 +205,7 @@
                                 <div class="col-sm-12">
                                     <div class="mb-20">
                                         <label for="gambar" class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                            Gambar <span class="text-danger-600">*</span>
+                                            Gambar <span class="text-danger-600">*188x181</span>
                                         </label>
                                         <div class="imagePreview d-flex justify-content-center align-items-center">
                                             <img id="previewImg" class="rounded" style="display: none; max-width: 200px; height: auto;">

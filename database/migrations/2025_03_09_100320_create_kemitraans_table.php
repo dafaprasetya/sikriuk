@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('kemitraans', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('gambar');
             $table->string('harga');
             $table->string('deskripsi');
             $table->timestamps();

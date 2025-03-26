@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MainController::class, 'index'])->name('home');
 
 Auth::routes();
 
@@ -62,6 +60,25 @@ Route::middleware(['auth', 'role:admin,user'])->group(function () {
     Route::post('/admin/gerobak/{id}/delete',[AdminController::class, 'deleteGerobak'])->name('deleteGerobak');
     Route::post('/admin/gerobak/{id}/delete/benefit',[AdminController::class, 'deleteBenefit'])->name('deleteBenefit');
 
+    Route::get('/admin/stepmitra',[AdminController::class, 'stepByStep'])->name('stepByStep');
+    Route::post('/admin/stepmitra/create',[AdminController::class, 'createStepByStep'])->name('createStepByStep');
+    Route::post('/admin/stepmitra/{id}/edit',[AdminController::class, 'editStepByStep'])->name('editStepByStep');
+    Route::post('/admin/stepmitra/{id}/delete',[AdminController::class, 'deleteStepByStep'])->name('deleteStepByStep');
+
+    Route::get('/admin/testimoni',[AdminController::class, 'testimoni'])->name('testimoni');
+    Route::post('/admin/testimoni/create',[AdminController::class, 'createTestimoni'])->name('createTestimoni');
+    Route::post('/admin/testimoni/{id}/edit',[AdminController::class, 'editTestimoni'])->name('editTestimoni');
+    Route::post('/admin/testimoni/{id}/delete',[AdminController::class, 'deleteTestimoni'])->name('deleteTestimoni');
+
+    Route::get('/admin/keunggulan',[AdminController::class, 'keunggulan'])->name('keunggulan');
+    Route::post('/admin/keunggulan/create',[AdminController::class, 'createKeunggulan'])->name('createKeunggulan');
+    Route::post('/admin/keunggulan/{id}/edit',[AdminController::class, 'editKeunggulan'])->name('editKeunggulan');
+    Route::post('/admin/keunggulan/{id}/delete',[AdminController::class, 'deleteKeunggulan'])->name('deleteKeunggulan');
+
+    Route::get('/admin/syarat',[AdminController::class, 'syarat'])->name('syarat');
+    Route::post('/admin/syarat/create',[AdminController::class, 'createSyarat'])->name('createSyarat');
+    Route::post('/admin/syarat/{id}/edit',[AdminController::class, 'editSyarat'])->name('editSyarat');
+    Route::post('/admin/syarat/{id}/delete',[AdminController::class, 'deleteSyarat'])->name('deleteSyarat');
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

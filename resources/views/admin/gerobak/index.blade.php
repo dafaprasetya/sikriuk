@@ -123,7 +123,7 @@
                                                             <div class="col-sm-12">
                                                                 <div class="mb-20">
                                                                     <label for="gambar" class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                                                        Gambar <span class="text-danger-600">*</span>
+                                                                        Gambar <span class="text-danger-600">*418x547</span>
                                                                     </label>
                                                                     <div class="imagePreview d-flex justify-content-center align-items-center">
                                                                         <img id="previewImg{{ $gerobaks->id }}" class="rounded" style="display: block; max-width: 200px; height: auto;">
@@ -299,7 +299,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <label class="form-label">Gambar*</label>
+                                                <label class="form-label">Gambar <span class="text-danger">*418x547</span></label>
                                                 <div class="position-relative">
                                                     <div class="imagePreview d-flex justify-content-center align-items-center">
                                                         <img id="previewImg" class="rounded" style="display: none; max-width: 200px; height: auto;">

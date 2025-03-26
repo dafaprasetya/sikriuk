@@ -37,7 +37,7 @@
             <div class="card-body p-24">
                 <div class="tab-content" id="pills-tabContent">   
                     <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab" tabindex="0">
-                        <div class="row gy-4" id="promoList">
+                        <div class="row gy-4" id="pencapaian">
                             @foreach ($pencapaian as $pencapaians)    
                             <div class="col-xxl-3 col-md-4 col-sm-6">
                                 <div class="hover-scale-img border radius-16 overflow-hidden">
@@ -50,7 +50,7 @@
                                             <button type="submit" data-bs-toggle="modal" data-bs-target="#{{ $pencapaians->id }}" class="btn rounded-pill btn-warning-100 text-warning-600 radius-8 px-20 py-11 m-2">
                                                 <iconify-icon icon="lucide:edit"></iconify-icon>
                                             </button>
-                                            <form action="{{ route('deletePromo', encrypt($pencapaians->id)) }}" method="post">
+                                            <form action="{{ route('deletePencapaian', encrypt($pencapaians->id)) }}" method="post">
                                                 @csrf
                                                 <button type="submit" class="btn rounded-pill btn-danger-100 text-danger-600 radius-8 px-20 py-11 m-2">
                                                     <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
@@ -74,13 +74,13 @@
                                                 <div class="col-sm-12">
                                                     <div class="mb-20">
                                                         <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Nama <span class="text-danger-600">*</span></label>
-                                                        <input type="text" name="nama" class="form-control radius-8" id="name" placeholder="Masukan nama promo" value="{{ $pencapaians->nama }}">
+                                                        <input type="text" name="nama" class="form-control radius-8" id="name" placeholder="Masukan nama pencapaian" value="{{ $pencapaians->nama }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <div class="mb-20">
                                                         <label for="gambar" class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                                            Gambar <span class="text-danger-600">*</span>
+                                                            Gambar <span class="text-danger-600">*418x547</span>
                                                         </label>
                                                         <div class="imagePreview d-flex justify-content-center align-items-center">
                                                             <img id="previewImgold{{ $pencapaians->id }}" src="{{ asset('storage/pencapaian_image/'.$pencapaians->gambar) }}" class="rounded" style="display: block; max-width: 200px; height: auto;">
@@ -112,7 +112,7 @@
                                                 <div class="col-sm-12">
                                                     <div class="mb-20">
                                                         <label for="number" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi</label>
-                                                        <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan Deskripsi promo" id="lokasi">{{ $pencapaians->deskripsi }}</textarea>
+                                                        <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan Deskripsi pencapaian" id="lokasi">{{ $pencapaians->deskripsi }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -136,13 +136,13 @@
                                 <div class="col-sm-12">
                                     <div class="mb-20">
                                         <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Nama <span class="text-danger-600">*</span></label>
-                                        <input type="text" name="nama" class="form-control radius-8" id="name" placeholder="Masukan nama promo" value="">
+                                        <input type="text" name="nama" class="form-control radius-8" id="name" placeholder="Masukan nama pencapaian" value="">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="mb-20">
                                         <label for="gambar" class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                            Gambar <span class="text-danger-600">*</span>
+                                            Gambar <span class="text-danger-600">*418x547</span>
                                         </label>
                                         <div class="imagePreview d-flex justify-content-center align-items-center">
                                             <img id="previewImg" class="rounded" style="display: none; max-width: 200px; height: auto;">
@@ -171,7 +171,7 @@
                                 <div class="col-sm-12">
                                     <div class="mb-20">
                                         <label for="number" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi</label>
-                                        <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan Deskripsi promo" id="lokasi"></textarea>
+                                        <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan Deskripsi pencapaian" id="lokasi"></textarea>
                                     </div>
                                 </div>
                                 
@@ -216,7 +216,7 @@
                                             toast.show();
                                             $("#PencapaianForm")[0].reset();
                                             $("#previewImg").attr("src", "").hide();
-                                            $("#promoList").append(`
+                                            $("#pencapaian").append(`
                                             <div class="col-xxl-3 col-md-4 col-sm-6">
                                                 <div class="hover-scale-img border radius-16 overflow-hidden">
                                                     <div class="max-h-266-px overflow-hidden">
@@ -228,7 +228,7 @@
                                                             <button type="submit" class="btn rounded-pill btn-secondary-100 text-secondary-600 radius-8 px-20 py-11 m-2" disabled>
                                                                 <iconify-icon icon="lucide:edit"></iconify-icon>
                                                             </button>
-                                                            <form action="{{ route('deletePromo', encrypt(`+response.id+`)) }}" method="post">
+                                                            <form action="{{ route('deletePencapaian', encrypt(`+response.id+`)) }}" method="post">
                                                                 @csrf
                                                                 <button type="submit" class="btn rounded-pill btn-secondary-100 text-secondary-600 radius-8 px-20 py-11 m-2" disabled>
                                                                     <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
@@ -242,7 +242,7 @@
                                         },
                                         error: function (xhr) {
                                             console.log("Error:", xhr.responseText);
-                                            alert("Terjadi kesalahan saat membuat promo.");
+                                            alert("Terjadi kesalahan saat membuat pencapaian.");
                                         }
                                     });
                                 });

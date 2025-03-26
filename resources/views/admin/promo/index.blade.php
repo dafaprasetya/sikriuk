@@ -73,7 +73,7 @@
                                 <div class="col-sm-12">
                                     <div class="mb-20">
                                         <label for="gambar" class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                            Gambar <span class="text-danger-600">*</span>
+                                            Gambar <span class="text-danger-600">*710x710</span>
                                         </label>
                                         <div class="imagePreview d-flex justify-content-center align-items-center">
                                             <img id="previewImg" class="rounded" style="display: none; max-width: 200px; height: auto;">
@@ -108,7 +108,7 @@
                                 
                                 <div class="d-flex align-items-center justify-content-center gap-3 mt-9">
                                     <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8"> 
-                                        Save Change
+                                        Tambah Promo
                                     </button>
                                 </div>
                             </div>

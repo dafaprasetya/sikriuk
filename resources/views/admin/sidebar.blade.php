@@ -36,6 +36,12 @@
             <span>Pencapaian</span> 
           </a>
         </li>
+        <li>
+          <a href="{{ route('testimoni') }}" class="{{ Route::is('testimoni') ? 'active-page' : '' }}">
+            <iconify-icon icon="fluent:guitar-24-regular" class="menu-icon"></iconify-icon>
+            <span>Testimoni</span> 
+          </a>
+        </li>
         <li class="sidebar-menu-group-title">Kemitraan</li>
         <li>
           <a href="{{ route('calonMitra') }}" class="{{ Route::is('calonMitra') ? 'active-page' : '' }}">
@@ -54,15 +60,21 @@
           </a>
         </li>
         <li>
-          <a href="chat-message.html">
+          <a href="{{ route('stepByStep') }}" class="{{ Route::is('stepByStep') ? 'active-page' : '' }}">
             <iconify-icon icon="mdi:cast-tutorial" class="menu-icon"></iconify-icon>
             <span>Step by Step</span> 
           </a>
         </li>
         <li>
-          <a href="chat-message.html">
-            <iconify-icon icon="gala:brochure" class="menu-icon"></iconify-icon>
-            <span>Brosur</span> 
+          <a href="{{ route('keunggulan') }}" class="{{ Route::is('keunggulan') ? 'active-page' : '' }}">
+            <iconify-icon icon="fa:plus" class="menu-icon"></iconify-icon>
+            <span>Keunggulan Mitra</span> 
+          </a>
+        </li>
+        <li>
+          <a href="{{ route('syarat') }}" class="{{ Route::is('syarat') ? 'active-page' : '' }}">
+            <iconify-icon icon="f7:doc-on-doc" class="menu-icon"></iconify-icon>
+            <span>Syarat Mitra</span> 
           </a>
         </li>
         <li class="sidebar-menu-group-title">User</li>
