@@ -2,13 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\CalonMitra;
+use App\Models\KeunggulanMitra;
+use App\Models\Product;
+use App\Models\Promo;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
     public function index() {
-        return view('main.index');
+        $promo = Promo::all();
+        $about = About::first();
+        $menu = Product::all();
+        $keunggulan = KeunggulanMitra::all();
+        $data =[
+            'promo' => $promo,
+            'about' => $about,
+            'menu' => $menu,
+            'keunggulan' => $keunggulan
+        ];
+        return view('main.index',$data);
     }
     public function dummyCalonMitra() {
         return view('admin.calonmitra.dummy');

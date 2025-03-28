@@ -89,9 +89,10 @@ class AdminController extends Controller
         }
         if ($sosmed) {
             $sosmed = new SosmedAbout();
-            $sosmed->nama = $sosmed;
+            $sosmed->nama = $request->nama;
             $sosmed->logo = $request->logo;
-            $sosmed->links = $request->link;
+            $sosmed->links = $request->links;
+            $sosmed->about_id = $aboutId;
             $sosmed->save();
             return response()->json([
                 'success' => 'Email berhasil ditambahkan',
@@ -127,6 +128,7 @@ class AdminController extends Controller
             'success' => 'Data berhasil diubah',
         ]);
     }
+
     // ENDOFABOUTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT\
     // PROMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     public function promo() {
@@ -157,7 +159,7 @@ class AdminController extends Controller
             'deskripsi' => $promo->deskripsi,
             'gambar' => $promo->gambar,
             'gambar' => $promo->gambar,
-            
+
         ]);
     }
     public function deletePromo($id) {
@@ -234,7 +236,7 @@ class AdminController extends Controller
         $menu->save();
         return redirect()->back()->with('success', 'Data berhasil diubah');
     }
-    
+
     public function createKategori(Request $request) {
         $kategori = new ProductKatergori();
         $validatedData = $request->validate([
@@ -388,7 +390,7 @@ class AdminController extends Controller
             ];
         }
         return view('admin/calonmitra/index',$this->data, $data);
-        
+
     }
     public function detailCalonMitra($id) {
         $ids = decrypt($id);
@@ -406,7 +408,7 @@ class AdminController extends Controller
             'wa' => $url,
         ];
         return view('admin/calonmitra/detail',$this->data, $data);
-        
+
     }
     public function editCalonMitra($id) {
         $calon = CalonMitra::find($id);
@@ -530,7 +532,7 @@ class AdminController extends Controller
         return response()->json([
             'success' => 'Data berhasil dihapus',
         ]);
-        
+
     }
     // ENDOFGEROBAKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
     // STEPBYSTEPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
@@ -708,7 +710,7 @@ class AdminController extends Controller
         $keunggulan->save();
         return redirect()->back()->with('success', 'Data berhasil diubah');
     }
-    
+
     public function deleteKeunggulan(Request $request, $id) {
         $keunggulan = KeunggulanMitra::find(decrypt($id));
         // Storage::delete('public/testimoni_image/'. $keunggulan->foto);
@@ -769,7 +771,7 @@ class AdminController extends Controller
         $syarat->save();
         return redirect()->back()->with('success', 'Data berhasil diubah');
     }
-    
+
     public function deleteSyarat(Request $request, $id) {
         $syarat = KeunggulanMitra::find(decrypt($id));
         // Storage::delete('public/testimoni_image/'. $keunggulan->foto);

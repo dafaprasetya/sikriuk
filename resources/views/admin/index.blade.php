@@ -244,14 +244,14 @@
                 <div class="row mt-24">
                     <div class="col-sm-12">
                         <div class="mb-20">
-                            <form id="emailForm" data-id="{{ route('editAbout', encrypt($about->id)) }}">
+                            <form id="tambahsosmed" data-id="{{ route('editAbout', encrypt($about->id)) }}">
                                 @csrf
                                 <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Sosmed</label>
                                 <table class="table bordered-table mb-8" id="dataTable" data-page-length='10'>
-                                    <tbody id="emailTableBody">
+                                    <tbody id="sosmedTableBody">
                                         @foreach ($sosmed as $sosmeds)
                                         <tr>
-                                            <td style="width: 20px"><img src="{{ asset('storage/sosmed_logo'.$sosmeds->logo) }}"></td>
+                                            <td style="width: 20px"><i class="{{ $sosmeds->logo }}"></i></td>
                                             <td><a href="{{ $sosmeds->link }}">{{ $sosmeds->nama }}</a></td>
                                             <td style="width: 10px">
                                                 <form action="{{ route('delPhonenMail', encrypt($sosmeds->id)) }}" method="post">
@@ -271,10 +271,12 @@
                                         <input type="text" name="nama" class="form-control radius-8" id="nama" placeholder="Masukan jenis sosmed" >
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="file" name="logo" class="form-control radius-8" id="logo">
+                                        <input type="text" name="logo" class="form-control radius-8" id="logo" placeholder="Masukan logo sosmed" >
+                                        <small>cari logo di <a href="https://fontawesome.com/v5/icons/" target="_blank" class="text-primary">FontAwasome</a></small>
+
                                     </div>
                                     <div class="col-sm-12 mt-8">
-                                        <input type="text" name="link" class="form-control radius-8" id="link" placeholder="Masukan link sosmed" >
+                                        <input type="text" name="links" class="form-control radius-8" id="links" placeholder="Masukan link sosmed" >
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm mt-8">
@@ -283,22 +285,28 @@
                             </form>
                             <script>
                                 $(document).ready(function () {
-                                    $('#emailForm').submit(function (e) {
+                                    $('#tambahsosmed').submit(function (e) {
                                         e.preventDefault();
                                         let aboutId = $(this).data("id");
-                                        let email = $("#email").val();
+                                        let nama = $("#nama").val();
+                                        let logo = $("#logo").val();
+                                        let links = $("#links").val();
                                         $.ajax({
                                             url: aboutId,
                                             type: "POST",
                                             data: {
                                                 "_token": "{{ csrf_token() }}",
-                                                "email": $("#email").val(),
+                                                "sosmed": $("#nama").val(),
+                                                "nama": $("#nama").val(),
+                                                "logo": $("#logo").val(),
+                                                "links": $("#links").val(),
                                             },
                                             success: function (response) {
                                                 console.log('success');
-                                                $("#emailTableBody").append(`
+                                                $("#sosmedTableBody").append(`
                                                     <tr>
-                                                        <td>${email}</td>
+                                                        <td style="width: 20px"><i class="${logo}"></i></td>
+                                                        <td><a href="${links}">${nama}</a></td>
                                                         <td style="width: 10px">
 
                                                         </td>
@@ -306,7 +314,9 @@
                                                 `);
 
                                                 // Kosongkan input setelah menambahkan
-                                                $("#email").val('');
+                                                $("#nama").val('');
+                                                $("#links").val('');
+                                                $("#logo").val('');
                                                 var toastEl = document.getElementById('successToast');
                                                 var toast = new bootstrap.Toast(toastEl);
                                                 toast.show();
