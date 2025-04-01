@@ -1,142 +1,102 @@
 <!-- ASECTION MENU -->
 <section class="about-food-section">
     <div class="container">
-        <div class="about-food-wrapper bg-cover" style="background-image: url('assets/img/shape/about-food-bg.png');">
+        <div class="about-food-wrapper bg-cover" style="background-image: url('foodking/assets/img/shape/about-food-bg.png');">
             <div class="section-title text-center">
                 <span class="wow fadeInUp">menu</span>
                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
                     Menu Sikriuk
                 </h2>
             </div>
+
+            @if ($katmenu->count() >= 2)
             <ul class="nav justify-content-center">
+                @foreach ($katmenu as $kategori)
                 <li class="nav-item wow fadeInUp" data-wow-delay=".3s">
-                    <a href="#makanan" data-bs-toggle="tab" class="nav-link active">
-                    Makanan
+                    <a href="#{{ $kategori->nama }}" data-bs-toggle="tab" class="nav-link">
+                        {{ $kategori->nama }}
                     </a>
                 </li>
-                <li class="nav-item wow fadeInUp" data-wow-delay=".5s">
-                    <a href="#minuman" data-bs-toggle="tab" class="nav-link">
-                    Minuman
-                    </a>
-                </li>
+                @endforeach
             </ul>
+
+            <div class="tab-content">
+                @foreach ($katmenu as $kategori)
+                <div id="{{ $kategori->nama }}" class="tab-pane fade show @if($loop->first) active @endif">
+
+                    <div class="description-items">
+                        <div class="row">
+                            <!-- START LOOPING MENU CAT 1 -->
+                            @foreach ($kategori->product->slice(0, 3) as $menu)
+                            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                                <div class="about-food-items center">
+                                    <div class="food-image">
+                                        <img style="width: 188px; height: 181px;" src="{{ asset('storage/product_image/'.$menu->gambar) }}" alt="food-img">
+                                    </div>
+                                    <div class="food-content">
+                                        <h3><a href="shop-single.html">{{ $menu->nama }}</a></h3>
+                                        <p>
+                                            Rp. {{ number_format($menu->harga, 0, ',', '.') }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            <!-- END LOOPING MENU -->
+
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @else
             <div class="tab-content">
                 <div id="makanan" class="tab-pane fade show active">
                     <div class="description-items">
                         <div class="row">
                             <!-- START LOOPING MENU CAT 1 -->
+                            @foreach ($menu as $menus)
+
                             <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                                 <div class="about-food-items center">
                                     <div class="food-image">
-                                        <img src="assets/img/about-food/pizza.png" alt="food-img">
+                                        <img style="width: 188px; height: 181px;" src="{{ asset('storage/product_image/'.$menus->gambar) }}" alt="food-img">
                                     </div>
                                     <div class="food-content">
-                                        <h3><a href="shop-single.html">Chicago Deep Pizza.</a></h3>
+                                        <h3><a href="shop-single.html">{{ $menus->nama }}</a></h3>
                                         <p>
-                                            It's the perfect dining experience where
-                                            Experience quick and efficient
+                                            Rp. {{ number_format($menus->harga, 0, ',', '.') }}
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                            <!-- END LOOPING MENU -->
-                            <!-- START LOOPING MENU CAT 1 -->
-                            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                                <div class="about-food-items center">
-                                    <div class="food-image">
-                                        <img src="assets/img/about-food/pizza.png" alt="food-img">
-                                    </div>
-                                    <div class="food-content">
-                                        <h3><a href="shop-single.html">Chicago Deep Pizza.</a></h3>
-                                        <p>
-                                            It's the perfect dining experience where
-                                            Experience quick and efficient
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- END LOOPING MENU -->
-                            <!-- START LOOPING MENU CAT 1 -->
-                            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                                <div class="about-food-items center">
-                                    <div class="food-image">
-                                        <img src="assets/img/about-food/pizza.png" alt="food-img">
-                                    </div>
-                                    <div class="food-content">
-                                        <h3><a href="shop-single.html">Chicago Deep Pizza.</a></h3>
-                                        <p>
-                                            It's the perfect dining experience where
-                                            Experience quick and efficient
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                             <!-- END LOOPING MENU -->
                         </div>
                     </div>
                 </div>
-                <div id="minuman" class="tab-pane fade">
-                    <div class="description-items">
-                        <div class="row">
-                            <!-- START LOOPING MENU CAT 2 -->
-                            <div class="col-xl-3 col-lg-6">
-                                <div class="about-food-items center">
-                                    <div class="food-image">
-                                        <img src="assets/img/about-food/pizza.png" alt="food-img">
-                                    </div>
-                                    <div class="food-content">
-                                        <h3><a href="shop-single.html">Chicago Deep Pizza.</a></h3>
-                                        <p>
-                                            It's the perfect dining experience where
-                                            Experience quick and efficient
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- START LOOPING MENU CAT 2 -->
-                            <div class="col-xl-3 col-lg-6">
-                                <div class="about-food-items center">
-                                    <div class="food-image">
-                                        <img src="assets/img/about-food/potato.png" alt="food-img">
-                                    </div>
-                                    <div class="food-content">
-                                        <h3><a href="shop-single.html">Chicago Deep Pizza.</a></h3>
-                                        <p>
-                                            It's the perfect dining experience where
-                                            Experience quick and efficient
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-6">
-                                <div class="about-food-items center">
-                                    <div class="food-image">
-                                        <img src="assets/img/about-food/chicken.png" alt="food-img">
-                                    </div>
-                                    <div class="food-content">
-                                        <h3><a href="shop-single.html">Chicago Deep Pizza.</a></h3>
-                                        <p>
-                                            It's the perfect dining experience where
-                                            Experience quick and efficient
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-6">
-                                <div class="about-food-items center">
-                                    <div class="food-image">
-                                        <img src="assets/img/about-food/cheeseburger.png" alt="food-img">
-                                    </div>
-                                    <div class="food-content">
-                                        <h3><a href="shop-single.html">Chicago Deep Pizza.</a></h3>
-                                        <p>
-                                            It's the perfect dining experience where
-                                            Experience quick and efficient
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+            </div>
+            @endif
+            <div class="row mt-6" style="margin-top: 80px">
+                <div class="col-sm-12">
+                        <a href="about.html" class="theme-btn btn-sm wow style-line-height fadeInUp w-100" data-wow-delay=".5s">Lihat menu lengkap {{ $about->nama }}</a>
+                </div>
+            </div>
+            <div class="text-center produkonline wow style-line-height fadeInUp w-100" data-wow-delay=".5s">
+                <h4 class="text-muted" style="margin-bottom: 50px">produk kami bisa ditemukan di</h4>
+                <div class="row mt-2 gambaronline">
+                    <div class="col-md-3">
+                        <img src="{{ asset('img/grabfood.png') }}" alt="">
+                    </div>
+                    <div class="col-md-3">
+                        <img src="{{ asset('img/maxim.png') }}" alt="">
+                    </div>
+                    <div class="col-md-3">
+                        <img src="{{ asset('img/gofood.png') }}" alt="">
+                    </div>
+                    <div class="col-md-3">
+                        <img src="{{ asset('img/shopee-food.png') }}" alt="">
                     </div>
                 </div>
             </div>

@@ -11,7 +11,7 @@ Version: 2.0.0
   --body: #fff;
   --black: #000;
   --white: #fff;
-  --theme: #00813D;
+  --theme: #FF0000;
   --theme2: #FF0000;
   --theme3: #FFB936;
   --header: #212121;
@@ -204,7 +204,7 @@ Version: 2.0.0
   text-align: center;
   z-index: 1;
   transition: all 500ms ease;
-  background-color: var(--header);
+  background-color: var(--theme);
   text-transform: capitalize;
   border-radius: 19px;
   width: 100%;
@@ -5304,7 +5304,7 @@ input.main-search-input::placeholder {
   left: 0;
   display: grid;
   padding: 20px;
-  background-color: var(--theme2);
+  background-color: var(--theme);
   gap: 15px;
   transform: translate(-50%, -50%);
   transition: all 0.4s ease-in-out;
@@ -5735,7 +5735,7 @@ input.main-search-input::placeholder {
   z-index: -1;
 }
 .video-section-2.style-2::before {
-  background-color: var(--theme);
+  background-color: var(--theme3);
 }
 .video-section-2.style-2::after {
   position: absolute;
@@ -9205,7 +9205,7 @@ input.main-search-input::placeholder {
   position: relative;
   overflow: hidden;
   white-space: nowrap;
-  margin-top: 30px;
+  /* margin-top: -100px; */
   margin-bottom: -3px;
 }
 .marquee-wrapper.style-3 {
@@ -11713,7 +11713,7 @@ p.sticky-label {
 .footer-widgets-wrapper .single-footer-widget .footer-content .link {
   font-size: 20px;
   font-weight: 700;
-  color: var(--theme2);
+  color: var(--theme);
   margin-top: 15px;
   display: inline-block;
 }
@@ -12023,4 +12023,14 @@ p.sticky-label {
 }
 .footer-bottom.style-2 .footer-bottom-wrapper ul li a:hover .text-effect .effect-1 {
   top: -100%;
+}
+
+.produkonline{
+    margin-top: 50px;
+}
+.produkonline img{
+    width: 200px;
+}
+.gambaronline{
+    margin-top: 80px;
 }

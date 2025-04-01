@@ -57,13 +57,13 @@
                         @endif
                     </ul>
                     <div class="header-button mt-4">
-                        <a href="contact.html" class="theme-btn bg-red-2">Gabung Mitra Sekarang</a>
+                        <a href="#joinmitra" class="theme-btn bg-red-2">Gabung Mitra Sekarang</a>
                     </div>
                     <div class="social-icon d-flex align-items-center">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        @foreach ($about->sosmed as $sosmeds)
+                            <a href="{{ $sosmeds->links }}"><i class="{{ $sosmeds->logo }}"></i></a>
+
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -92,19 +92,19 @@
                                 <nav id="mobile-menu">
                                     <ul>
                                         <li class="active">
-                                            <a href="index.html">
+                                            <a href="{{ route('home') }}">
                                             Home
                                         </li>
-                                        <li class="has-dropdown">
-                                            <a href="shop.html">
+                                        <li>
+                                            <a href="{{ route('home') }}">
                                             Profile
                                         </li>
                                         <li>
-                                            <a href="news.html">
+                                            <a href="{{ route('home') }}">
                                             Kemitraan
                                         </li>
                                         <li>
-                                            <a href="contact.html">Support</a>
+                                            <a>Support</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -115,7 +115,7 @@
                     <div class="header-right d-flex justify-content-end align-items-center">
 
                         <div class="header-button">
-                            <a href="contact.html" class="theme-btn bg-red-2">Gabung Mitra Sekarang</a>
+                            <a href="#joinmitra" class="theme-btn bg-red-2">Gabung Mitra Sekarang</a>
                         </div>
                         <div class="header__hamburger d-xl-block my-auto">
                             <div class="sidebar__toggle">

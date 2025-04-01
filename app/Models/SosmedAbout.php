@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SosmedAbout extends Model
 {
     use HasFactory;
+    public function about() {
+        return $this->belongsTo(About::class);
+    }
 }

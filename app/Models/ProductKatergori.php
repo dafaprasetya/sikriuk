@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductKatergori extends Model
 {
     use HasFactory;
-    public function barang() {
-        return $this->hasMany(Product::class, 'kategori_id');
+    public function product() {
+        return $this->hasMany(Product::class, 'product_kategori_id');
     }
 }

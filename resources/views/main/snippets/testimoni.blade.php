@@ -13,48 +13,23 @@
                     <div class="swiper testimonial-content-slider-2">
                         <div class="swiper-wrapper">
                             <!-- START LOOPING TESTIMONI -->
+                            @foreach ($testimoni as $testi)
+                                
                             <div class="swiper-slide">
                                 <div class="testimonial-content center">
                                     <div class="client-info">
-                                        <h4>Piter Bowman</h4>
-                                        <h5>Business CEO & co founder</h5>
+                                        <img src="{{ asset('storage/testimoni_image/'.$testi->foto) }}" alt="" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto; display: block;">
+                                        <h4>{{ $testi->nama }}</h4>
+                                        <h5>{{ $testi->pekerjaan }}</h5>
                                     </div>
                                     <h3>
-                                        “Thank you for dinner last night. It was amazing!! I have
-                                        say it’s the best meal I have had in quite some time.
-                                        will definitely be seeing more eating next year.”
+                                        “{{ $testi->kata }}”
                                     </h3>
-                                    <div class="star">
-                                        <span class="fas fa-star"></span>
-                                        <span class="fas fa-star"></span>
-                                        <span class="fas fa-star"></span>
-                                        <span class="fas fa-star"></span>
-                                        <span class="fas fa-star"></span>
-                                    </div>
                                 </div>
                             </div>
+                            @endforeach
                             <!-- START LOOPING TESTIMONI -->
-                            <div class="swiper-slide">
-                                <div class="testimonial-content center">
-                                    <div class="client-info">
-                                        <h4>Piter Bowman</h4>
-                                        <h5>Business CEO & co founder</h5>
-                                    </div>
-                                    <h3>
-                                        “Thank you for dinner last night. It was amazing!! I have
-                                        say it’s the best meal I have had in quite some time.
-                                        will definitely be seeing more eating next year.”
-                                    </h3>
-                                    <div class="star">
-                                        <span class="fas fa-star"></span>
-                                        <span class="fas fa-star"></span>
-                                        <span class="fas fa-star"></span>
-                                        <span class="fas fa-star"></span>
-                                        <span class="fas fa-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-
+                            
                         </div>
                         <div class="swiper-dot style-2">
                             <div class="dot-2"></div>

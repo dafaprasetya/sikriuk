@@ -5,7 +5,7 @@
     @include('admin.topbar')
     <div class="dashboard-main-body">
         <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-            <h6 class="fw-semibold mb-0">Step by Step</h6>
+            <h6 class="fw-semibold mb-0">Keunggulan Mitra</h6>
             <ul class="d-flex align-items-center gap-2">
                 <li class="fw-medium">
                     <a href="index.html" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -14,7 +14,7 @@
                     </a>
                 </li>
                 <li>-</li>
-                <li class="fw-medium">Step by Step</li>
+                <li class="fw-medium">Keunggulan Mitra</li>
             </ul>
         </div>
 
@@ -23,19 +23,19 @@
                 <ul class="nav border-gradient-tab nav-pills mb-0 border-top-0" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
                       <button class="nav-link active" id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-all" aria-selected="true">
-                        List Step by Step
+                        List Keunggulan Mitra
                       </button>
                     </li>
-                    
+
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-ui-design-tab" data-bs-toggle="pill" data-bs-target="#pills-ui-design" type="button" role="tab" aria-controls="pills-ui-design" aria-selected="false" tabindex="-1">
-                          Tambah Step by Step
+                          Tambah Keunggulan Mitra
                         </button>
                     </li>
                 </ul>
              </div>
             <div class="card-body p-24">
-                <div class="tab-content" id="pills-tabContent">   
+                <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab" tabindex="0">
                         <div class="row gy-4" id="pencapaian">
                             <div class="table-responsive">
@@ -116,7 +116,7 @@
                                                                 document.getElementById('gambar{{ $keunggulans->id }}').addEventListener('change', function(event) {
                                                                     let file = event.target.files[0]; // Ambil file
                                                                     let previewImg = document.getElementById('previewImg{{ $keunggulans->id }}');
-                            
+
                                                                     if (file) {
                                                                         let reader = new FileReader();
                                                                         reader.onload = function(e) {
@@ -141,7 +141,7 @@
                                                                     <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan deskripsi" id="deskripsi">{{ $keunggulans->deskripsi }}</textarea>
                                                                 </div>
                                                             </div>
-                                                            
+
                                                         </div>
                                                     </form>
                                                 </div>
@@ -184,7 +184,7 @@
                                     document.getElementById('foto').addEventListener('change', function(event) {
                                         let file = event.target.files[0]; // Ambil file
                                         let previewImg = document.getElementById('previewImg');
-                                
+
                                         if (file) {
                                             let reader = new FileReader();
                                             reader.onload = function(e) {
@@ -197,7 +197,7 @@
                                         }
                                     });
                                 </script> --}}
-                                
+
                                 <div class="col-sm-12">
                                     <div class="mb-20">
                                         <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Nama <span class="text-danger-600">*</span></label>
@@ -211,7 +211,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center gap-3 mt-9">
-                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8"> 
+                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8">
                                         Save Change
                                     </button>
                                 </div>
@@ -254,7 +254,7 @@
                                             $("#dataTable").append(`
                                                 <tr>
                                                     <td>${response.nomor}</td>
-                                                    
+
                                                     <td>${response.nama}</td>
                                                     <td>${response.deskripsi}</td>
                                                     <td>
@@ -266,7 +266,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                
+
                                             `);
                                         },
                                         error: function (xhr) {

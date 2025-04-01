@@ -91,9 +91,11 @@
                                                     @endforeach
                                                 </ul>
                                             </td>
+                                            <form id="deleteGerobak{{ $gerobaks->id }}" action="{{ route('deleteGerobak', $gerobaks->id) }}" method="post">@csrf</form>
                                             <td>
                                                 <button type="button" data-bs-toggle="modal" data-bs-target="#{{ $gerobaks->id }}" class="btn btn-primary-600 btn-sm">Edit</button>
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#{{ $gerobaks->id }}" class="btn btn-danger-600 btn-sm">Delete</button>
+                                                <button type="button" class="btn btn-danger-600 btn-sm" onclick="event.preventDefault();
+                                                     document.getElementById('deleteGerobak{{ $gerobaks->id }}').submit();">Delete</button>
                                             </td>
                                         </tr>
                                         <div class="modal fade" id="{{ $gerobaks->id }}" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">

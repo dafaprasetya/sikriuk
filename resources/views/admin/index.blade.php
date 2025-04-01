@@ -25,14 +25,32 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="mb-20">
+                                <label for="banner" class="form-label fw-semibold text-primary-light text-sm mb-8">Banner <span class="text-danger-600">*981x754</span></label>
+                                <input type="file" name="banner" class="form-control radius-8" id="banner">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-20">
                                 <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Nama <span class="text-danger-600">*</span></label>
-                                <input type="text" name="nama" class="form-control radius-8" id="name" placeholder="Enter Full Name" value="{{ $about->nama }}" disabled>
+                                <input type="text" name="nama" class="form-control radius-8" id="name" placeholder="Enter Full Name" value="{{ $about->nama }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-20">
+                                <label for="namept" class="form-label fw-semibold text-primary-light text-sm mb-8">Nama <span class="text-danger-600">*</span></label>
+                                <input type="text" name="namapt" class="form-control radius-8" id="namept" placeholder="Masukan Nama PT" value="{{ $about->namapt }}">
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="mb-20">
                                 <label for="email" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi Perusahaan <span class="text-danger-600">*</span></label>
                                 <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan deskripsi perusahaan" id="deskripsi">{{ $about->deskripsi }}</textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-20">
+                                <label for="legalitas" class="form-label fw-semibold text-primary-light text-sm mb-8">Legalitas Perusahaan <span class="text-danger-600">*</span></label>
+                                <textarea name="legalitas" class="form-control" rows="4" cols="50" placeholder="Masukan legalitas perusahaan" id="legalitas">{{ $about->legalitas }}</textarea>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -47,10 +65,16 @@
                                 <textarea name="moto" class="form-control" rows="4" cols="50" placeholder="Masukan moto perusahaan" id="moto">{{ $about->moto }}</textarea>
                             </div>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-6">
                             <div class="mb-20">
                                 <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Total Mitra Saat Ini</label>
                                 <input type="number" name="total_mitra" class="form-control radius-8" id="total_mitra" placeholder="Masukan total mitra" value="{{ $about->total_mitra }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-20">
+                                <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Followers IG Saat Ini</label>
+                                <input type="number" name="followersig" class="form-control radius-8" id="followersig" placeholder="Masukan total mitra" value="{{ $about->total_mitra }}">
                             </div>
                         </div>
                         <div class="d-flex align-items-center justify-content-center gap-3 mt-9">
@@ -79,17 +103,23 @@
                         $('#aboutForm').submit(function (e) {
                             e.preventDefault();
                             let aboutId = $(this).data("id");
+                            let formData = new FormData();
+                            formData.append("_token", "{{ csrf_token() }}");
+                            formData.append("nama", $("#name").val());
+                            formData.append("deskripsi", $("#deskripsi").val());
+                            formData.append("lokasi", $("#lokasi").val());
+                            formData.append("moto", $("#moto").val());
+                            formData.append("legalitas", $("#legalitas").val());
+                            formData.append("namapt", $("#namept").val());
+                            formData.append("followersig", $("#followersig").val());
+                            formData.append("total_mitra", $("#total_mitra").val());
+                            formData.append("banner", $('#banner')[0].files[0]);
                             $.ajax({
                                 url: aboutId,
                                 type: "POST",
-                                data: {
-                                    "_token": "{{ csrf_token() }}",
-                                    "nama": $("#name").val(),
-                                    "deskripsi": $("#deskripsi").val(),
-                                    "lokasi": $("#lokasi").val(),
-                                    "moto": $("#moto").val(),
-                                    "total_mitra": $("#total_mitra").val()
-                                },
+                                data: formData,
+                                contentType: false,
+                                processData: false,
                                 success: function (response) {
                                     console.log('success');
                                     var toastEl = document.getElementById('successToast');
@@ -256,7 +286,7 @@
                                             <td style="width: 10px">
                                                 <form action="{{ route('delPhonenMail', encrypt($sosmeds->id)) }}" method="post">
                                                     @csrf
-                                                    <input type="text" name="email" value="email" hidden>
+                                                    <input type="text" name="sosmed" value="sosmed" hidden>
                                                     <button type="submit" href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                                         <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                                     </button>

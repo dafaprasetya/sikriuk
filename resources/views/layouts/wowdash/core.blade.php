@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ $title }}</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png" sizes="16x16">
+  <link rel="stylesheet" href="{{ asset('foodking/assets/css/font-awesome.css') }}">
+
   <!-- remix icon font css  -->
   <link rel="stylesheet" href="{{ asset('wowdash/assets/css/remixicon.css') }}">
   <!-- BootStrap css -->
@@ -32,16 +34,16 @@
   <link rel="stylesheet" href="{{ asset('wowdash/assets/css/lib/prism.css') }}">
   <!-- file upload css -->
   <link rel="stylesheet" href="{{ asset('wowdash/assets/css/lib/file-upload.css') }}">
-  
+
   <link rel="stylesheet" href="{{ asset('wowdash/assets/css/lib/audioplayer.css') }}">
   <!-- main css -->
   <link rel="stylesheet" href="{{ asset('wowdash/assets/css/style.css') }}">
 </head>
 <body>
-  
+
   @yield('body')
 
-  
+
   <!-- jQuery library js -->
   <script src="{{ asset('wowdash/assets/js/lib/jquery-3.7.1.min.js') }}"></script>
   <!-- Bootstrap js -->
@@ -67,7 +69,7 @@
   <script src="{{ asset('wowdash/assets/js/lib/file-upload.js') }}"></script>
   <!-- audioplayer -->
   <script src="{{ asset('wowdash/assets/js/lib/audioplayer.js') }}"></script>
-  
+
   <!-- main js -->
   <script src="{{ asset('wowdash/assets/js/app.js') }}"></script>
 

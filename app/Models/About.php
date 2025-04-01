@@ -14,4 +14,7 @@ class About extends Model
     public function phone() {
         return $this->hasMany(PhoneAbout::class);
     }
+    public function sosmed() {
+        return $this->hasMany(SosmedAbout::class);
+    }
 }

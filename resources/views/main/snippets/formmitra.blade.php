@@ -1,91 +1,59 @@
-<!-- FORM CALON MITRA -->
-<section class="booking-section fix section-bg section-padding mt-0">
+<section id="joinmitra">
     <div class="container">
-        <div class="booking-wrapper">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="booking-contact mb-0 style-2 bg-cover" style="background-image: url('assets/img/shape/booking-shape.png');">
-                        <h3 class="text-center mb-4 text-white wow fadeInUp">create an reservation</h3>
-                        <div class="booking-items">
-                            <div class="row g-4">
-                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                                    <div class="form-clt">
-                                        <div class="nice-select" tabindex="0">
-                                            <span class="current">
-                                            Clients Name
-                                            </span>
-                                            <ul class="list">
-                                                <li data-value="1" class="option selected">
-                                                    Lucas Henry
-                                                </li>
-                                                <li data-value="1" class="option">
-                                                    Mateo Jack
-                                                </li>
-                                                <li data-value="1" class="option">
-                                                    Michael Asher
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                                    <div class="form-clt">
-                                        <div class="nice-select" tabindex="0">
-                                            <span class="current">
-                                            no of person
-                                            </span>
-                                            <ul class="list">
-                                                <li data-value="1" class="option selected">
-                                                    1 People
-                                                </li>
-                                                <li data-value="1" class="option">
-                                                    2 People
-                                                </li>
-                                                <li data-value="1" class="option">
-                                                    3 People
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                                    <div class="form-clt">
-                                        <input type="text" name="number" id="number" placeholder="phone number">
-                                        <div class="icon">
-                                            <i class="fas fa-phone"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                                    <div class="form-clt">
-                                        <input type="date" id="calendar" name="calendar">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                                    <div class="form-clt">
-                                        <input type="text" name="phone" id="phone" placeholder="phone number">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                                    <div class="form-clt">
-                                        <input type="text" name="email" id="email" placeholder="Email Address">
-                                        <div class="icon">
-                                            <i class="fal fa-envelope"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 wow fadeInUp" data-wow-delay=".3s">
-                                    <div class="form-clt">
-                                        <a href="reservation.html" class="theme-btn bg-yellow">
-                                        booking now
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="section-title text-center">
+            <h2 class="wow fadeInUp" data-wow-delay=".3s">
+                Form Pendaftaran Mitra Online
+            </h2>
+        </div>
+        <form action="{{ route('sendCalonMitra') }}" method="POST">
+            @csrf
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Nama:</label>
+                        <input class="form-control radius-8" type="text" name="nama" required placeholder="Masukan nama sesuai KTP">   
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-4">
+
+                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">NIK:</label>
+                        <input class="form-control radius-8" type="number" name="nik" required placeholder="Masukan NIK sesuai KTP">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Email:</label>
+                        <input class="form-control radius-8" type="email" name="email" required placeholder="Masukan email aktif">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Telepon:</label>
+                        <input class="form-control radius-8" type="number" placeholder="Masukan nomor telepon/whatsapp aktif" name="phone" required>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Lokasi:</label>
+                        <input class="form-control radius-8" type="text" name="lokasi" required placeholder="Masukan lokasi yang ingin dijadikan outlet">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-6">
+                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Kota:</label>
+                        <input class="form-control radius-8" name="kota" type="text" required placeholder="Masuukan kota yang ingin dijadikan tempat outlet">
+                    </div>
+                </div>
+        
+                <div class="col-sm-12">
+                    <div class="md-2 mt-2">
+                        <button class="btn btn-md btn-warning w-100" type="submit">Kirim</button>
+                        <p>Masih bingung? ayok cek <a href="">tentang kemitraan</a></p>
                     </div>
                 </div>
             </div>
-        </div>
+    
+        </form>
     </div>
-</section>
+  </section>

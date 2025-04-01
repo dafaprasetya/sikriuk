@@ -17,6 +17,8 @@ use App\Models\SosmedAbout;
 use App\Models\StepKemitraan;
 use App\Models\SyaratMitra;
 use App\Models\Testimonial;
+use App\Models\Faq;
+use App\Models\Blog;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,6 +64,7 @@ class AdminController extends Controller
         $decId = decrypt($id);
         $mail = $request->email;
         $phone = $request->phone;
+        $sosmed = $request->sosmed;
         if ($mail) {
             $mails = EmailAbout::find($decId);
             $mails->delete();
@@ -69,6 +72,11 @@ class AdminController extends Controller
         }
         if ($phone) {
             $phones = PhoneAbout::find($decId);
+            $phones->delete();
+            return redirect()->back()->with('message', 'Nomor HP berhasil dihapus');
+        }
+        if ($sosmed) {
+            $phones = SosmedAbout::find($decId);
             $phones->delete();
             return redirect()->back()->with('message', 'Nomor HP berhasil dihapus');
         }
@@ -112,16 +120,32 @@ class AdminController extends Controller
         }
         // dd($request->all());
         $validatedData = $request->validate([
+            'nama' => 'nullable',
+            'namapt' => 'nullable',
             'deskripsi' => 'nullable',
             'lokasi' => 'nullable',
             'moto' => 'nullable',
             'total_mitra' => 'nullable',
+            'legalitas' => 'nullable',
+            'followersig' => 'nullable',
         ]);
         $about = About::find($aboutId);
+        $about->nama = $validatedData['nama'];
+        $about->namapt = $validatedData['namapt'];
         $about->deskripsi = $validatedData['deskripsi'];
         $about->lokasi = $validatedData['lokasi'];
         $about->moto = $validatedData['moto'];
+        $about->legalitas = $validatedData['legalitas'];
         $about->total_mitra = $validatedData['total_mitra'];
+        $about->followersig = $validatedData['followersig'];
+        $banner = $request->file('banner');
+        if($banner){
+            Storage::delete('public/banner_image/'.$about->banner);
+
+            $nama_file = str_replace(" ", "_", $validatedData['nama']).time().'.'.$banner->extension();
+            $banner->storeAs('public/banner_image/',$nama_file);
+            $about->banner = $nama_file;
+        }
         $about->save();
 
         return response()->json([
@@ -236,7 +260,19 @@ class AdminController extends Controller
         $menu->save();
         return redirect()->back()->with('success', 'Data berhasil diubah');
     }
-
+    public function deleteMenu($id) {
+        $ids = decrypt($id);
+        $menu = Product::find($ids);
+        $menu->delete();
+        Storage::delete('public/product_image/'.$menu->gambar);
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
+    public function deleteKategori($id){
+        $ids = decrypt($id);
+        $kategori = ProductKatergori::find($ids);
+        $kategori->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
     public function createKategori(Request $request) {
         $kategori = new ProductKatergori();
         $validatedData = $request->validate([
@@ -773,12 +809,138 @@ class AdminController extends Controller
     }
 
     public function deleteSyarat(Request $request, $id) {
-        $syarat = KeunggulanMitra::find(decrypt($id));
+        $syarat = SyaratMitra::find(decrypt($id));
         // Storage::delete('public/testimoni_image/'. $keunggulan->foto);
         $syarat->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
     // ENDOFSYARATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+    // FAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQq
+    public function faq(Request $request) {
+        $faq = Faq::all();
+        $data = [
+            'title' => 'Admin FAQ',
+            'faq' => $faq,
+        ];
+        return view('admin/faq/index',$this->data, $data);
+    }
+    public function createFaq(Request $request) {
+        $faq = new Faq();
+        $validatedData = $request->validate([
+            'tanya' => 'required|unique:faqs,tanya',
+            'jawab' => 'required',
+        ]);
+        $faq->tanya = $validatedData['tanya'];
+        $faq->jawab = $validatedData['jawab'];
+        $faq->save();
+        return response()->json([
+            'success' => 'Data berhasil ditambahkan',
+            'id' => $faq->id,
+            'tanya' => $faq->tanya,
+            'jawab' => $faq->jawab,
+        ]);
+    }
+    public function editFaq(Request $request, $id) {
+        $faq = Faq::find(decrypt($id));
+        $validatedData = $request->validate([
+            'tanya' => 'required',
+            'jawab' => 'required',
+        ]);
+        $faq->tanya = $validatedData['tanya'];
+        $faq->jawab = $validatedData['jawab'];
+        $faq->save();
+        return redirect()->back()->with('success', 'Data berhasil diubah');
+    }
+
+    public function deleteFaq(Request $request, $id) {
+        $faq = Faq::find(decrypt($id));
+        $faq->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
+    // ENNDOFFAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+    // BLOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+    public function blog(Request $request){
+        $blog = Blog::all();
+        $data = [
+            'title' => 'Admin Blog',
+            'blog' => $blog,
+        ];
+        return view('admin/blog/index',$this->data, $data);
+    }
+    public function createBlog(Request $request){
+        $blog = new Blog();
+        $validatedData = $request->validate([
+            'title' => 'required|unique:blogs,title',
+            'content' => 'required',
+            'thumbnail' => 'nullable',
+            'gambar' => 'nullable',
+        ]);
+        $slug = preg_replace('/[^a-z0-9]+/', '_', strtolower($validatedData['title'])).rand(1, 1000);
+        $blog->slug = $slug;
+        $blog->user_id = Auth::user()->id;
+        $blog->title = $validatedData['title'];
+        $blog->content = $validatedData['content'];
+        $gambar = $request->file('gambar');
+        $nama_file = str_replace(" ", "_", $slug).time().'.'.$gambar->extension();
+        $gambar->storeAs('public/blog/gambar/',$nama_file);
+        $blog->gambar = $nama_file;
+        $thumbnail = $request->file('thumbnail');
+        $nama_filet = str_replace(" ", "_", $slug).time().'.'.$thumbnail->extension();
+        $thumbnail->storeAs('public/blog/thumbnail/',$nama_filet);
+        $blog->thumbnail = $nama_filet;
+        $blog->save();
+        return response()->json([
+            'success' => 'Data berhasil ditambahkan',
+            'slug' => $blog->slug,
+            'title' => $blog->title,
+            'content' => $blog->content,
+            'gambar' => $blog->gambar,
+            'thumbnail' => $blog->thumbnail,
+        ]);
+
+    }
+    public function editBlog(Request $request, $slug){
+        $blog = Blog::where('slug', $slug)->first();
+        $validatedData = $request->validate([
+            'title' => 'required|unique:blogs,title',
+            'content' => 'required',
+            'thumbnail' => 'nullable',
+            'gambar' => 'nullable',
+        ]);
+        $slug = preg_replace('/[^a-z0-9]+/', '_', strtolower($validatedData['title'])).rand(1, 1000);
+        $blog->slug = $slug;
+        $blog->user_id = Auth::user()->id;
+        $blog->title = $validatedData['title'];
+        $blog->content = $validatedData['content'];
+        $gambar = $request->file('gambar');
+        if($gambar){
+            Storage::delete('public/blog/gambar/'.$blog->gambar);
+            $nama_file = str_replace(" ", "_", $slug).time().'.'.$gambar->extension();
+            $gambar->storeAs('public/blog/gambar/',$nama_file);
+            $blog->gambar = $nama_file;
+        }
+        $thumbnail = $request->file('thumbnail');
+        if($thumbnail){
+            Storage::delete('public/blog/thumbnail/'.$blog->thumbnail);
+            $nama_filet = str_replace(" ", "_", $slug).time().'.'.$thumbnail->extension();
+            $thumbnail->storeAs('public/blog/thumbnail/',$nama_filet);
+            $blog->thumbnail = $nama_filet;
+        }
+        $blog->save();
+        return response()->json([
+            'success' => 'data berhasil diupdate',
+        ]);
+    }
+    public function deleteBlog($id){
+        $blog = Blog::fint(decrypt($id));
+        Storage::delete('public/blog/gambar/'.$blog->gambar);
+        Storage::delete('public/blog/thumbnail/'.$blog->thumbnail);
+        $blog->delete();
+        return response()->json([
+            'success' => 'data berhasil dihapus',
+        ]);
+    }
+    // ENDOFBLOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
     public function userProfile() {
         $data = [
             'title' => 'Admin Profile',

@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainController::class, 'index'])->name('home');
+Route::get('/blog/{slug}', [Maincontroller::class, 'blogDetail'])->name('blogDetail');
 
 Auth::routes();
 
@@ -37,12 +38,14 @@ Route::middleware(['auth', 'role:admin,user'])->group(function () {
     Route::get('/admin/promo', [AdminController::class, 'promo'])->name('promo');
     Route::post('/admin/promo/create', [AdminController::class, 'createPromo'])->name('createPromo');
     Route::post('/admin/promo/delete/{id}', [AdminController::class, 'deletePromo'])->name('deletePromo');
-    
+
     Route::get('/admin/menu', [AdminController::class, 'menu'])->name('menu');
     Route::post('/admin/menu/create', [AdminController::class, 'createMenu'])->name('createMenu');
+    Route::post('/admin/menu/{id}/delete', [AdminController::class, 'deleteMenu'])->name('deleteMenu');
+    Route::post('/admin/menu/kategori/{id}/delete', [AdminController::class, 'deleteKategori'])->name('deleteKategori');
     Route::post('/admin/menu/kategori/create', [AdminController::class, 'createKategori'])->name('createKategori');
-    Route::post('/admin/menu/kategori/{id}/update', [AdminController::class, 'updateMenu'])->name('updateMenu');
-    
+    Route::post('/admin/menu/{id}/update', [AdminController::class, 'updateMenu'])->name('updateMenu');
+
     Route::get('/admin/pencapaian', [AdminController::class, 'pencapaian'])->name('pencapaian');
     Route::post('/admin/pencapaian/create', [AdminController::class, 'createPencapaian'])->name('createPencapaian');
     Route::post('/admin/pencapaian/{id}/delete', [AdminController::class, 'deletePencapaian'])->name('deletePencapaian');
@@ -79,6 +82,16 @@ Route::middleware(['auth', 'role:admin,user'])->group(function () {
     Route::post('/admin/syarat/create',[AdminController::class, 'createSyarat'])->name('createSyarat');
     Route::post('/admin/syarat/{id}/edit',[AdminController::class, 'editSyarat'])->name('editSyarat');
     Route::post('/admin/syarat/{id}/delete',[AdminController::class, 'deleteSyarat'])->name('deleteSyarat');
+
+    Route::get('/admin/faq',[AdminController::class, 'faq'])->name('faq');
+    Route::post('/admin/faq/create',[AdminController::class, 'createFaq'])->name('createFaq');
+    Route::post('/admin/faq/{id}/edit',[AdminController::class, 'editFaq'])->name('editFaq');
+    Route::post('/admin/faq/{id}/delete',[AdminController::class, 'deleteFaq'])->name('deleteFaq');
+
+    Route::get('/admin/blog',[AdminController::class, 'blog'])->name('blog');
+    Route::post('/admin/blog/create',[AdminController::class, 'createBlog'])->name('createBlog');
+    Route::post('/admin/blog/{id}/edit',[AdminController::class, 'editBlog'])->name('editBlog');
+    Route::post('/admin/blog/{id}/delete',[AdminController::class, 'deleteBlog'])->name('deleteBlog');
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

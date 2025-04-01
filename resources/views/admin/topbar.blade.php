@@ -18,28 +18,33 @@
       <div class="col-auto">
         <div class="d-flex flex-wrap align-items-center gap-3">
           <button type="button" data-theme-toggle class="w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"></button>
-          
-  
+
+
           <div class="dropdown">
             <button class="has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center" type="button" data-bs-toggle="dropdown">
-              <iconify-icon icon="iconoir:bell" class="text-primary-light text-xl"></iconify-icon>
+                @if ($unread > 0)
+                <iconify-icon icon="iconoir:bell-notification" class="text-primary-light text-xl"></iconify-icon>
+                @else
+                <iconify-icon icon="iconoir:bell" class="text-primary-light text-xl"></iconify-icon>
+
+                @endif
             </button>
             <div class="dropdown-menu to-top dropdown-menu-lg p-0">
               <div class="m-16 py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
                 <div>
                   <h6 class="text-lg text-primary-light fw-semibold mb-0">Notifications</h6>
                 </div>
-                
+
               </div>
-              
+
              <div class="max-h-400-px overflow-y-auto scroll-sm pe-4">
               @if ($unread > 0)
-                  
+
               <a href="{{ route('calonMitra') }}?linkunread=linkunread" class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
-                <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3"> 
+                <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
                   <span class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
                     <iconify-icon icon="line-md:email" class="icon text-xxl"></iconify-icon>
-                  </span> 
+                  </span>
                   <div>
                     <h6 class="text-md fw-semibold mb-4">Pesan Baru</h6>
                     <p class="mb-0 text-sm text-secondary-light text-w-200-px">Ada {{ $unread }} pesan yang belum dibaca dan ditanggapi</p>
@@ -49,10 +54,10 @@
               </a>
               @endif
              </div>
-  
+
             </div>
           </div><!-- Notification dropdown end -->
-  
+
           <div class="dropdown">
             <button class="d-flex justify-content-center align-items-center rounded-circle" type="button" data-bs-toggle="dropdown">
               <img src="{{ asset('storage/profile_picture/' . Auth::user()->picture) }}" alt="image" class="w-40-px h-40-px object-fit-cover rounded-circle">
@@ -64,17 +69,17 @@
                   <span class="text-secondary-light fw-medium text-sm">{{ Auth::user()->role }}</span>
                 </div>
                 <button type="button" class="hover-text-danger">
-                  <iconify-icon icon="radix-icons:cross-1" class="icon text-xl"></iconify-icon> 
+                  <iconify-icon icon="radix-icons:cross-1" class="icon text-xl"></iconify-icon>
                 </button>
               </div>
               <ul class="to-top-list">
                 <li>
-                  <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3" href="{{ route('userprofile') }}"> 
+                  <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3" href="{{ route('userprofile') }}">
                   <iconify-icon icon="solar:user-linear" class="icon text-xl"></iconify-icon>  My Profile</a>
                 </li>
                 <li>
                   <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-danger d-flex align-items-center gap-3" href="{{ route('logout') }}" onclick="event.preventDefault();
-                  document.getElementById('logout-form').submit();"> 
+                  document.getElementById('logout-form').submit();">
                   <iconify-icon icon="lucide:power" class="icon text-xl"></iconify-icon>  Log Out</a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
@@ -86,4 +91,4 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>

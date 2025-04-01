@@ -95,13 +95,16 @@
                                             <td>
                                                 {{ $menus->deskripsi }}
                                             </td>
+                                            <form action="{{ route('deleteMenu', encrypt($menus->id)) }}" id="deletemenu{{ $menus->id }}" method="post">
+                                                @csrf
+                                            </form>
                                             <td>
                                                 <button data-bs-toggle="modal" data-bs-target="#{{ $menus->id }}" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                                     <iconify-icon icon="lucide:edit"></iconify-icon>
                                                 </button>
-                                                <a href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                                <button class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center" onclick="event.preventDefault(); document.getElementById('deletemenu{{ $menus->id }}').submit();" >
                                                     <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
-                                                </a>
+                                                </button>
                                             </td>
                                         </tr>
                                         <div class="modal fade" id="{{ $menus->id }}" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
@@ -136,7 +139,7 @@
                                                                 document.getElementById('gambar').addEventListener('change', function(event) {
                                                                     let file = event.target.files[0]; // Ambil file
                                                                     let previewImg = document.getElementById('previewImg');
-                            
+
                                                                     if (file) {
                                                                         let reader = new FileReader();
                                                                         reader.onload = function(e) {
@@ -149,14 +152,14 @@
                                                                     }
                                                                 });
                                                             </script>
-                            
+
                                                             <div class="col-sm-6">
                                                                 <div class="mb-20">
                                                                     <label for="harga" class="form-label fw-semibold text-primary-light text-sm mb-8">Harga <span class="text-danger-600">*</span></label>
                                                                     <input type="text" name="harga" class="form-control radius-8" id="harga" placeholder="Masukan harga produk" value="{{ $menus->harga }}">
                                                                 </div>
                                                             </div>
-                            
+
                                                             <div class="col-sm-6">
                                                                 <div class="mb-20">
                                                                     <label for="product_kategori_id" class="form-label fw-semibold text-primary-light text-sm mb-8">Kategori <span class="text-danger-600">*</span></label>
@@ -330,7 +333,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                
+
                                             `);
                                         },
                                         error: function (xhr) {
@@ -346,6 +349,28 @@
 
                     </div>
                     <div class="tab-pane fade" id="pills-web-design" role="tabpanel" aria-labelledby="pills-web-design-tab" tabindex="0">
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                @foreach ($kategori as $kategoris)
+                                <table class="table bordered-table mb-0" id="dataTable" data-page-length='10'>
+                                    <tbody id="dataKategoriTable">
+                                        <tr>
+                                            <td>{{ $kategoris->nama }}</td>
+                                            <form action="{{ route('deleteKategori', encrypt($kategoris->id)) }}" id="deletekategori{{ $kategoris->id }}" method="post">
+                                                @csrf
+                                            </form>
+                                            <td>
+                                                <button class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center" onclick="event.preventDefault(); document.getElementById('deletekategori{{ $kategoris->id }}').submit();" >
+                                                    <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                @endforeach
+                            </div>
+                        </div>
                         <form id="kategoriForm" data-id="{{ route('createKategori') }}">
                             @csrf
                             <div class="row">
@@ -409,6 +434,19 @@
                                             var toast = new bootstrap.Toast(toastEl);
                                             toast.show();
                                             selectKategori.append(`<option value="${response.id}">${response.nama}</option>`);
+                                            $('#dataKategoriTable').append(`
+                                                <tr>
+                                                    <td>${response.nama}</td>
+                                                    <form action="{{ route('deleteKategori', encrypt($kategoris->id)) }}" id="deletekategori${response.id}" method="post">
+                                                        @csrf
+                                                    </form>
+                                                    <td>
+                                                        <button class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center" onclick="event.preventDefault(); document.getElementById('deletekategori${response.id}').submit();" >
+                                                            <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            `);
                                         },
                                         error: function (xhr) {
                                             console.log("Error:", xhr.responseText);
