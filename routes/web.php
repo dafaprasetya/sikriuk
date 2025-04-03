@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\EditUserController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\TokenController;
+use App\Http\Controllers\SuperAdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainController::class, 'index'])->name('home');
+Route::get('/kemitraan', [Maincontroller::class,'kemitraan'])->name('kemitraan');
 Route::get('/blog/{slug}', [Maincontroller::class, 'blogDetail'])->name('blogDetail');
+Route::get('/profil', [Maincontroller::class, 'profile'])->name('profile');
+Route::get('/menu', [Maincontroller::class, 'menu'])->name('menumain');
+Route::get('/blog', [Maincontroller::class, 'blog'])->name('blogmain');
 
 Auth::routes();
 
@@ -92,6 +97,23 @@ Route::middleware(['auth', 'role:admin,user'])->group(function () {
     Route::post('/admin/blog/create',[AdminController::class, 'createBlog'])->name('createBlog');
     Route::post('/admin/blog/{id}/edit',[AdminController::class, 'editBlog'])->name('editBlog');
     Route::post('/admin/blog/{id}/delete',[AdminController::class, 'deleteBlog'])->name('deleteBlog');
+
+    Route::get('/admin/lokasi',[AdminController::class, 'lokasi'])->name('lokasi');
+    Route::post('/admin/lokasi/create',[AdminController::class, 'createLokasi'])->name('createLokasi');
+    Route::post('/admin/lokasi/{id}/edit',[AdminController::class, 'editLokasi'])->name('editLokasi');
+    Route::post('/admin/lokasi/{id}/delete',[AdminController::class, 'deleteLokasi'])->name('deleteLokasi');
+
+    Route::get('/admin/proposal',[AdminController::class, 'proposal'])->name('proposal');
+    Route::post('/admin/Proposal/create',[AdminController::class, 'createProposal'])->name('createProposal');
+    Route::post('/admin/Proposal/{id}/delete',[AdminController::class, 'deleteProposal'])->name('deleteProposal');
+
+    Route::get('/admin/user/list',[SuperAdminController::class, 'listuser'])->name('listuser');
+    Route::post('/admin/user/{id}/delete',[SuperAdminController::class, 'deleteUser'])->name('deleteUser');
+    Route::post('/admin/user/{id}/edit',[SuperAdminController::class, 'editUser'])->name('editUser');
+
+    Route::get('/admin/security',[SuperAdminController::class, 'tokenAction'])->name('security');
+    Route::get('/admin/security/token',[SuperAdminController::class, 'tokenAction'])->name('token');
+    Route::post('/admin/security/token/edit',[SuperAdminController::class, 'editToken'])->name('editToken');
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -92,19 +92,23 @@
                                 <nav id="mobile-menu">
                                     <ul>
                                         <li class="active">
-                                            <a href="{{ route('home') }}">
+                                            <a href="{{ route('home') }}" style="{{ Route::is('home') ? 'color:#FFB936;' : '' }}">
                                             Home
                                         </li>
                                         <li>
-                                            <a href="{{ route('home') }}">
-                                            Profile
+                                            <a href="{{ route('profile') }}" style="{{ Route::is('profile') ? 'color:#FFB936;' : '' }}">
+                                            Profil
                                         </li>
                                         <li>
-                                            <a href="{{ route('home') }}">
+                                            <a href="{{ route('menumain') }}" style="{{ Route::is('menumain') ? 'color:#FFB936;' : '' }}">
+                                            Menu
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('kemitraan') }}" style="{{ Route::is('kemitraan') ? 'color:#FFB936;' : '' }}">
                                             Kemitraan
                                         </li>
                                         <li>
-                                            <a>Support</a>
+                                            <a href="{{ route('blogmain') }}" style="{{ Route::is('blogmain') || Route::is('blogDetail') ? 'color:#FFB936;' : '' }}">Blog</a>
                                         </li>
                                     </ul>
                                 </nav>

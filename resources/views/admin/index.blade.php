@@ -43,8 +43,14 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="mb-20">
-                                <label for="email" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi Perusahaan <span class="text-danger-600">*</span></label>
-                                <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan deskripsi perusahaan" id="deskripsi">{{ $about->deskripsi }}</textarea>
+                                <label for="deskripsi" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi singkat Perusahaan <span class="text-danger-600">*</span></label>
+                                <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan deskripsi singkat perusahaan" id="deskripsi">{{ $about->deskripsi }}</textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-20">
+                                <label for="deskripsi_lengkap" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi lengkap Perusahaan <span class="text-danger-600">*</span></label>
+                                <textarea name="deskripsi_lengkap" class="form-control" rows="4" cols="50" placeholder="Masukan deskripsi lengkap perusahaan" id="deskripsi_lengkap">{{ $about->deskripsi_lengkap }}</textarea>
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -107,6 +113,7 @@
                             formData.append("_token", "{{ csrf_token() }}");
                             formData.append("nama", $("#name").val());
                             formData.append("deskripsi", $("#deskripsi").val());
+                            formData.append("deskripsi_lengkap", $("#deskripsi_lengkap").val());
                             formData.append("lokasi", $("#lokasi").val());
                             formData.append("moto", $("#moto").val());
                             formData.append("legalitas", $("#legalitas").val());
@@ -137,27 +144,27 @@
                 <div class="row mt-24">
                     <div class="col-sm-6">
                         <div class="mb-20">
+                            <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Email</label>
+                            <table class="table bordered-table mb-8" id="dataTable" data-page-length='10'>
+                                <tbody id="emailTableBody">
+                                    @foreach ($email as $emaill)
+                                    <tr>
+                                        <td>{{ $emaill->email }}</td>
+                                        <td style="width: 10px">
+                                            <form action="{{ route('delPhonenMail', encrypt($emaill->id)) }}" method="post">
+                                                @csrf
+                                                <input type="text" name="email" value="email" hidden>
+                                                <button type="submit" href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                                    <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                             <form id="emailForm" data-id="{{ route('editAbout', encrypt($about->id)) }}">
                                 @csrf
-                                <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Email</label>
-                                <table class="table bordered-table mb-8" id="dataTable" data-page-length='10'>
-                                    <tbody id="emailTableBody">
-                                        @foreach ($email as $emaill)
-                                        <tr>
-                                            <td>{{ $emaill->email }}</td>
-                                            <td style="width: 10px">
-                                                <form action="{{ route('delPhonenMail', encrypt($emaill->id)) }}" method="post">
-                                                    @csrf
-                                                    <input type="text" name="email" value="email" hidden>
-                                                    <button type="submit" href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
-                                                        <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
                                 <input type="email" name="total_mitra" class="form-control radius-8" id="email" placeholder="Masukan email baru" >
                                 <button type="submit" class="btn btn-primary btn-sm mt-8">
                                     Tambah Email
@@ -205,26 +212,26 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-20">
+                            <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Nomor Telpon</label>
+                            <table class="table bordered-table mb-8" id="dataTable" data-page-length='10'>
+                                <tbody id="phoneTableBody">
+                                    @foreach ($phone as $phones)
+                                    <tr>
+                                        <td>{{ $phones->phone }}</td>
+                                        <td style="width: 10px">
+                                            <form action="{{ route('delPhonenMail', encrypt($phones->id)) }}" method="post">
+                                                @csrf
+                                                <input type="text" name="phone" value="phone" hidden>
+                                                <button type="submit" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                                    <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                             <form id="phoneForm" data-id="{{ route('editAbout', encrypt($about->id)) }}">
-                                <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Nomor Telpon</label>
-                                <table class="table bordered-table mb-8" id="dataTable" data-page-length='10'>
-                                    <tbody id="phoneTableBody">
-                                        @foreach ($phone as $phones)
-                                        <tr>
-                                            <td>{{ $phones->phone }}</td>
-                                            <td style="width: 10px">
-                                                <form action="{{ route('delPhonenMail', encrypt($phones->id)) }}" method="post">
-                                                    @csrf
-                                                    <input type="text" name="phone" value="phone" hidden>
-                                                    <button type="submit" href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
-                                                        <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
                                 <input type="number" name="total_mitra" class="form-control radius-8" id="phone" placeholder="Masukan nomor telpon baru">
                                 <button type="submit" class="btn btn-primary btn-sm mt-8">
                                     Tambah Nomor Telpon
@@ -274,28 +281,28 @@
                 <div class="row mt-24">
                     <div class="col-sm-12">
                         <div class="mb-20">
+                            <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Sosmed</label>
+                            <table class="table bordered-table mb-8" id="dataTable" data-page-length='10'>
+                                <tbody id="sosmedTableBody">
+                                    @foreach ($sosmed as $sosmeds)
+                                    <tr>
+                                        <td style="width: 20px"><i class="{{ $sosmeds->logo }}"></i></td>
+                                        <td><a href="{{ $sosmeds->link }}">{{ $sosmeds->nama }}</a></td>
+                                        <td style="width: 10px">
+                                            <form action="{{ route('delPhonenMail', encrypt($sosmeds->id)) }}" method="post">
+                                                @csrf
+                                                <input type="text" name="sosmed" value="sosmed" hidden>
+                                                <button type="submit" href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                                    <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                             <form id="tambahsosmed" data-id="{{ route('editAbout', encrypt($about->id)) }}">
                                 @csrf
-                                <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Sosmed</label>
-                                <table class="table bordered-table mb-8" id="dataTable" data-page-length='10'>
-                                    <tbody id="sosmedTableBody">
-                                        @foreach ($sosmed as $sosmeds)
-                                        <tr>
-                                            <td style="width: 20px"><i class="{{ $sosmeds->logo }}"></i></td>
-                                            <td><a href="{{ $sosmeds->link }}">{{ $sosmeds->nama }}</a></td>
-                                            <td style="width: 10px">
-                                                <form action="{{ route('delPhonenMail', encrypt($sosmeds->id)) }}" method="post">
-                                                    @csrf
-                                                    <input type="text" name="sosmed" value="sosmed" hidden>
-                                                    <button type="submit" href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
-                                                        <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <input type="text" name="nama" class="form-control radius-8" id="nama" placeholder="Masukan jenis sosmed" >

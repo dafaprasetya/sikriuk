@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -22,6 +27,19 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return redirect()->back()->with('success', 'User berhasil ditambahkan!');
+    }
+
 
     /**
      * Where to redirect users after registration.

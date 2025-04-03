@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'dafaprstya150@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('dafaprstya'),
-            'role' => 'user',
+            'role' => 'admin',
             'picture' => 'user.png',
             'phone' => '081574999858',
             'bio' => 'teruslah bernafas',

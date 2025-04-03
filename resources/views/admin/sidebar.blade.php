@@ -83,6 +83,18 @@
             <span>Syarat Mitra</span>
           </a>
         </li>
+        <li>
+          <a href="{{ route('lokasi') }}" class="{{ Route::is('lokasi') ? 'active-page' : '' }}">
+            <iconify-icon icon="hugeicons:maps" class="menu-icon"></iconify-icon>
+            <span>Lokasi Mitra</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ route('proposal') }}" class="{{ Route::is('proposal') ? 'active-page' : '' }}">
+            <iconify-icon icon="hugeicons:maps" class="menu-icon"></iconify-icon>
+            <span>Proposal Mitra</span>
+          </a>
+        </li>
         <li class="sidebar-menu-group-title">Blog</li>
         <li>
           <a href="{{ route('blog') }}" class="{{ Route::is('blog') ? 'active-page' : '' }}">
@@ -92,9 +104,16 @@
         </li>
         <li class="sidebar-menu-group-title">User</li>
         <li>
-          <a href="chat-message.html">
+          <a href="{{ route('listuser') }}">
             <iconify-icon icon="stash:user-group" class="menu-icon"></iconify-icon>
             <span>List User</span>
+          </a>
+        </li>
+        <li class="sidebar-menu-group-title">Security</li>
+        <li>
+          <a href="{{ route('token') }}">
+            <iconify-icon icon="wpf:key-security" class="menu-icon"></iconify-icon>
+            <span>Akses Token</span>
           </a>
         </li>
 

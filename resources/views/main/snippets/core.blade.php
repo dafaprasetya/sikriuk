@@ -30,6 +30,11 @@
         <link rel="stylesheet" href="{{ asset('foodking/assets/css/main.css') }}">
         <!--<< Style.css >>-->
         <link rel="stylesheet" href="{{ asset('foodking/style.css') }}">
+        <!-- Menambahkan CSS untuk Leaflet -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        <!-- Menambahkan JS untuk Leaflet -->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
     </head>
     <body>
         @yield('content')

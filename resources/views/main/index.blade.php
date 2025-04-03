@@ -19,5 +19,6 @@
 @if ($blog->count() >= 1)
 @include('main.snippets.blogshow')
 @endif
+@include('main.lokasi.lokasi')
 @include('main.snippets.footer')
 @endsection

@@ -5,7 +5,7 @@
             <div class="section-title text-center">
                 <span class="wow fadeInUp">menu</span>
                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                    Menu Sikriuk
+                    Menu {{ $about->nama }}
                 </h2>
             </div>
 

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class LokasiMitra extends Model
 {
     use HasFactory;
+    protected $fillable = ['nama', 'kota', 'latitude', 'longitude', 'linkmaps'];
 }

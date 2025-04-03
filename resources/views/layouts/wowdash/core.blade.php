@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ $title }}</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png" sizes="16x16">
+
   <link rel="stylesheet" href="{{ asset('foodking/assets/css/font-awesome.css') }}">
 
   <!-- remix icon font css  -->
@@ -38,6 +39,7 @@
   <link rel="stylesheet" href="{{ asset('wowdash/assets/css/lib/audioplayer.css') }}">
   <!-- main css -->
   <link rel="stylesheet" href="{{ asset('wowdash/assets/css/style.css') }}">
+
 </head>
 <body>
 

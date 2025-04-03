@@ -12034,3 +12034,18 @@ p.sticky-label {
 .gambaronline{
     margin-top: 80px;
 }
+
+.gerobakimg{
+    width: 418px;
+    height: 547px;
+}
+.benefitgerobak{
+    list-style-type:disc;
+    color: red;
+}
+.benefitgerobak strong{
+    color: var(--header);
+}
+.merah{
+    color: var(--theme)
+}

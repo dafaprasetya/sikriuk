@@ -65,7 +65,7 @@
                             <div class="popular-posts">
                                 @foreach ($listblog as $blogs)
                                 <div class="single-post-item">
-                                    <div class="thumb bg-cover" style="background-image: url('{{ asset('storage/blog/thumbnail/'.$blog->thumbnail) }}');"></div>
+                                    <div class="thumb bg-cover" style="background-image: url('{{ asset('storage/blog/thumbnail/'.$blogs->thumbnail) }}');"></div>
                                     <div class="post-content">
                                         <h5><a href="news-details.html">{{ $blogs->title }}</a></h5>
                                         <div class="post-date">

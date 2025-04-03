@@ -26,7 +26,7 @@
                                         <h3>{{ $promos->deskripsi }}</h3>
                                     </div>
                                     <div class="hero-button">
-                                        <a href="#0" class="theme-btn" data-animation="fadeInUp" data-delay="1.9s">
+                                        <a href="#joinmitra" class="theme-btn" data-animation="fadeInUp" data-delay="1.9s">
                                         <span class="button-content-wrapper d-flex align-items-center">
                                         <span class="button-text">Gabung Mitra Sekarang</span>
                                         </span>

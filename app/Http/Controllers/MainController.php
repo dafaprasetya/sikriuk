@@ -8,10 +8,14 @@ use App\Models\CalonMitra;
 use App\Models\Faq;
 use App\Models\Kemitraan;
 use App\Models\KeunggulanMitra;
+use App\Models\LokasiMitra;
+use App\Models\Pencapaian;
 use App\Models\Product;
 use App\Models\ProductKatergori;
 use App\Models\Promo;
+use App\Models\ProposalKemitraan;
 use App\Models\StepKemitraan;
+use App\Models\SyaratMitra;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -28,6 +32,7 @@ class MainController extends Controller
         $kemitraan = Kemitraan::all();
         $testimoni = Testimonial::all();
         $langkah = StepKemitraan::orderBy('nomor')->get();
+        $lokasi = LokasiMitra::all();
         $this->data =[
             'promo' => $promo,
             'about' => $about,
@@ -35,6 +40,7 @@ class MainController extends Controller
             'katmenu' => $menukategori,
             'keunggulan' => $keunggulan,
             'kemitraan' => $kemitraan,
+            'lokasi' => $lokasi,
             'langkah' => $langkah,
             'testimoni' => $testimoni,
         ];
@@ -49,6 +55,7 @@ class MainController extends Controller
         $testimoni = Testimonial::all();
         $faq = Faq::all();
         $langkah = StepKemitraan::orderBy('nomor')->get();
+        $lokasi = LokasiMitra::all();
         $listblog = Blog::orderBy('created_at', 'desc')->paginate(3);
         $data =[
             'promo' => $promo,
@@ -60,6 +67,7 @@ class MainController extends Controller
             'langkah' => $langkah,
             'testimoni' => $testimoni,
             'blog' => $listblog,
+            'lokasi' => $lokasi,
             'faq' => $faq,
         ];
         return view('main.index',$data);
@@ -95,5 +103,58 @@ class MainController extends Controller
             'listblog' => $listblog,
         ];
         return view('main.blog.detail',$this->data, $data);
+    }
+    public function kemitraan() {
+        $gerobak = Kemitraan::all();
+        $faq = Faq::all();
+        $syarat = SyaratMitra::all();
+        $proposal = ProposalKemitraan::first();
+        $data = [
+            'gerobak' => $gerobak,
+            'faq' => $faq,
+            'syarat' => $syarat,
+            'proposal' => $proposal,
+        ];
+        return view('main.kemitraan.index', $this->data, $data);
+    }
+    public function profile() {
+        $gerobak = Kemitraan::all();
+        $faq = Faq::all();
+        $syarat = SyaratMitra::all();
+        $proposal = ProposalKemitraan::first();
+        $pencapaian = Pencapaian::all();
+        $data = [
+            'gerobak' => $gerobak,
+            'faq' => $faq,
+            'syarat' => $syarat,
+            'proposal' => $proposal,
+            'pencapaian' => $pencapaian,
+        ];
+        return view('main.profile.index', $this->data, $data);
+    }
+    public function menu() {
+        $menu = Product::all();
+        $menukategori = ProductKatergori::all();
+        $data = [
+            'menu'=>$menu,
+            'katmenu' => $menukategori,
+
+        ];
+        return view('main.menu.index', $this->data, $data);
+    }
+    public function blog(Request $request) {
+        $blog = Blog::orderBy('created_at', 'desc')->paginate(10);
+        $search = $request->search;
+        $data = [
+            'blog'=>$blog,
+            'search'=>$search,
+        ];
+        if ($search) {
+            $data = [
+                'blog' => Blog::where("title","LIKE","%{$search}%")->orderBy('created_at', 'desc')->paginate(10)->appends(['search' => $search]),
+                'search'=>$search,
+            ];
+        }
+        return view('main.blog.index', $this->data, $data);
     }
 }

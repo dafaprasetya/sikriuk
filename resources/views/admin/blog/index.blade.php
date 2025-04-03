@@ -59,7 +59,7 @@
                                     </thead>
                                     <tbody id="dataBlogTable">
                                         @foreach ($blog as $blogs)
-                                        <tr>
+                                        <tr id="datablog{{ $blogs->id }}">
                                             <td>
                                                 {{ $loop->iteration }}
                                             </td>
@@ -84,6 +84,100 @@
                                                 </a>
                                             </td>
                                         </tr>
+                                        <div class="modal fade" id="{{ $blogs->id }}" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="modalLabel">Edit {{ $blogs->title }}</h5>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="editBlogForm{{ $blogs->id }}" enctype="multipart/form-data" action="{{ route('editBlog',encrypt($blogs->id)) }}" method="POST">
+                                                        @csrf
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="mb-20">
+                                                                    <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Judul <span class="text-danger-600">*</span></label>
+                                                                    <input type="text" name="title" class="form-control radius-8" id="title" placeholder="Masukan Judul Blog" value="{{ $blogs->title }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="mb-20">
+                                                                    <label for="thumbnail{{ $blogs->id }}" class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                                                        Thumbnail <span class="text-danger-600">*1920x390</span>
+                                                                    </label>
+                                                                    <div class="imagePreview d-flex justify-content-center align-items-center">
+                                                                        <img id="previewThumbnail{{ $blogs->id }}" src="{{ asset('storage/blog/thumbnail/'.$blogs->thumbnail) }}" class="rounded" style="display: block; max-width: 200px; height: auto;">
+                                                                    </div>
+                                                                    <input type="file" name="thumbnail" class="form-control radius-8 mt-3" id="thumbnail{{ $blogs->id }}" accept="image/*">
+                                                                </div>
+                                                            </div>
+                                                            <script>
+                                                                document.getElementById('thumbnail{{ $blogs->id }}').addEventListener('change', function(event) {
+                                                                    let file = event.target.files[0]; // Ambil file
+                                                                    let previewThumbnail = document.getElementById('previewThumbnail{{ $blogs->id }}');
+
+                                                                    if (file) {
+                                                                        let reader = new FileReader();
+                                                                        reader.onload = function(e) {
+                                                                            previewThumbnail.src = e.target.result; // Update src gambar
+                                                                            previewThumbnail.style.display = "block"; // Tampilkan gambar
+                                                                        };
+                                                                        reader.readAsDataURL(file);
+                                                                    } else {
+                                                                        previewThumbnail.style.display = "none"; // Sembunyikan jika tidak ada file
+                                                                    }
+                                                                });
+                                                            </script>
+                                                            <div class="col-sm-12">
+                                                                <div class="mb-20">
+                                                                    <label for="gambar{{ $blogs->id }}" class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                                                        Gambar <span class="text-danger-600">*871x462</span>
+                                                                    </label>
+                                                                    <div class="imagePreview d-flex justify-content-center align-items-center">
+                                                                        <img id="previewImg{{ $blogs->id }}" src="{{ asset('storage/blog/gambar/'.$blogs->gambar) }}" class="rounded" style="display: block; max-width: 200px; height: auto;">
+                                                                    </div>
+                                                                    <input type="file" name="gambar" class="form-control radius-8 mt-3" id="gambar{{ $blogs->id }}" accept="image/*">
+                                                                </div>
+                                                            </div>
+                                                            <script>
+                                                                document.getElementById('gambar{{ $blogs->id }}').addEventListener('change', function(event) {
+                                                                    let file = event.target.files[0]; // Ambil file
+                                                                    let previewImg = document.getElementById('previewImg{{ $blogs->id }}');
+
+                                                                    if (file) {
+                                                                        let reader = new FileReader();
+                                                                        reader.onload = function(e) {
+                                                                            previewImg.src = e.target.result; // Update src gambar
+                                                                            previewImg.style.display = "block"; // Tampilkan gambar
+                                                                        };
+                                                                        reader.readAsDataURL(file);
+                                                                    } else {
+                                                                        previewImg.style.display = "none"; // Sembunyikan jika tidak ada file
+                                                                    }
+                                                                });
+                                                            </script>
+                                                            <div class="col-sm-12">
+                                                                <label for="gambar" class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                                                    Content/isi <span class="text-danger-600">*</span>
+                                                                </label>
+                                                                <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+                                                                <textarea name="content" id="ckeditor{{ $blogs->id }}">{{ $blogs->content }}</textarea>
+                                                                <script>
+                                                                    CKEDITOR.replace('ckeditor{{ $blogs->id }}');
+                                                                </script>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                  <button type="button" class="btn btn-primary" onclick="event.preventDefault();
+                                                     document.getElementById('editBlogForm{{ $blogs->id }}').submit();">Simpan</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
                                         @endforeach
                                     </tbody>
                                 </table>

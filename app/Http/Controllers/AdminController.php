@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\BenefitKemitraan;
+use Illuminate\Support\Facades\Hash;
 use App\Models\CalonMitra;
 use App\Models\EmailAbout;
 use App\Models\Kemitraan;
@@ -15,14 +16,17 @@ use App\Models\ProductKatergori;
 use App\Models\Promo;
 use App\Models\SosmedAbout;
 use App\Models\StepKemitraan;
+use App\Models\LokasiMitra;
 use App\Models\SyaratMitra;
 use App\Models\Testimonial;
 use App\Models\Faq;
 use App\Models\Blog;
+use App\Models\ProposalKemitraan;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 
 
 class AdminController extends Controller
@@ -123,6 +127,7 @@ class AdminController extends Controller
             'nama' => 'nullable',
             'namapt' => 'nullable',
             'deskripsi' => 'nullable',
+            'deskripsi_lengkap' => 'nullable',
             'lokasi' => 'nullable',
             'moto' => 'nullable',
             'total_mitra' => 'nullable',
@@ -133,6 +138,7 @@ class AdminController extends Controller
         $about->nama = $validatedData['nama'];
         $about->namapt = $validatedData['namapt'];
         $about->deskripsi = $validatedData['deskripsi'];
+        $about->deskripsi_lengkap = $validatedData['deskripsi_lengkap'];
         $about->lokasi = $validatedData['lokasi'];
         $about->moto = $validatedData['moto'];
         $about->legalitas = $validatedData['legalitas'];
@@ -899,10 +905,10 @@ class AdminController extends Controller
         ]);
 
     }
-    public function editBlog(Request $request, $slug){
-        $blog = Blog::where('slug', $slug)->first();
+    public function editBlog(Request $request, $id){
+        $blog = Blog::find(decrypt($id));
         $validatedData = $request->validate([
-            'title' => 'required|unique:blogs,title',
+            'title' => 'required',
             'content' => 'required',
             'thumbnail' => 'nullable',
             'gambar' => 'nullable',
@@ -927,20 +933,110 @@ class AdminController extends Controller
             $blog->thumbnail = $nama_filet;
         }
         $blog->save();
-        return response()->json([
-            'success' => 'data berhasil diupdate',
-        ]);
+        return redirect()->back()->with('success','Data berhasil diupdate');
+
     }
     public function deleteBlog($id){
-        $blog = Blog::fint(decrypt($id));
+        $blog = Blog::find(decrypt($id));
         Storage::delete('public/blog/gambar/'.$blog->gambar);
         Storage::delete('public/blog/thumbnail/'.$blog->thumbnail);
         $blog->delete();
-        return response()->json([
-            'success' => 'data berhasil dihapus',
-        ]);
+        return redirect()->back()->with('success','Data berhasil dihapus');
+
     }
     // ENDOFBLOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+    // LOKASIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+    public function lokasi() {
+        $lokasi = LokasiMitra::all();
+        $data = [
+            'title' => 'Admin Lokasi Mitra',
+            'lokasi' => $lokasi,
+        ];
+        return view('admin/lokasi/index', $this->data, $data);
+    }
+    public function createLokasi(Request $request){
+        $lokasi = new LokasiMitra();
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'kota' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'linkmaps' => 'required',
+        ]);
+        $lokasi->nama = $validatedData['nama'];
+        $lokasi->kota = $validatedData['kota'];
+        $lokasi->latitude = $validatedData['latitude'];
+        $lokasi->longitude = $validatedData['longitude'];
+        $lokasi->linkmaps = $validatedData['linkmaps'];
+        $lokasi->save();
+        return response()->json([
+            'success' => 'data berhasil dimasukan',
+            'nama' => $lokasi->nama,
+            'id' => $lokasi->id,
+            'kota' => $lokasi->kota,
+            'latitude' => $lokasi->latitude,
+            'longitude' => $lokasi->longitude,
+            'lingmaps' => $lokasi->linkmaps,
+        ]);
+    }
+    public function editLokasi(Request $request, $id){
+        $lokasi = LokasiMitra::find(decrypt($id));
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'kota' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'linkmaps' => 'required',
+        ]);
+        $lokasi->nama = $validatedData['nama'];
+        $lokasi->kota = $validatedData['kota'];
+        $lokasi->latitude = $validatedData['latitude'];
+        $lokasi->longitude = $validatedData['longitude'];
+        $lokasi->linkmaps = $validatedData['linkmaps'];
+        $lokasi->save();
+        return redirect()->back()->with('success', 'data berhasil diedit');
+    }
+    public function deleteLokasi(Request $request, $id){
+        $lokasi = LokasiMitra::find(decrypt($id));
+        $lokasi->delete();
+        return redirect()->back()->with('success', 'data berhasil dihapus');
+    }
+    // ENDOFLOKASIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+    // PROPOSALLLLLLLLLLLLL
+    public function proposal() {
+        $proposal = ProposalKemitraan::all();
+        $data = [
+            'title' => 'Admin Proposal',
+            'proposal' => $proposal,
+        ];
+        return view('admin/proposal/index', $this->data, $data);
+    }
+    public function createProposal(Request $request){
+        $proposal = new ProposalKemitraan();
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'file' => 'nullable'
+        ]);
+
+        $proposal->nama = $validatedData['nama'];
+
+        $filep = $request->file('file');
+        $nama_file = str_replace(' ', '_', $validatedData['nama']) . '_' . time() . '.' . $filep->getClientOriginalExtension();
+        $filep->storeAs('public/proposal/', $nama_file);
+        $proposal->file = $nama_file;
+
+        $proposal->save();
+
+        return redirect()->back()->with('success', 'data berhasil diunggah');
+
+    }
+    public function deleteProposal(Request $request, $id){
+        $proposal = ProposalKemitraan::find(decrypt($id));
+        $proposal->delete();
+        Storage::delete('public/proposal/'.$proposal->file);
+        return redirect()->back()->with('success', 'data berhasil dihapus');
+    }
+    // PROPOSALLLLLLLLLLLLL
     public function userProfile() {
         $data = [
             'title' => 'Admin Profile',

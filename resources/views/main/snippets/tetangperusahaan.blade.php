@@ -8,13 +8,12 @@
             <div class="row align-items-center">
                 <div class="col-xl-5 col-lg-5">
                     <div class="pizza-image">
-                        <img src="{{ asset('storage/banner_image/'.$about->banner) }}" alt="pizza-img">
-                        <!-- <div class="quate-content">
+                        <img class="img-fluid" src="{{ asset('storage/banner_image/'.$about->banner) }}" alt="pizza-img">
+                        <div class="quate-content">
                             <h3>
-                                we cook <span>hot</span> <br>
-                                sandwiches for you
+                                {{ $about->moto }}
                             </h3>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7 mt-5 mt-lg-0">
@@ -43,7 +42,7 @@
                         </div>
                         <div class="about-info">
 
-                            <a href="about.html" class="theme-btn-2 wow fadeInUp" data-wow-delay=".5s">Lihat profil perusahaan</a>
+                            <a href="{{ route('profile') }}" class="theme-btn-2 wow fadeInUp" data-wow-delay=".5s">Lihat profil perusahaan</a>
                         </div>
                     </div>
                 </div>
