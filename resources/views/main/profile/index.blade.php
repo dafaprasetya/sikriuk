@@ -2,7 +2,7 @@
 @section('content')
 @include('main.snippets.loadingscreen')
 @include('main.snippets.navbar')
-<section id="profil">
+<section id="profil" class="mt-3">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 text-center">
@@ -42,6 +42,8 @@
         </div>
         @include('main.snippets.jargon')
     </div>
+    @if ($pencapaian->count() >= 1)
+
     <div class="container">
         <!--<< Gallery Section Start >>-->
         <div class="gallery-section fix section-bg section-padding">
@@ -69,6 +71,7 @@
         @include('main.snippets.jargon')
 
     </div>
+    @endif
 
 </section>
 @include('main.snippets.footer')

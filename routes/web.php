@@ -25,6 +25,7 @@ Route::get('/blog/{slug}', [Maincontroller::class, 'blogDetail'])->name('blogDet
 Route::get('/profil', [Maincontroller::class, 'profile'])->name('profile');
 Route::get('/menu', [Maincontroller::class, 'menu'])->name('menumain');
 Route::get('/blog', [Maincontroller::class, 'blog'])->name('blogmain');
+Route::get('/lokasi', [Maincontroller::class, 'lokasi'])->name('lokasimain');
 
 Auth::routes();
 

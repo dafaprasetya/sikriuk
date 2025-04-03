@@ -77,16 +77,29 @@
     <div class="header-top">
 
     </div>
-    <div id="header-sticky" class="header-1">
+    <div id="header-sticky" class="{{ Route::is('home') ? 'header-4' : 'header-1 style-6' }}">
         <div class="container">
             <div class="mega-menu-wrapper">
                 <div class="header-main">
+                    @if (Route::is('home'))
+                    <div class="logo-left">
+
+                        <a href="index.html" class="logo-1">
+                        <img src="{{ asset('img/logo/Logo_IKI.png') }}" alt="logo-img">
+                        </a>
+                        <a href="index.html" class="logo-2">
+                        <img src="{{ asset('img/logo/Logo_IKI.png') }}" alt="logo-img">
+                        </a>
+                    </div>
+                    @else
                     <div class="logo">
                         <a href="index.html" class="header-logo">
                         <img src="{{ asset('img/logo/Logo_IKI.png') }}" alt="logo-img">
                         </a>
                     </div>
-                    <div class="header-left">
+                    @endif
+
+                    <div class="{{ Route::is('home') ? 'header-left' : 'header-right d-flex justify-content-end align-items-center' }}">
                         <div class="mean__menu-wrapper d-none d-lg-block">
                             <div class="main-menu">
                                 <nav id="mobile-menu">
@@ -116,6 +129,8 @@
                             </div>
                         </div>
                     </div>
+                    @if (Route::is('home'))
+
                     <div class="header-right d-flex justify-content-end align-items-center">
 
                         <div class="header-button">
@@ -131,6 +146,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

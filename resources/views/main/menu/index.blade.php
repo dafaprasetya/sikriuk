@@ -102,6 +102,11 @@
         </div>
     </div>
 </section>
+<!-- Video Banner Section Start -->
+<div class="video-section section-padding bg-cover">
+
+</div>
+
 @include('main.snippets.jargon')
 @include('main.lokasi.lokasi')
 @include('main.snippets.footer')

@@ -26,7 +26,7 @@
                         List Promo
                       </button>
                     </li>
-                    
+
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-ui-design-tab" data-bs-toggle="pill" data-bs-target="#pills-ui-design" type="button" role="tab" aria-controls="pills-ui-design" aria-selected="false" tabindex="-1">
                           Tambah Promo
@@ -35,10 +35,10 @@
                 </ul>
              </div>
             <div class="card-body p-24">
-                <div class="tab-content" id="pills-tabContent">   
+                <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab" tabindex="0">
                         <div class="row gy-4" id="promoList">
-                            @foreach ($promo as $promos)    
+                            @foreach ($promo as $promos)
                             <div class="col-xxl-3 col-md-4 col-sm-6">
                                 <div class="hover-scale-img border radius-16 overflow-hidden">
                                     <div class="max-h-266-px overflow-hidden">
@@ -85,7 +85,7 @@
                                     document.getElementById('gambar').addEventListener('change', function(event) {
                                         let file = event.target.files[0]; // Ambil file
                                         let previewImg = document.getElementById('previewImg');
-                                
+
                                         if (file) {
                                             let reader = new FileReader();
                                             reader.onload = function(e) {
@@ -98,16 +98,16 @@
                                         }
                                     });
                                 </script>
-                                                                
+
                                 <div class="col-sm-12">
                                     <div class="mb-20">
                                         <label for="number" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi</label>
                                         <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan Deskripsi promo" id="lokasi"></textarea>
                                     </div>
                                 </div>
-                                
+
                                 <div class="d-flex align-items-center justify-content-center gap-3 mt-9">
-                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8"> 
+                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8">
                                         Tambah Promo
                                     </button>
                                 </div>
@@ -129,10 +129,10 @@
                             $(document).ready(function () {
                                 $("#promoForm").submit(function (e) {
                                     e.preventDefault();
-                        
+
                                     let formData = new FormData(this);
                                     let url = $(this).data("id"); // Ambil URL dari data-id
-                                    
+
                                     $.ajax({
                                         url: url, // Gunakan URL dari data-id
                                         type: "POST",
@@ -156,12 +156,7 @@
                                                     <div class="py-16 px-24">
                                                         <h6 class="mb-4">${response.nama}</h6>
                                                         <div class="imagePreview d-flex justify-content-center align-items-center">
-                                                            <form action="{{ route('deletePromo', encrypt(`+response.id+`)) }}" method="post">
-                                                                @csrf
-                                                                <button type="submit" class="btn rounded-pill btn-secondary-100 text-secondary-600 radius-8 px-20 py-11" disabled>
-                                                                    <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
-                                                                </button>
-                                                            </form>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -176,7 +171,7 @@
                                 });
                             });
                         </script>
-                        
+
                     </div>
                 </div>
             </div>

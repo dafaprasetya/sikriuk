@@ -21,16 +21,17 @@
                                 {{ $about->moto }}
                             </p>
                             @foreach ($about->email as $email)
-                                
+
                             <a href="{{ $email->email }}" class="link">{{ $email->email }}</a>
                             @endforeach
+                            <br>
                             @foreach ($about->phone as $phone)
-                                
+
                             <a href="{{ $phone->phone }}" class="link">{{ $phone->phone }}</a>
                             @endforeach
                             <div class="social-icon d-flex align-items-center">
                                 @foreach ($about->sosmed as $sosmed)
-                                    
+
                                 <a href="{{ $sosmed->links }}"><i class="{{ $sosmed->logo }}"></i></a>
                                 @endforeach
                             </div>
@@ -44,7 +45,7 @@
                         </div>
                         <ul class="list-items">
                             <li>
-                                <a href="about.html">
+                                <a href="{{ route('profile') }}">
                                 <span class="text-effect">
                                 <span class="effect-1">Profil</span>
                                 <span class="effect-1">Profil</span>
@@ -52,25 +53,33 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="about.html">
+                                <a href="{{ route('kemitraan') }}">
                                 <span class="text-effect">
                                 <span class="effect-1">Kemitraan</span>
                                 <span class="effect-1">Kemitraan</span>
+                                </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('blogmain') }}">
+                                <span class="text-effect">
+                                <span class="effect-1">Blog</span>
+                                <span class="effect-1">Blog</span>
                                 </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="news-details.html">
                                 <span class="text-effect">
-                                <span class="effect-1">Support</span>
-                                <span class="effect-1">Support</span>
+                                <span class="effect-1">Lokasi Mitra</span>
+                                <span class="effect-1">Lokasi Mitra</span>
                                 </span>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-xl-4 col-sm-6 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".8s">
                     <div class="single-footer-widget">
                         <div class="widget-head">
@@ -88,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>

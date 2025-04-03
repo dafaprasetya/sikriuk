@@ -32,7 +32,7 @@ class MainController extends Controller
         $kemitraan = Kemitraan::all();
         $testimoni = Testimonial::all();
         $langkah = StepKemitraan::orderBy('nomor')->get();
-        $lokasi = LokasiMitra::all();
+        // $lokasi = LokasiMitra::all();
         $this->data =[
             'promo' => $promo,
             'about' => $about,
@@ -40,7 +40,7 @@ class MainController extends Controller
             'katmenu' => $menukategori,
             'keunggulan' => $keunggulan,
             'kemitraan' => $kemitraan,
-            'lokasi' => $lokasi,
+            // 'lokasi' => $lokasi,
             'langkah' => $langkah,
             'testimoni' => $testimoni,
         ];
@@ -55,7 +55,7 @@ class MainController extends Controller
         $testimoni = Testimonial::all();
         $faq = Faq::all();
         $langkah = StepKemitraan::orderBy('nomor')->get();
-        $lokasi = LokasiMitra::all();
+        $lokasi = LokasiMitra::paginate(20);
         $listblog = Blog::orderBy('created_at', 'desc')->paginate(3);
         $data =[
             'promo' => $promo,
@@ -135,9 +135,13 @@ class MainController extends Controller
     public function menu() {
         $menu = Product::all();
         $menukategori = ProductKatergori::all();
+        $lokasi = LokasiMitra::paginate(50);
+
+
         $data = [
             'menu'=>$menu,
             'katmenu' => $menukategori,
+            'lokasi' => $lokasi,
 
         ];
         return view('main.menu.index', $this->data, $data);
@@ -156,5 +160,27 @@ class MainController extends Controller
             ];
         }
         return view('main.blog.index', $this->data, $data);
+    }
+    public function lokasi(Request $request) {
+        $search = $request->search;
+        $lokasi = LokasiMitra::all();
+        if ($search) {
+            $lokasi = LokasiMitra::where('kota', 'LIKE', "%{$search}%")
+            ->orWhere("nama","LIKE","%{$search}%")
+            ->orWhere("latitude","LIKE", "%{$search}%")
+            ->orWhere("longitude","LIKE", "%{$search}%")
+            ->orWhere("kota","LIKE", "%{$search}%")->get();
+            $data = [
+                'lokasi'=>$lokasi,
+                'search'=>$search,
+            ];
+            // dd($lokasi);
+        }else{
+            $data = [
+                'lokasi'=>$lokasi,
+                'search'=>$search,
+            ];
+        }
+        return view('main.lokasi.index', $this->data, $data);
     }
 }

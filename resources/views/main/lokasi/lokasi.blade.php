@@ -6,10 +6,10 @@
                 Mau ngerasain sikriuk?, yuk cek sikriuk disekitarmu
             </h3>
         </div>
-        <div id="map" style="height: 200px;"></div>
+        <div id="map" style="height: 200px; z-index: 1"></div>
         <div class="row mt-3 text-center">
             <div class="col-sm-12">
-                <a href="about.html" class="theme-btn btn-sm wow style-line-height fadeInUp w-80" data-wow-delay=".5s">Lihat lokasi mitra {{ $about->nama }}</a>
+                <a href="{{ route('lokasimain') }}" class="theme-btn btn-sm wow style-line-height fadeInUp w-80" data-wow-delay=".5s">Lihat lokasi mitra {{ $about->nama }}</a>
             </div>
         </div>
     </div>
@@ -37,7 +37,6 @@
     }
 
     function onLocationError(e) {
-        alert("Lokasi sekarang");
         map.setView([-6.2088, 106.8456], 13);
     }
 

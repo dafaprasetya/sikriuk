@@ -12,12 +12,12 @@
                     <div class="chili-shape" data-animation="fadeInUp" data-delay="2.4s">
                         <img src="foodking/assets/img/hero/left-shape.png" alt="shape-img">
                     </div>
-                    <div class="vagetable-shape" data-animation="fadeInUp" data-delay="2.8s">
-                        <img style="width: 710px; height: 710px;" src="{{ asset('storage/promo_image/'.$promos->gambar) }}" alt="shape-img">
-                    </div>
                     <div class="container">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-xl-6 col-lg-6">
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <img class="img-thumbnail" src="{{ asset('storage/promo_image/'.$promos->gambar) }}" alt="shape-img">
+                            </div>
+                            <div class="col-xl-6 d-flex justify-content-center align-items-center">
                                 <div class="hero-content">
                                     <h1  data-animation="fadeInUp" data-delay="1.5s">
                                         {{ $promos->nama }}
@@ -33,8 +33,6 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 mt-5 mt-lg-0">
                             </div>
                         </div>
                     </div>
