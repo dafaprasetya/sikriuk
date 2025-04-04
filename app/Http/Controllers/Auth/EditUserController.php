@@ -28,7 +28,9 @@ class EditUserController extends Controller
         $user->bio = $validatedData['bio'];
         $pp = $request->file('picture');
         if($pp){
-            Storage::delete('public/profile_picture/' . $user->picture);
+            if($user->picture != 'user.png'){
+                Storage::delete('public/profile_picture/' . $user->picture);
+            }
             $nama_file = str_replace(" ", "_", $validatedData['name']).time().'.'.$pp->extension();
             $pp->storeAs('public/profile_picture/',$nama_file);
             $user->picture = $nama_file;

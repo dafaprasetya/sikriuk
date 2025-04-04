@@ -73,77 +73,76 @@
 <div class="offcanvas__overlay"></div>
 
 <!-- Header Area Start -->
-<header>
-    <div class="header-top">
 
-    </div>
-    <div id="header-sticky" class="header-4">
-        <div class="container">
-            <div class="mega-menu-wrapper">
-                <div class="header-main">
-                    <div class="logo-left">
+<!-- Header Area Start -->
+<header id="header-sticky" class="header-1 style-6">
+    <div class="container">
+        <div class="mega-menu-wrapper">
+            <div class="header-main">
+                <div class="logo">
+                    <a href="{{ route('home') }}" class="header-logo">
+                        <img src="{{ asset('img/logo/logo-2.png') }}" alt="logo-img">
+                    </a>
+                </div>
 
-                        <a href="index.html" class="logo-1">
-                        <img src="{{ asset('img/logo/Logo_IKI.png') }}" alt="logo-img">
-                        </a>
-                        <a href="index.html" class="logo-2">
-                        <img src="{{ asset('img/logo/Logo_IKI.png') }}" alt="logo-img">
-                        </a>
-                    </div>
-                    <div class="header-left {{ Route::is('home') ? 'header-left' : 'header-right d-flex justify-content-end align-items-center' }}">
-                        <div class="mean__menu-wrapper d-none d-lg-block">
-                            <div class="main-menu">
-                                <nav id="mobile-menu">
-                                    <ul>
-                                        <li class="active">
-                                            <a href="{{ route('home') }}" style="{{ Route::is('home') ? 'color:#FFB936;' : '' }}">
-                                            Home
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('profile') }}" style="{{ Route::is('profile') ? 'color:#FFB936;' : '' }}">
-                                            Profil
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('menumain') }}" style="{{ Route::is('menumain') ? 'color:#FFB936;' : '' }}">
-                                            Menu
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('kemitraan') }}" style="{{ Route::is('kemitraan') ? 'color:#FFB936;' : '' }}">
-                                            Kemitraan
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('blogmain') }}" style="{{ Route::is('blogmain') || Route::is('blogDetail') ? 'color:#FFB936;' : '' }}">Blog</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                                <!-- for wp -->
-                            </div>
-                        </div>
-                        <div class="header__hamburger d-lg-none my-auto">
-                            <div class="sidebar__toggle">
-                                <i class="far fa-bars"></i>
-                            </div>
+                <div class="header-right d-flex justify-content-end align-items-center">
+                    <div class="mean__menu-wrapper d-none d-lg-block">
+                        <div class="main-menu">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li class="active">
+                                        <a href="{{ route('home') }}" style="{{ Route::is('home') ? 'color:#FFB936;' : '' }}">
+                                        Home
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('profile') }}" style="{{ Route::is('profile') ? 'color:#FFB936;' : '' }}">
+                                        Profil
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('menumain') }}" style="{{ Route::is('menumain') ? 'color:#FFB936;' : '' }}">
+                                        Menu
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('kemitraan') }}" style="{{ Route::is('kemitraan') ? 'color:#FFB936;' : '' }}">
+                                        Kemitraan
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('blogmain') }}" style="{{ Route::is('blogmain') || Route::is('blogDetail') ? 'color:#FFB936;' : '' }}">Blog</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!-- for wp -->
                         </div>
                     </div>
-
-                    <div class="header-right d-flex justify-content-end align-items-center">
-
-                        <div class="header-button">
-                            <a href="#joinmitra" class="theme-btn bg-red-2">Gabung Mitra Sekarang</a>
-                        </div>
-                        <div class="header__hamburger d-xl-block my-auto">
-                            <div class="sidebar__toggle">
-                                <div class="header-bar">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
+                    <div class="header__hamburger d-lg-none my-auto">
+                        <div class="sidebar__toggle">
+                            <i class="far fa-bars"></i>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </header>
+
+<!-- Hero Section Start -->
+<section class="hero-section-5 fix hero-6 section-padding bg-cover" style="background-image: url('{{ asset('foodking/assets/img/hero/hero-bg-2.jpg') }}');">
+    <div class="hero-shape">
+        <img src="{{ asset('foodking/assets/img/hero-6/hero/hero-shape.png') }}" alt="shape-img">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hero-content">
+                    <h3 class="wow fadeInUp" data-wow-delay=".3s">{{ $about->namapt }}</h3>
+                    <h1 class="wow fadeInUp" data-wow-delay=".5s">{{ $about->nama }}</h1>
+                    <h2 class="wow fadeInUp" data-wow-delay=".7s">{{ $about->moto }}</h2>
+                </div>
+                <div class="hero-image wow fadeInUp" data-wow-delay=".4s">
+                    {{-- <img src="{{ asset('foodking/assets/img/hero-6/hero/02.png') }}" alt="img"> --}}
+                    <div class="ganjelanheader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

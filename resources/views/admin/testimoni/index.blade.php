@@ -1,6 +1,7 @@
 @extends('layouts.wowdash.core')
 @section('body')
 @include('admin.sidebar')
+@include('admin.alert.aler')
 <main class="dashboard-main">
     @include('admin.topbar')
     <div class="dashboard-main-body">
@@ -26,7 +27,7 @@
                         List Testimoni
                       </button>
                     </li>
-                    
+
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-ui-design-tab" data-bs-toggle="pill" data-bs-target="#pills-ui-design" type="button" role="tab" aria-controls="pills-ui-design" aria-selected="false" tabindex="-1">
                           Tambah Testimoni
@@ -35,7 +36,7 @@
                 </ul>
              </div>
             <div class="card-body p-24">
-                <div class="tab-content" id="pills-tabContent">   
+                <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab" tabindex="0">
                         <div class="row gy-4" id="pencapaian">
                             <div class="table-responsive">
@@ -118,7 +119,7 @@
                                                                 document.getElementById('gambar{{ $testimonis->id }}').addEventListener('change', function(event) {
                                                                     let file = event.target.files[0]; // Ambil file
                                                                     let previewImg = document.getElementById('previewImg{{ $testimonis->id }}');
-                            
+
                                                                     if (file) {
                                                                         let reader = new FileReader();
                                                                         reader.onload = function(e) {
@@ -149,7 +150,7 @@
                                                                     <textarea name="kata" class="form-control" rows="4" cols="50" placeholder="Masukan kata kata" id="kata">{{ $testimonis->kata }}</textarea>
                                                                 </div>
                                                             </div>
-                                                            
+
                                                         </div>
                                                     </form>
                                                 </div>
@@ -186,7 +187,7 @@
                                     document.getElementById('foto').addEventListener('change', function(event) {
                                         let file = event.target.files[0]; // Ambil file
                                         let previewImg = document.getElementById('previewImg');
-                                
+
                                         if (file) {
                                             let reader = new FileReader();
                                             reader.onload = function(e) {
@@ -218,7 +219,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center gap-3 mt-9">
-                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8"> 
+                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8">
                                         Save Change
                                     </button>
                                 </div>
@@ -275,7 +276,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                
+
                                             `);
                                         },
                                         error: function (xhr) {

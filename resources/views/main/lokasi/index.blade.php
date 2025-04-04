@@ -1,7 +1,7 @@
 @extends('main.snippets.core')
 @section('content')
 @include('main.snippets.loadingscreen')
-@include('main.snippets.navbar')
+@include('main.snippets.navbar2')
 <section id="lokasi-map" class="mt-4 wow fadeInUp" data-wow-delay=".3s">
     <div class="container">
         <div class="section-title text-center">

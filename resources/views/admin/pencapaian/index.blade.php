@@ -1,6 +1,7 @@
 @extends('layouts.wowdash.core')
 @section('body')
 @include('admin.sidebar')
+@include('admin.alert.aler')
 <main class="dashboard-main">
     @include('admin.topbar')
     <div class="dashboard-main-body">
@@ -26,7 +27,7 @@
                         List Pencapaian
                       </button>
                     </li>
-                    
+
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-ui-design-tab" data-bs-toggle="pill" data-bs-target="#pills-ui-design" type="button" role="tab" aria-controls="pills-ui-design" aria-selected="false" tabindex="-1">
                           Tambah Pencapaian
@@ -35,10 +36,10 @@
                 </ul>
              </div>
             <div class="card-body p-24">
-                <div class="tab-content" id="pills-tabContent">   
+                <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab" tabindex="0">
                         <div class="row gy-4" id="pencapaian">
-                            @foreach ($pencapaian as $pencapaians)    
+                            @foreach ($pencapaian as $pencapaians)
                             <div class="col-xxl-3 col-md-4 col-sm-6">
                                 <div class="hover-scale-img border radius-16 overflow-hidden">
                                     <div class="max-h-266-px overflow-hidden">
@@ -94,7 +95,7 @@
                                                         let file = event.target.files[0]; // Ambil file
                                                         let previewImg = document.getElementById('previewImg{{ $pencapaians->id }}');
                                                         let previewImgold = document.getElementById('previewImgold{{ $pencapaians->id }}');
-                                                
+
                                                         if (file) {
                                                             let reader = new FileReader();
                                                             reader.onload = function(e) {
@@ -108,7 +109,7 @@
                                                         }
                                                     });
                                                 </script>
-                                                                                
+
                                                 <div class="col-sm-12">
                                                     <div class="mb-20">
                                                         <label for="number" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi</label>
@@ -154,7 +155,7 @@
                                     document.getElementById('gambar').addEventListener('change', function(event) {
                                         let file = event.target.files[0]; // Ambil file
                                         let previewImg = document.getElementById('previewImg');
-                                
+
                                         if (file) {
                                             let reader = new FileReader();
                                             reader.onload = function(e) {
@@ -167,16 +168,16 @@
                                         }
                                     });
                                 </script>
-                                                                
+
                                 <div class="col-sm-12">
                                     <div class="mb-20">
                                         <label for="number" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi</label>
                                         <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan Deskripsi pencapaian" id="lokasi"></textarea>
                                     </div>
                                 </div>
-                                
+
                                 <div class="d-flex align-items-center justify-content-center gap-3 mt-9">
-                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8"> 
+                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8">
                                         Save Change
                                     </button>
                                 </div>
@@ -198,10 +199,10 @@
                             $(document).ready(function () {
                                 $("#PencapaianForm").submit(function (e) {
                                     e.preventDefault();
-                        
+
                                     let formData = new FormData(this);
                                     let url = $(this).data("id"); // Ambil URL dari data-id
-                                    
+
                                     $.ajax({
                                         url: url, // Gunakan URL dari data-id
                                         type: "POST",
@@ -248,7 +249,7 @@
                                 });
                             });
                         </script>
-                        
+
                     </div>
                 </div>
             </div>

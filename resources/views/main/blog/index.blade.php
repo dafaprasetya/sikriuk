@@ -1,7 +1,7 @@
 @extends('main.snippets.core')
 
 @section('content')
-@include('main.snippets.navbar')
+@include('main.snippets.navbar2')
 @include('main.snippets.loadingscreen')
 
 <!--<< Blog Wrapper Here >>-->

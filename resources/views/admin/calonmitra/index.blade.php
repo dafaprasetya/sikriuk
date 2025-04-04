@@ -1,6 +1,7 @@
 @extends('layouts.wowdash.core')
 @section('body')
 @include('admin.sidebar')
+@include('admin.alert.aler')
 <main class="dashboard-main">
     @include('admin.topbar')
     <div class="dashboard-main-body">
@@ -26,7 +27,7 @@
                                 <li class="{{ $linkall ? 'item-active' : ''}} mb-4">
                                     <a href="?linkall=linkall" class="bg-hover-primary-50 px-12 py-8 w-100 radius-8 text-secondary-light">
                                         <span class="d-flex align-items-center gap-10 justify-content-between w-100">
-                                            <span class="d-flex align-items-center gap-10">   
+                                            <span class="d-flex align-items-center gap-10">
                                                 <span class="icon text-xxl line-height-1 d-flex"><iconify-icon icon="uil:envelope" class="icon line-height-1"></iconify-icon></span>
                                                 <span class="fw-semibold">Semua</span>
                                             </span>
@@ -37,7 +38,7 @@
                                 <li class="{{ $linkunread ? 'item-active' : ''}} mb-4">
                                     <a href="?linkunread=linkunread" class="bg-hover-primary-50 px-12 py-8 w-100 radius-8 text-secondary-light">
                                         <span class="d-flex align-items-center gap-10 justify-content-between w-100">
-                                            <span class="d-flex align-items-center gap-10">   
+                                            <span class="d-flex align-items-center gap-10">
                                                 <span class="icon text-xxl line-height-1 d-flex"><iconify-icon icon="mingcute:alert-line" class="icon line-height-1"></iconify-icon></span>
                                                 <span class="fw-semibold">Belum Dibaca/Ditanggapi</span>
                                             </span>
@@ -48,7 +49,7 @@
                                 <li class="{{ $linkread ? 'item-active' : ''}} mb-4">
                                     <a href="?linkread=linkread" class="bg-hover-primary-50 px-12 py-8 w-100 radius-8 text-secondary-light">
                                         <span class="d-flex align-items-center gap-10 justify-content-between w-100">
-                                            <span class="d-flex align-items-center gap-10">   
+                                            <span class="d-flex align-items-center gap-10">
                                                 <span class="icon text-xxl line-height-1 d-flex"><iconify-icon icon="uil:comment-verify" class="icon line-height-1"></iconify-icon></span>
                                                 <span class="fw-semibold">Sudah Dibaca/Ditanggapi</span>
                                             </span>
@@ -68,7 +69,7 @@
                             <div class="d-flex align-items-center gap-3">
                                 <div class="form-check style-check d-flex align-items-center">
                                     <input class="form-check-input radius-4 border input-form-dark" type="checkbox" name="checkbox" id="selectAll">
-                                    
+
                                 </div>
                                 <button type="button" class="delete-button d-none text-secondary-light text-xl d-flex">
                                     <iconify-icon icon="material-symbols:delete-outline" class="icon line-height-1"></iconify-icon>
@@ -76,7 +77,7 @@
                                 <button type="button" class="reload-button text-secondary-light text-xl d-flex">
                                     <iconify-icon icon="tabler:reload" class="icon"></iconify-icon>
                                 </button>
-                                
+
                                 <form class="navbar-search d-lg-block d-none" method="GET" action="{{ route('calonMitra') }}">
                                     <input type="text" class="bg-base h-40-px w-auto" name="search" placeholder="Search">
                                     <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>

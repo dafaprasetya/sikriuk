@@ -27,14 +27,14 @@
                     <div class="description-items">
                         <div class="row">
                             <!-- START LOOPING MENU CAT 1 -->
-                            @foreach ($kategori->product->slice(0, 3) as $menu)
+                            @foreach ($kategori->product->slice(0, 4) as $menu)
                             <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                                 <div class="about-food-items center">
                                     <div class="food-image">
                                         <img style="width: 188px; height: 181px;" src="{{ asset('storage/product_image/'.$menu->gambar) }}" alt="food-img">
                                     </div>
                                     <div class="food-content">
-                                        <h3><a href="shop-single.html">{{ $menu->nama }}</a></h3>
+                                        <h3><a href="{{ route('menumain') }}">{{ $menu->nama }}</a></h3>
                                         <p>
                                             Rp. {{ number_format($menu->harga, 0, ',', '.') }}
                                         </p>
@@ -55,7 +55,7 @@
                     <div class="description-items">
                         <div class="row">
                             <!-- START LOOPING MENU CAT 1 -->
-                            @foreach ($menu as $menus)
+                            @foreach ($menu->slice(0, 4) as $menus)
 
                             <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                                 <div class="about-food-items center">
@@ -63,7 +63,7 @@
                                         <img style="width: 188px; height: 181px;" src="{{ asset('storage/product_image/'.$menus->gambar) }}" alt="food-img">
                                     </div>
                                     <div class="food-content">
-                                        <h3><a href="shop-single.html">{{ $menus->nama }}</a></h3>
+                                        <h3><a href="{{ route('menumain') }}">{{ $menus->nama }}</a></h3>
                                         <p>
                                             Rp. {{ number_format($menus->harga, 0, ',', '.') }}
                                         </p>
@@ -80,9 +80,10 @@
             @endif
             <div class="row mt-6" style="margin-top: 80px">
                 <div class="col-sm-12">
-                        <a href="about.html" class="theme-btn btn-sm wow style-line-height fadeInUp w-100" data-wow-delay=".5s">Lihat menu lengkap {{ $about->nama }}</a>
+                        <a href="{{ route('menumain') }}" class="theme-btn btn-sm wow style-line-height fadeInUp w-100" data-wow-delay=".5s">Lihat menu lengkap {{ $about->nama }}</a>
                 </div>
             </div>
+            <hr>
             <div class="text-center produkonline wow style-line-height fadeInUp w-100" data-wow-delay=".5s">
                 <h4 class="text-muted" style="margin-bottom: 50px">produk kami bisa ditemukan di</h4>
                 <div class="row mt-2 gambaronline">

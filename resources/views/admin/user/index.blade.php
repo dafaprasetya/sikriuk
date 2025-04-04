@@ -1,6 +1,7 @@
 @extends('layouts.wowdash.core')
 @section('body')
 @include('admin.sidebar')
+@include('admin.alert.aler')
 <main class="dashboard-main">
     @include('admin.topbar')
     <div class="dashboard-main-body">
@@ -61,16 +62,16 @@
                         <ul class="nav border-gradient-tab nav-pills mb-20 d-inline-flex" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
                               <button class="nav-link d-flex align-items-center px-24 active" id="pills-edit-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-edit-profile" type="button" role="tab" aria-controls="pills-edit-profile" aria-selected="true">
-                                Edit Profile 
+                                Edit Profile
                               </button>
                             </li>
                             <li class="nav-item" role="presentation">
                               <button class="nav-link d-flex align-items-center px-24" id="pills-change-passwork-tab" data-bs-toggle="pill" data-bs-target="#pills-change-passwork" type="button" role="tab" aria-controls="pills-change-passwork" aria-selected="false" tabindex="-1">
-                                Ubah Password 
+                                Ubah Password
                               </button>
                             </li>
                         </ul>
-                        <div class="tab-content" id="pills-tabContent">   
+                        <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-edit-profile" role="tabpanel" aria-labelledby="pills-edit-profile-tab" tabindex="0">
                                 <h6 class="text-md text-primary-light mb-16">Profile Image</h6>
                                 <!-- Upload Image Start -->
@@ -93,7 +94,7 @@
                                                 document.getElementById('imageUpload').addEventListener('change', function(event) {
                                                     let file = event.target.files[0]; // Ambil file yang diupload
                                                     let previewImg = document.getElementById('previewImg');
-                                                
+
                                                     if (file) {
                                                         let reader = new FileReader();
                                                         reader.onload = function(e) {
@@ -133,10 +134,10 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center gap-3">
-                                        <button type="button" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8"> 
+                                        <button type="button" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8">
                                             Cancel
                                         </button>
-                                        <button type="submit" class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8"> 
+                                        <button type="submit" class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">
                                             Save
                                         </button>
                                     </div>
@@ -160,15 +161,15 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center gap-3">
-                                        <button type="button" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8"> 
+                                        <button type="button" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8">
                                             Cancel
                                         </button>
-                                        <button type="submit" class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8"> 
+                                        <button type="submit" class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">
                                             Save
                                         </button>
                                     </div>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>

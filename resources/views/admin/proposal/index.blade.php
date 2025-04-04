@@ -1,6 +1,7 @@
 @extends('layouts.wowdash.core')
 @section('body')
 @include('admin.sidebar')
+@include('admin.alert.aler')
 <main class="dashboard-main">
     @include('admin.topbar')
     <div class="dashboard-main-body">

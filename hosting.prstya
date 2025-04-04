@@ -1,0 +1,32 @@
+.htaccess{
+    <IfModule mod_rewrite.c>
+        Options +FollowSymLinks
+        RewriteEngine On
+
+        # Pastikan semua akses diarahkan ke folder public
+        RewriteCond %{REQUEST_URI} !^/public/
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^(.*)$ /public/$1 [L]
+
+        # Mengarahkan semua request ke index.php Laravel
+        RewriteRule ^(/)?$ public/index.php [L]
+        RewriteEngine On
+        RewriteRule ^(.*)$ public/$1 [L]
+    </IfModule>
+
+    # Mengizinkan akses ke storage
+    RewriteCond %{REQUEST_URI} ^/storage/(.*)$
+    RewriteCond %{DOCUMENT_ROOT}/storage/app/public/$1 -f
+    RewriteRule ^storage/(.*)$ storage/app/public/$1 [L]
+}
+
+.command{
+    php artisan optimize
+    php artisan route:clear
+    php artisan cache:clear
+    php artisan config:clear
+    php artisan storage:link
+    chmod -R 775 storage bootstrap/cache
+    chmod -R 777 storage/app/public
+}

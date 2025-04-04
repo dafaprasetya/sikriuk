@@ -18,6 +18,7 @@ use App\Models\StepKemitraan;
 use App\Models\SyaratMitra;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MainController extends Controller
 {
@@ -76,15 +77,23 @@ class MainController extends Controller
         return view('admin.calonmitra.dummy');
     }
     public function sendCalonMitra(Request $request) {
-        $calon = new CalonMitra();
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'nama' => 'required',
             'nik' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'phone' => 'required',
             'lokasi' => 'required',
             'kota' => 'required',
+            'g-recaptcha-response' => 'required|captcha',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $calon = new CalonMitra();
         $calon->nama = $request->nama;
         $calon->nik = $request->nik;
         $calon->email = $request->email;
@@ -92,7 +101,8 @@ class MainController extends Controller
         $calon->lokasi = $request->lokasi;
         $calon->kota = $request->kota;
         $calon->save();
-        return redirect()->back()->with('success','Data Calon Mitra Berhasil Dikirim');
+
+        return redirect()->back()->with('success', 'Data Calon Mitra Berhasil Dikirim');
     }
     public function blogDetail($slug) {
         $blog = Blog::where('slug', $slug)->first();

@@ -1,6 +1,7 @@
 @extends('layouts.wowdash.core')
 @section('body')
 @include('admin.sidebar')
+@include('admin.alert.aler')
 <main class="dashboard-main">
     @include('admin.topbar')
     <div class="dashboard-main-body">
@@ -26,7 +27,7 @@
                         List Step by Step
                       </button>
                     </li>
-                    
+
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-ui-design-tab" data-bs-toggle="pill" data-bs-target="#pills-ui-design" type="button" role="tab" aria-controls="pills-ui-design" aria-selected="false" tabindex="-1">
                           Tambah Step by Step
@@ -35,7 +36,7 @@
                 </ul>
              </div>
             <div class="card-body p-24">
-                <div class="tab-content" id="pills-tabContent">   
+                <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab" tabindex="0">
                         <div class="row gy-4" id="pencapaian">
                             <div class="table-responsive">
@@ -69,13 +70,16 @@
                                             <td>
                                                 <img src="{{ asset('storage/step_image/'.$steps->gambar) }}" style="width: 90px;" alt="" id="gambarmenu" class="flex-shrink-0 me-12 radius-8">
                                             </td>
+                                            <form action="{{ route('deleteStepByStep', encrypt($steps->id)) }}" method="post" id="deleteForm{{ $steps->id }}">@csrf</form>
+
                                             <td>
                                                 <button data-bs-toggle="modal" data-bs-target="#{{ $steps->id }}" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                                     <iconify-icon icon="lucide:edit"></iconify-icon>
                                                 </button>
-                                                <a href="{{ route('deleteStepByStep', $steps->id) }}" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                                <button class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center" onclick="event.preventDefault();
+                                                     document.getElementById('deleteForm{{ $steps->id }}').submit();">
                                                     <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
-                                                </a>
+                                                </button>
                                             </td>
                                         </tr>
                                         <div class="modal fade" id="{{ $steps->id }}" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
@@ -116,7 +120,7 @@
                                                                 document.getElementById('gambar{{ $steps->id }}').addEventListener('change', function(event) {
                                                                     let file = event.target.files[0]; // Ambil file
                                                                     let previewImg = document.getElementById('previewImg{{ $steps->id }}');
-                            
+
                                                                     if (file) {
                                                                         let reader = new FileReader();
                                                                         reader.onload = function(e) {
@@ -177,7 +181,7 @@
                                     document.getElementById('gambar').addEventListener('change', function(event) {
                                         let file = event.target.files[0]; // Ambil file
                                         let previewImg = document.getElementById('previewImg');
-                                
+
                                         if (file) {
                                             let reader = new FileReader();
                                             reader.onload = function(e) {
@@ -190,9 +194,9 @@
                                         }
                                     });
                                 </script>
-                                
+
                                 <div class="d-flex align-items-center justify-content-center gap-3 mt-9">
-                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8"> 
+                                    <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8">
                                         Save Change
                                     </button>
                                 </div>
@@ -248,7 +252,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                
+
                                             `);
                                         },
                                         error: function (xhr) {

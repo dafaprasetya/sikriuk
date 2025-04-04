@@ -1,7 +1,7 @@
 @extends('main.snippets.core')
 @section('content')
 @include('main.snippets.loadingscreen')
-@include('main.snippets.navbar')
+@include('main.snippets.navbar2')
 <!-- ASECTION MENU -->
 <section class="about-food-section">
     <div class="container">
@@ -38,7 +38,7 @@
                                         <img style="width: 188px; height: 181px;" src="{{ asset('storage/product_image/'.$menu->gambar) }}" alt="food-img">
                                     </div>
                                     <div class="food-content">
-                                        <h3><a href="shop-single.html">{{ $menu->nama }}</a></h3>
+                                        <h3><a href="#">{{ $menu->nama }}</a></h3>
                                         <p>
                                             Rp. {{ number_format($menu->harga, 0, ',', '.') }}
                                         </p>
@@ -67,7 +67,7 @@
                                         <img style="width: 188px; height: 181px;" src="{{ asset('storage/product_image/'.$menus->gambar) }}" alt="food-img">
                                     </div>
                                     <div class="food-content">
-                                        <h3><a href="shop-single.html">{{ $menus->nama }}</a></h3>
+                                        <h3><a href="#">{{ $menus->nama }}</a></h3>
                                         <p>
                                             Rp. {{ number_format($menus->harga, 0, ',', '.') }}
                                         </p>
@@ -82,6 +82,7 @@
 
             </div>
             @endif
+            <hr>
             <div class="text-center produkonline wow style-line-height fadeInUp w-100" data-wow-delay=".5s">
                 <h4 class="text-muted" style="margin-bottom: 50px">produk kami bisa ditemukan di</h4>
                 <div class="row mt-2 gambaronline">

@@ -253,7 +253,6 @@ class AdminController extends Controller
         ]);
         $menu->nama = $validatedData['nama'];
         $menu->harga = $validatedData['harga'];
-        $menu->gambar = $validatedData['gambar'];
         $menu->deskripsi = $validatedData['deskripsi'];
         $menu->product_kategori_id = $validatedData['product_kategori_id'];
         $gambar = $request->file('gambar');
@@ -613,7 +612,7 @@ class AdminController extends Controller
     }
     public function editStepByStep(Request $request, $id) {
         $validatedData = $request->validate([
-            'nomor' => 'required|unique:step_kemitraans,nomor',
+            'nomor' => 'required',
             'nama' => 'required',
             'gambar' => 'nullable',
         ]);
@@ -631,12 +630,11 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Data berhasil diubah');
     }
     public function deleteStepByStep(Request $request, $id) {
-        $step = StepKemitraan::find($id);
+        $step = StepKemitraan::find(decrypt($id));
         $step->delete();
         Storage::delete('public/step_image/'.$step->gambar);
-        return response()->json([
-            'success' => 'data berhasil dihapus',
-        ]);
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+
     }
     // ENDOFSTEPBYSTEPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
     // TESTIMONIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
@@ -735,7 +733,7 @@ class AdminController extends Controller
     public function editKeunggulan(Request $request, $id) {
         $keunggulan = KeunggulanMitra::find(decrypt($id));
         $validatedData = $request->validate([
-            'nomor' => 'required|integer|unique:keunggulan_mitras,nomor',
+            'nomor' => 'required|integer',
             'nama' => 'required',
             'deskripsi' => 'required',
         ]);

@@ -1,6 +1,7 @@
 @extends('layouts.wowdash.core')
 @section('body')
 @include('admin.sidebar')
+@include('admin.alert.aler')
 <main class="dashboard-main">
     @include('admin.topbar')
     <div class="dashboard-main-body">
@@ -75,13 +76,15 @@
                                             <td>
                                                 {{ $keunggulans->deskripsi }}
                                             </td>
+                                            <form action="{{ route('deleteKeunggulan', encrypt($keunggulans->id)) }}" method="post" id="deleteKeunggulanForm{{ $keunggulans->id }}">@csrf</form>
                                             <td>
                                                 <button data-bs-toggle="modal" data-bs-target="#{{ $keunggulans->id }}" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                                     <iconify-icon icon="lucide:edit"></iconify-icon>
                                                 </button>
-                                                <a href="{{ route('deleteKeunggulan', $keunggulans->id) }}" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                                <button class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center" onclick="event.preventDefault();
+                                                     document.getElementById('deleteKeunggulanForm{{ $keunggulans->id }}').submit();">
                                                     <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
-                                                </a>
+                                                </button>
                                             </td>
                                         </tr>
                                         <div class="modal fade" id="{{ $keunggulans->id }}" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
@@ -101,34 +104,7 @@
                                                                     <input type="number" name="nomor" class="form-control radius-8" id="nomor" placeholder="Masukan urutan nomor" value="{{ $keunggulans->nomor }}">
                                                                 </div>
                                                             </div>
-                                                            {{-- <div class="col-sm-12">
-                                                                <div class="mb-20">
-                                                                    <label for="foto" class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                                                        Gambar <span class="text-danger-600">*</span>
-                                                                    </label>
-                                                                    <div class="imagePreview d-flex justify-content-center align-items-center">
-                                                                        <img id="previewImg{{ $keunggulans->id }}" class="rounded" style="display: none; max-width: 200px; height: auto;">
-                                                                    </div>
-                                                                    <input type="file" name="foto" class="form-control radius-8 mt-3" id="gambar{{ $keunggulans->id }}" accept="image/*">
-                                                                </div>
-                                                            </div> --}}
-                                                            {{-- <script>
-                                                                document.getElementById('gambar{{ $keunggulans->id }}').addEventListener('change', function(event) {
-                                                                    let file = event.target.files[0]; // Ambil file
-                                                                    let previewImg = document.getElementById('previewImg{{ $keunggulans->id }}');
 
-                                                                    if (file) {
-                                                                        let reader = new FileReader();
-                                                                        reader.onload = function(e) {
-                                                                            previewImg.src = e.target.result; // Update src gambar
-                                                                            previewImg.style.display = "block"; // Tampilkan gambar
-                                                                        };
-                                                                        reader.readAsDataURL(file);
-                                                                    } else {
-                                                                        previewImg.style.display = "none"; // Sembunyikan jika tidak ada file
-                                                                    }
-                                                                });
-                                                            </script> --}}
                                                             <div class="col-sm-12">
                                                                 <div class="mb-20">
                                                                     <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Nama <span class="text-danger-600">*</span></label>

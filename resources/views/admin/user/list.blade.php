@@ -1,11 +1,12 @@
 @extends('layouts.wowdash.core')
 @section('body')
 @include('admin.sidebar')
+@include('admin.alert.aler')
 <main class="dashboard-main">
     @include('admin.topbar')
     <div class="dashboard-main-body">
         <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-            <h6 class="fw-semibold mb-0">Testimoni</h6>
+            <h6 class="fw-semibold mb-0">User</h6>
             <ul class="d-flex align-items-center gap-2">
                 <li class="fw-medium">
                     <a href="index.html" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -14,7 +15,7 @@
                     </a>
                 </li>
                 <li>-</li>
-                <li class="fw-medium">Testimoni</li>
+                <li class="fw-medium">User</li>
             </ul>
         </div>
 
@@ -23,13 +24,13 @@
                 <ul class="nav border-gradient-tab nav-pills mb-0 border-top-0" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
                       <button class="nav-link active" id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-all" aria-selected="true">
-                        List Testimoni
+                        List User
                       </button>
                     </li>
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-ui-design-tab" data-bs-toggle="pill" data-bs-target="#pills-ui-design" type="button" role="tab" aria-controls="pills-ui-design" aria-selected="false" tabindex="-1">
-                          Tambah Testimoni
+                          Tambah User
                         </button>
                     </li>
                 </ul>

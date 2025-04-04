@@ -1,6 +1,7 @@
 @extends('layouts.wowdash.core')
 @section('body')
 @include('admin.sidebar')
+@include('admin.alert.aler')
 <style>
     .grid-container {
       display: grid;
@@ -49,7 +50,7 @@
                         List Gerobak
                       </button>
                     </li>
-                    
+
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-ui-design-tab" data-bs-toggle="pill" data-bs-target="#pills-ui-design" type="button" role="tab" aria-controls="pills-ui-design" aria-selected="false" tabindex="-1">
                           Tambah Gerobak
@@ -58,7 +59,7 @@
                 </ul>
              </div>
             <div class="card-body p-24">
-                <div class="tab-content" id="pills-tabContent">   
+                <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab" tabindex="0">
                         <div class="table-responsive">
 
@@ -115,7 +116,7 @@
                                                                     <input type="text" name="nama" class="form-control radius-8" id="name" placeholder="Masukan nama Produk" value="{{ $gerobaks->nama }}">
                                                                 </div>
                                                             </div>
-                                                            
+
                                                             <div class="col-sm-6">
                                                                 <div class="mb-20">
                                                                     <label for="harga" class="form-label fw-semibold text-primary-light text-sm mb-8">Harga <span class="text-danger-600">*</span></label>
@@ -137,7 +138,7 @@
                                                                 document.getElementById('gambar{{ $gerobaks->id }}').addEventListener('change', function(event) {
                                                                     let file = event.target.files[0]; // Ambil file
                                                                     let previewImg = document.getElementById('previewImg{{ $gerobaks->id }}');
-                            
+
                                                                     if (file) {
                                                                         let reader = new FileReader();
                                                                         reader.onload = function(e) {
@@ -152,7 +153,7 @@
                                                             </script>
                                                             <div class="col-sm-12">
                                                                 <div class="mb-20">
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-12">
@@ -179,7 +180,7 @@
                                                                             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                                                                             <script>
                                                                                 $(document).ready(function () {
-                                                                                    $('#deletebenefitedit{{ $benefit->id }}').click(function (e) { 
+                                                                                    $('#deletebenefitedit{{ $benefit->id }}').click(function (e) {
                                                                                         let formData = new FormData();
                                                                                         formData.append('_token', '{{ csrf_token() }}');
                                                                                         $.ajax({
@@ -190,17 +191,17 @@
                                                                                             processData: false,
                                                                                             success: function (response) {
                                                                                                 console.log('great');
-                                                                                                
+
                                                                                                 $("#benefit{{ $benefit->id }}").remove();
                                                                                             }
                                                                                         });
-                                                                                        
+
                                                                                     });
                                                                                 });
                                                                             </script>
                                                                             @endforeach
                                                                         </div>
-                                                                        
+
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-sm-11">
@@ -213,7 +214,7 @@
                                                                     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                                                                     <script>
                                                                         $(document).ready(function () {
-                                                                            $('#benefiteditbtn{{ $gerobaks->id }}').click(function (e) { 
+                                                                            $('#benefiteditbtn{{ $gerobaks->id }}').click(function (e) {
                                                                                 let formData = new FormData();
                                                                                 formData.append('_token', '{{ csrf_token() }}');
                                                                                 formData.append('benefit', $('#benefitedit{{ $gerobaks->id }}').val());
@@ -226,7 +227,7 @@
                                                                                     processData: false,
                                                                                     success: function (response) {
                                                                                         console.log('great');
-                                                                                        
+
                                                                                         $("#benefitContainer{{ $gerobaks->id }}").append(`
                                                                                             <div class="row border-bottom pb-2">
                                                                                                 <div class="col">#</div>
@@ -240,12 +241,12 @@
                                                                                         `);
                                                                                     }
                                                                                 });
-                                                                                
+
                                                                             });
                                                                         });
                                                                     </script>
                                                                 </div>
-    
+
                                                             </div>
                                                         </div>
                                                     </form>
@@ -280,7 +281,7 @@
                                                     <span class="count">2</span>
                                                 </div>
                                             </li>
-                                            
+
                                         </ul>
                                     </div>
                                     <fieldset class="wizard-fieldset show">
@@ -312,7 +313,7 @@
                                                     document.getElementById('gambar').addEventListener('change', function(event) {
                                                         let file = event.target.files[0]; // Ambil file
                                                         let previewImg = document.getElementById('previewImg');
-                
+
                                                         if (file) {
                                                             let reader = new FileReader();
                                                             reader.onload = function(e) {
@@ -333,13 +334,13 @@
                                                     <div class="wizard-form-error"></div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="form-group text-end">
                                                 <button type="button" class="form-wizard-next-btn1 btn btn-primary-600 px-32">Next</button>
                                             </div>
                                         </div>
-                                    </fieldset>	
-    
+                                    </fieldset>
+
                                     <fieldset class="wizard-fieldset">
                                         <h6 class="text-md text-neutral-500">List Benefit</h6>
                                         <div class="row gy-3">
@@ -365,7 +366,7 @@
                                                 <button type="button" class="form-wizard-next-btn3 btn btn-primary-600 px-32">Finish</button>
                                             </div>
                                         </div>
-                                    </fieldset>	
+                                    </fieldset>
                             </div>
                             <!-- Form Wizard End -->
                         </div>
@@ -380,7 +381,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -414,7 +415,7 @@
                     gerobakGambar = response.gambar;
                     gerobakNama = response.nama;
                     console.log(response);
-                    
+
                 }
             });
             var parentFieldset = $(this).parents('.wizard-fieldset');
@@ -478,7 +479,7 @@
                     `);
                 }
             });
-            
+
         });
         $('.form-wizard-next-btn3').on("click", function() {
             // Reset wizard ke langkah pertama
@@ -488,11 +489,11 @@
             // Reset step indikator
             $('.form-wizard-step-item').removeClass('active').removeClass('activated');
             $('.form-wizard-step-item').first().addClass('active');
-            
+
 
             // Reset input field
             $('input, textarea').val('');
-            
+
             // Reset file input
             $('#gambar').val(null);
 
@@ -510,8 +511,8 @@
             console.log("Form berhasil direset!");
             window.location.reload();
         });
-        
-        
+
+
         // focus on input field check empty or not
         $(".form-control").on('focus', function(){
             var tmpThis = $(this).val();

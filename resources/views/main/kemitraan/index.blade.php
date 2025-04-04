@@ -1,7 +1,7 @@
 @extends('main.snippets.core')
 @section('content')
 @include('main.snippets.loadingscreen')
-@include('main.snippets.navbar')
+@include('main.snippets.navbar2')
 <!-- KEMTIRAAN GEROBAK SHOW SECTION -->
 <section class="about-section fix section-padding pt-0">
     <div class="container">
@@ -39,7 +39,10 @@
                         <div class="swiper gallery-slider">
                             <div class="swiper-wrapper">
                                 <!-- START LOOPING GAMBAR GEROBAK -->
+                                @if ($proposal)
+
                                 <iframe src="{{ asset('storage/proposal/'.$proposal->file) }}" width="100%" height="600px"></iframe>
+                                @endif
 
                                 <!-- END LOOPING GAMBAR GEROBAK -->
 
@@ -138,9 +141,9 @@
             <!-- START LOOPING LANGKAH LANGKAH MENJADI MITRA -->
             @foreach ($syarat as $syarats)
 
-            <div class="swiper-slide wow fadeInUp" data-wow-delay=".3s">>
+            <div class="swiper-slide wow fadeInUp" data-wow-delay=".3s">
                 <div class="text-center">
-                    <h3>{{ $syarats->nama }}</h3>
+                    <h3 class="merah">{{ $syarats->nama }}</h3>
                     <p>{{ $syarats->deskripsi }}</p>
                 </div>
             </div>

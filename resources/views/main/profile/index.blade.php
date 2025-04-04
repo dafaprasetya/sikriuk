@@ -1,7 +1,7 @@
 @extends('main.snippets.core')
 @section('content')
 @include('main.snippets.loadingscreen')
-@include('main.snippets.navbar')
+@include('main.snippets.navbar2')
 <section id="profil" class="mt-3">
     <div class="container">
         <div class="row">
@@ -13,6 +13,7 @@
             <div class="col-xl-12 text-center mt-4">
                 <div class="container-fluid">
                     <h2>Profil Perusahaan <span class="merah">{{ $about->nama }}</span></h2>
+                    <h3>{{ $about->namapt }}</h3>
                 </div>
             </div>
             <div class="col-xl-12 mt-4">
@@ -73,6 +74,24 @@
     </div>
     @endif
 
+</section>
+<section id="legalitas">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="container-fluid">
+                    <h2>Legalitas Perusahaan <span class="merah">{{ $about->namapt }}</span></h2>
+                    <h3>{{ $about->nama }}</h3>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="container-fluid">
+                    <h4>{{ $about->legalitas }}</h4>
+                </div>
+            </div>
+        </div>
+        @include('main.snippets.jargon')
+    </div>
 </section>
 @include('main.snippets.footer')
 @endsection

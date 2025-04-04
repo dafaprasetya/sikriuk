@@ -437,9 +437,6 @@
                                             $('#dataKategoriTable').append(`
                                                 <tr>
                                                     <td>${response.nama}</td>
-                                                    <form action="{{ route('deleteKategori', encrypt($kategoris->id)) }}" id="deletekategori${response.id}" method="post">
-                                                        @csrf
-                                                    </form>
                                                     <td>
                                                         <button class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center" onclick="event.preventDefault(); document.getElementById('deletekategori${response.id}').submit();" >
                                                             <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
