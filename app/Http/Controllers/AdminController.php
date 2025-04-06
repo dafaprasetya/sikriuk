@@ -507,6 +507,7 @@ class AdminController extends Controller
             'deskripsi' => 'required',
             'gambar' => 'nullable',
         ]);
+        // dd($validatedData);
         $gerobak->nama = $validatedData['nama'];
         $gerobak->harga = $validatedData['harga'];
         $gerobak->deskripsi = $validatedData['deskripsi'];

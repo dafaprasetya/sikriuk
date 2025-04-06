@@ -113,19 +113,19 @@
                                                             <div class="col-sm-6">
                                                                 <div class="mb-20">
                                                                     <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Nama <span class="text-danger-600">*</span></label>
-                                                                    <input type="text" name="nama" class="form-control radius-8" id="name" placeholder="Masukan nama Produk" value="{{ $gerobaks->nama }}">
+                                                                    <input type="text" name="nama" class="form-control radius-8" id="nameedit" placeholder="Masukan nama Produk" value="{{ $gerobaks->nama }}">
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-sm-6">
                                                                 <div class="mb-20">
-                                                                    <label for="harga" class="form-label fw-semibold text-primary-light text-sm mb-8">Harga <span class="text-danger-600">*</span></label>
-                                                                    <input type="text" name="harga" class="form-control radius-8" id="harga" placeholder="Masukan harga produk" value="{{ $gerobaks->harga }}">
+                                                                    <label for="hargaedit" class="form-label fw-semibold text-primary-light text-sm mb-8">Harga <span class="text-danger-600">*</span></label>
+                                                                    <input type="text" name="harga" class="form-control radius-8" id="hargaedit" placeholder="Masukan harga produk" value="{{ $gerobaks->harga }}">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-12">
                                                                 <div class="mb-20">
-                                                                    <label for="gambar" class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                                                    <label for="gambaredit" class="form-label fw-semibold text-primary-light text-sm mb-8">
                                                                         Gambar <span class="text-danger-600">*418x547</span>
                                                                     </label>
                                                                     <div class="imagePreview d-flex justify-content-center align-items-center">
@@ -159,7 +159,7 @@
                                                             <div class="col-sm-12">
                                                                 <div class="mb-20">
                                                                     <label for="deskripsi" class="form-label fw-semibold text-primary-light text-sm mb-8">Deskripsi<span class="text-danger-600">*</span></label>
-                                                                    <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan deskripsi menu" id="deskripsi">{{ $gerobaks->deskripsi }}</textarea>
+                                                                    <textarea name="deskripsi" class="form-control" rows="4" cols="50" placeholder="Masukan deskripsi menu" id="deskripsiedit">{{ $gerobaks->deskripsi }}</textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-12">
