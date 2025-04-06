@@ -104,7 +104,7 @@
                                 <!-- START LOOPING GAMBAR GEROBAK -->
                                 @if ($proposal)
 
-                                <iframe src="{{ asset('storage/proposal/'.$proposal->file) }}" width="100%" height="600px"></iframe>
+                                <iframe class="wow fadeInUp" data-wow-delay=".5s" src="{{ asset('storage/proposal/'.$proposal->file) }}" width="100%" height="600px"></iframe>
                                 @endif
 
                                 <!-- END LOOPING GAMBAR GEROBAK -->
