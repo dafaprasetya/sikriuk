@@ -119,11 +119,6 @@
                                 <!-- for wp -->
                             </div>
                         </div>
-                        <div class="header__hamburger d-lg-none my-auto">
-                            <div class="sidebar__toggle">
-                                <i class="far fa-bars"></i>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="header-right d-flex justify-content-end align-items-center">
