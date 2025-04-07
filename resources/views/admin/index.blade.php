@@ -27,7 +27,7 @@
                             <img src="{{ asset('storage/banner_image/'.$about->banner) }}" class="img-thumbnail" style="width: 981px; height: 754px;" alt="" srcset="">
                         </div>
                         <div class="col-sm-12">
-                            
+
                             <div class="mb-20">
                                 <label for="banner" class="form-label fw-semibold text-primary-light text-sm mb-8">Banner <span class="text-danger-600">*981x754</span></label>
                                 <input type="file" name="banner" class="form-control radius-8" id="banner">
@@ -71,7 +71,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-20">
-                                <label for="Website" class="form-label fw-semibold text-primary-light text-sm mb-8">Moto</label>
+                                <label for="Website" class="form-label fw-semibold text-primary-light text-sm mb-8">Moto/Jargon</label>
                                 <textarea name="moto" class="form-control" rows="4" cols="50" placeholder="Masukan moto perusahaan" id="moto">{{ $about->moto }}</textarea>
                             </div>
                         </div>
@@ -394,7 +394,7 @@
                                             </form>
                                             <script>
                                                 $(document).ready(function () {
-                                                    $('#editjam{{ $jambukas->id }}').submit(function (e) { 
+                                                    $('#editjam{{ $jambukas->id }}').submit(function (e) {
                                                         e.preventDefault();
                                                         let jam_buka = $("#jambuka{{ $jambukas->id }}").val();
                                                         $.ajax({
@@ -415,7 +415,7 @@
                                                                 console.log("Terjadi kesalahan: " + xhr.responseText);
                                                             }
                                                         });
-                                                        
+
                                                     });
                                                 });
                                             </script>
@@ -425,7 +425,7 @@
                                 </tbody>
                             </table>
                             @if ($about->jambuka->count() > 7)
-                                                                
+
                             <form id="tambahjambuka" action="{{ route('createjamBuka') }}" method="POST">
                                 @csrf
                                 <div class="row">
