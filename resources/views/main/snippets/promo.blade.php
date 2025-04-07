@@ -14,12 +14,12 @@
                     </div>
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-6">
+                            <div class="col-xl-6" data-animation="fadeInUp" data-delay="1.3s">
                                 <img class="img-thumbnail" src="{{ asset('storage/promo_image/'.$promos->gambar) }}" alt="shape-img">
                             </div>
                             <div class="col-xl-6 d-flex justify-content-center align-items-center">
                                 <div class="hero-content">
-                                    <h1  data-animation="fadeInUp" data-delay="1.5s">
+                                    <h1 data-animation="fadeInUp" data-delay="1.5s">
                                         {{ $promos->nama }}
                                     </h1>
                                     <div data-animation="fadeInUp" data-delay="1.7s" class="price-text">

@@ -1,7 +1,7 @@
 <!-- LANGKAH LANGKAH MENJADI MITRA -->
 <section class="gallery">
 
-    <div class="gallery-section fix section-padding">
+    <div class="gallery-section fix section-padding wow fadeInUp" data-wow-delay=".3s">
         <div class="container">
             <div class="array-button">
                 <button class="array-prev"><i class="far fa-long-arrow-left"></i></button>

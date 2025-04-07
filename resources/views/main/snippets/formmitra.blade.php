@@ -5,7 +5,7 @@
                 Form Pendaftaran Mitra Online
             </h2>
         </div>
-        <form action="{{ route('sendCalonMitra') }}" method="POST">
+        <form action="{{ route('sendCalonMitra') }}" method="POST" class="wow fadeInUp" data-wow-delay=".3s">
             @csrf
             <div class="row">
                 <div class="col-sm-6">

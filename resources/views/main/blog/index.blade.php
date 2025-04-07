@@ -19,7 +19,7 @@
                                     <span><i class="fal fa-user"></i>{{ $blogs->user->name }}</span>
                                     <span><i class="fal fa-calendar-alt"></i>{{ \Carbon\Carbon::parse($blogs->created_at)->translatedFormat('d-F-Y') }}</span>
                                 </div>
-                                <h2><a href="news-details.html">{{ $blogs->title }}</a></h2>
+                                <h2><a href="{{ route('blogDetail', $blogs->slug) }}">{{ $blogs->title }}</a></h2>
                                 <p>
                                     {!! \Illuminate\Support\Str::substr($blogs->content, 0, 200) !!}
                                 </p>

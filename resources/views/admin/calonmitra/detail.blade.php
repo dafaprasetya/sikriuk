@@ -5,97 +5,28 @@
     @include('admin.topbar')
     <div class="dashboard-main-body">
         <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-            <h6 class="fw-semibold mb-0">Daftar Calon Mitra</h6>
+            <h6 class="fw-semibold mb-0">Calon Mitra</h6>
             <ul class="d-flex align-items-center gap-2">
                 <li class="fw-medium">
-                    <a href="index.html" class="d-flex align-items-center gap-1 hover-text-primary">
+                    <a href="{{ route('admin') }}" class="d-flex align-items-center gap-1 hover-text-primary">
                         <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
                         Dashboard
                     </a>
                 </li>
                 <li>-</li>
                 <li class="fw-medium">Daftar Calon Mitra</li>
+                <li>-</li>
+                <li class="fw-medium">{{ $calon->nama }}</li>
             </ul>
         </div>
         <div class="row gy-4">
-            <div class="col-xxl-3">
-                <div class="card h-100 p-0">
-                    <div class="card-body p-24">
-                        <div class="mt-16">
-                            <ul>
-                                <li class="item-active mb-4">
-                                    <a href="email.html" class="bg-hover-primary-50 px-12 py-8 w-100 radius-8 text-secondary-light">
-                                        <span class="d-flex align-items-center gap-10 justify-content-between w-100">
-                                            <span class="d-flex align-items-center gap-10">   
-                                                <span class="icon text-xxl line-height-1 d-flex"><iconify-icon icon="uil:envelope" class="icon line-height-1"></iconify-icon></span>
-                                                <span class="fw-semibold">Inbox</span>
-                                            </span>
-                                            <span class="fw-medium">800</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="mb-4">
-                                    <a href="starred.html" class="bg-hover-primary-50 px-12 py-8 w-100 radius-8 text-secondary-light">
-                                        <span class="d-flex align-items-center gap-10 justify-content-between w-100">
-                                            <span class="d-flex align-items-center gap-10">   
-                                                <span class="icon text-xxl line-height-1 d-flex"><iconify-icon icon="ph:star-bold" class="icon line-height-1"></iconify-icon></span>
-                                                <span class="fw-semibold">Starred</span>
-                                            </span>
-                                            <span class="fw-medium">250</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="mb-4">
-                                    <a href="email.html" class="bg-hover-primary-50 px-12 py-8 w-100 radius-8 text-secondary-light">
-                                        <span class="d-flex align-items-center gap-10 justify-content-between w-100">
-                                            <span class="d-flex align-items-center gap-10">   
-                                                <span class="icon text-xxl line-height-1 d-flex"><iconify-icon icon="ion:paper-plane-outline" class="icon line-height-1"></iconify-icon></span>
-                                                <span class="fw-semibold">Sent</span>
-                                            </span>
-                                            <span class="fw-medium">80</span>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div class="col-xxl-9">
                 <div class="card h-100 p-0 email-card">
                     <div class="card-header border-bottom bg-base py-16 px-24">
                         <div class="d-flex flex-wrap align-items-center justify-content-between gap-4">
                             <div class="d-flex align-items-center gap-3">
-                                <div class="form-check style-check d-flex align-items-center">
-                                    <input class="form-check-input radius-4 border input-form-dark" type="checkbox" name="checkbox" id="selectAll">
-                                    <div class="dropdown line-height-1">
-                                        <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="line-height-1 d-flex"> 
-                                            <iconify-icon icon="typcn:arrow-sorted-down" class="icon line-height-1"></iconify-icon>
-                                        </button>
-                                        <ul class="dropdown-menu p-12 border bg-base shadow">
-                                            <li>
-                                                <button type="button" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" data-bs-toggle="modal" data-bs-target="#exampleModalView">
-                                                    All
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button type="button" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                                                    None
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button type="button" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                                                    Read
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button type="button" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                                                    Unread
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                
                                 <button type="button" class="delete-button d-none text-secondary-light text-xl d-flex">
                                     <iconify-icon icon="material-symbols:delete-outline" class="icon line-height-1"></iconify-icon>
                                 </button>
@@ -108,19 +39,7 @@
                                     <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
                                 </form>
                             </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <span class="text-secondary-light line-height-1">1-12 of 1,253</span>
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            <a class="page-link d-flex bg-base border text-secondary-light text-xl" href="javascript:void(0)"><iconify-icon icon="iconamoon:arrow-left-2" class="icon"></iconify-icon> </a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link d-flex bg-base border text-secondary-light text-xl" href="javascript:void(0)"><iconify-icon icon="iconamoon:arrow-right-2" class="icon"></iconify-icon> </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="card h-100 p-0 email-card overflow-x-auto d-block">
@@ -134,8 +53,7 @@
                                     </span>
                                 </div>
                                 <div class="d-flex align-items-center gap-3">
-                                    <button class="text-secondary-light d-flex"><iconify-icon icon="mi:print" class="icon text-xxl line-height-1"></iconify-icon></button>
-                                    <button class="text-secondary-light d-flex"><iconify-icon icon="mdi:star-outline" class="icon text-xxl line-height-1"></iconify-icon></button>
+                                    
                                     <form action="{{ route('deleteCalonMitra', encrypt($calon->id)) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="text-secondary-light d-flex"><iconify-icon icon="material-symbols:delete-outline" class="icon text-xxl line-height-1"></iconify-icon></button>

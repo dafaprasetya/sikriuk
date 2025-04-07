@@ -17,9 +17,9 @@
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7 mt-5 mt-lg-0">
-                    <div class="about-content">
+                    <div class="about-content wow fadeInUp" data-wow-delay=".3s">
                         <div class="section-title">
-                            <span class="wow fadeInUp">Tentang Kami</span>
+                            <span class="wow fadeInUp" data-wow-delay=".3s">Tentang Kami</span>
                             <h2 class="wow fadeInUp" data-wow-delay=".3s">
                                 {{ $about->nama }} <br>
                                 <small>{{ $about->namapt }}</small>

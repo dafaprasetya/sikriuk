@@ -59,6 +59,7 @@ class MainController extends Controller
         $lokasi = LokasiMitra::paginate(20);
         $listblog = Blog::orderBy('created_at', 'desc')->paginate(3);
         $data =[
+            'title' => 'Sikriuk',
             'promo' => $promo,
             'about' => $about,
             'menu' => $menu,
@@ -120,6 +121,7 @@ class MainController extends Controller
         $syarat = SyaratMitra::all();
         $proposal = ProposalKemitraan::first();
         $data = [
+            'title' => 'Kemitraan',
             'gerobak' => $gerobak,
             'faq' => $faq,
             'syarat' => $syarat,
@@ -134,6 +136,7 @@ class MainController extends Controller
         $proposal = ProposalKemitraan::first();
         $pencapaian = Pencapaian::all();
         $data = [
+            'title' => 'Profile',
             'gerobak' => $gerobak,
             'faq' => $faq,
             'syarat' => $syarat,
@@ -149,6 +152,7 @@ class MainController extends Controller
 
 
         $data = [
+            'title' => 'Menu',
             'menu'=>$menu,
             'katmenu' => $menukategori,
             'lokasi' => $lokasi,
@@ -160,6 +164,7 @@ class MainController extends Controller
         $blog = Blog::orderBy('created_at', 'desc')->paginate(10);
         $search = $request->search;
         $data = [
+            'title' => 'Blog',
             'blog'=>$blog,
             'search'=>$search,
         ];
@@ -181,12 +186,14 @@ class MainController extends Controller
             ->orWhere("longitude","LIKE", "%{$search}%")
             ->orWhere("kota","LIKE", "%{$search}%")->get();
             $data = [
+                'title' => 'Lokasi',
                 'lokasi'=>$lokasi,
                 'search'=>$search,
             ];
             // dd($lokasi);
         }else{
             $data = [
+                'title' => 'Lokasi',
                 'lokasi'=>$lokasi,
                 'search'=>$search,
             ];

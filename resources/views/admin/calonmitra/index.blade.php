@@ -9,7 +9,7 @@
             <h6 class="fw-semibold mb-0">Daftar Calon Mitra</h6>
             <ul class="d-flex align-items-center gap-2">
                 <li class="fw-medium">
-                    <a href="index.html" class="d-flex align-items-center gap-1 hover-text-primary">
+                    <a href="#" class="d-flex align-items-center gap-1 hover-text-primary">
                         <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
                         Dashboard
                     </a>
@@ -68,8 +68,19 @@
                         <div class="d-flex flex-wrap align-items-center justify-content-between gap-4">
                             <div class="d-flex align-items-center gap-3">
                                 <div class="form-check style-check d-flex align-items-center">
-                                    <input class="form-check-input radius-4 border input-form-dark" type="checkbox" name="checkbox" id="selectAll">
-
+                                    <input class="form-check-input radius-4 border input-form-dark" type="checkbox" id="select-all">
+                                    <div class="dropdown line-height-1">
+                                        <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="line-height-1 d-flex">
+                                            <iconify-icon icon="typcn:arrow-sorted-down" class="icon line-height-1"></iconify-icon>
+                                        </button>
+                                        <ul class="dropdown-menu p-12 border bg-base shadow">
+                                            <li>
+                                                <button type="submit" form="formDelete" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900">
+                                                    Delete
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <button type="button" class="delete-button d-none text-secondary-light text-xl d-flex">
                                     <iconify-icon icon="material-symbols:delete-outline" class="icon line-height-1"></iconify-icon>
@@ -100,23 +111,48 @@
                     </div>
                     <div class="card-body p-0">
                         <ul class="overflow-x-auto">
-                            @foreach ($calon as $calons)
-                            <li class="email-item px-24 py-16 d-flex gap-4 align-items-center border-bottom cursor-pointer bg-hover-neutral-200 min-w-max-content ">
-                                <div class="form-check style-check d-flex align-items-center">
-                                    <input class="form-check-input radius-4 border border-neutral-400" type="checkbox" name="checkbox">
+                            <form action="{{ route('deleteCalonMitra', 'beruntun') }}" method="POST" id="formDelete">
+                                @csrf
+                                <div class="card-body p-0">
+                                    <ul class="overflow-x-auto">
+                                        @foreach ($calon as $calons)
+                                            <li class="email-item px-24 py-16 d-flex gap-4 align-items-center border-bottom cursor-pointer bg-hover-neutral-200 min-w-max-content ">
+                                                <div class="form-check style-check d-flex align-items-center">
+                                                    <input class="form-check-input radius-4 border border-neutral-400 checkbox-item" type="checkbox" name="selected_ids[]" value="{{ $calons->id }}">
+                                                </div>
+                                                <button type="button" class="starred-button icon text-xl text-secondary-light line-height-1 d-flex">
+                                                    @if ($calons->status == 'unread')
+                                                    <iconify-icon icon="icon-park-outline:dot" class="icon-outline line-height-1 text-primary-600"></iconify-icon>
+                                                    @else
+                                                    <div style="width: 19px"></div>
+                                                    @endif
+                                                </button>
+                                                <a href="{{ route('detailCalonMitra', encrypt($calons->id)) }}" class="text-{{ $calons->status == 'unread' ? 'primary' : 'secondary' }}-light fw-medium text-md text-line-1 w-190-px">{{ $calons->nama }}</a>
+                                                <a href="{{ route('detailCalonMitra', encrypt($calons->id)) }}" class="text-{{ $calons->status == 'unread' ? 'primary' : 'secondary' }}-light fw-medium mb-0 text-line-1 max-w-740-px">Nomor Telpon: {{ $calons->phone }}, Lokasi: {{ $calons->lokasi }}</a>
+                                                @if ($calons->status == 'read')
+                                                <span class="text-primary-600 fw-medium min-w-max-content ms-auto">R: {{ $calons->readby }}</span>
+
+                                                @endif
+                                                <span class="text-{{ $calons->status == 'unread' ? 'primary' : 'secondary' }}-light fw-medium min-w-max-content ms-auto">{{ $calons->created_at }}</span>
+                                            </li>
+                                        @endforeach
+                                    </ul>
                                 </div>
-                                <button type="button" class="starred-button icon text-xl text-secondary-light line-height-1 d-flex">
-                                    @if ($calons->status == 'unread')
-                                    <iconify-icon icon="icon-park-outline:dot" class="icon-outline line-height-1 text-primary-600"></iconify-icon>
-                                    @else
-                                    <div style="width: 19px"></div>
-                                    @endif
-                                </button>
-                                <a href="{{ route('detailCalonMitra', encrypt($calons->id)) }}" class="text-{{ $calons->status == 'unread' ? 'primary' : 'secondary' }}-light fw-medium text-md text-line-1 w-190-px">{{ $calons->nama }}</a>
-                                <a href="{{ route('detailCalonMitra', encrypt($calons->id)) }}" class="text-{{ $calons->status == 'unread' ? 'primary' : 'secondary' }}-light fw-medium mb-0 text-line-1 max-w-740-px">Nomor Telpon: {{ $calons->phone }}, Lokasi: {{ $calons->lokasi }}</a>
-                                <span class="text-{{ $calons->status == 'unread' ? 'primary' : 'secondary' }}-light fw-medium min-w-max-content ms-auto">{{ $calons->created_at }}</span>
-                            </li>
-                            @endforeach
+                            </form>
+
+
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    const selectAll = document.getElementById('select-all');
+                                    const checkboxes = document.querySelectorAll('.checkbox-item');
+
+                                    selectAll.addEventListener('change', function () {
+                                        checkboxes.forEach(cb => cb.checked = selectAll.checked);
+                                    });
+                                });
+                            </script>
+
+
                         </ul>
                     </div>
                 </div>

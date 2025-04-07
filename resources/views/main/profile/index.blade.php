@@ -6,23 +6,23 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-12 text-center">
-                <div class="container-fluid">
+                <div class="container-fluid wow fadeInUp" data-wow-delay=".3s">
                     <img class="img-thumbnail" src="{{ asset('storage/banner_image/'.$about->banner) }}" alt="pizza-img">
                 </div>
             </div>
             <div class="col-xl-12 text-center mt-4">
-                <div class="container-fluid">
+                <div class="container-fluid wow fadeInUp" data-wow-delay=".3s">
                     <h2>Profil Perusahaan <span class="merah">{{ $about->nama }}</span></h2>
                     <h3>{{ $about->namapt }}</h3>
                 </div>
             </div>
             <div class="col-xl-12 mt-4">
-                <div class="container text-center d-flex justify-content-center align-items-center">
+                <div class="container text-center d-flex justify-content-center align-items-center wow fadeInUp" data-wow-delay=".3s">
                     <p>{{ $about->deskripsi }}</p>
                 </div>
             </div>
             <div class="col-xl-12 mt-4">
-                <div class="container text-center d-flex justify-content-center align-items-center">
+                <div class="container text-center d-flex justify-content-center align-items-center wow fadeInUp" data-wow-delay=".3s">
                     <p>{{ $about->deskripsi_lengkap }}</p>
                 </div>
             </div>
@@ -51,7 +51,7 @@
             <div class="container">
                 <div class="row g-4">
                     <div class="col-xl-12 text-center mb-4">
-                        <div class="container-fluid">
+                        <div class="container-fluid wow fadeInUp" data-wow-delay=".3s">
                             <h2>Tentang Pencapaian <span class="merah">{{ $about->nama }}</span></h2>
                         </div>
                     </div>
@@ -79,13 +79,13 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-6">
-                <div class="container-fluid">
+                <div class="container-fluid wow fadeInUp" data-wow-delay=".3s">
                     <h2>Legalitas Perusahaan <span class="merah">{{ $about->namapt }}</span></h2>
                     <h3>{{ $about->nama }}</h3>
                 </div>
             </div>
             <div class="col-xl-6">
-                <div class="container-fluid">
+                <div class="container-fluid wow fadeInUp" data-wow-delay=".3s">
                     <h4>{{ $about->legalitas }}</h4>
                 </div>
             </div>

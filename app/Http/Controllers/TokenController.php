@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AccessToken;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class TokenController extends Controller
 {
@@ -23,9 +24,17 @@ class TokenController extends Controller
         $accesstoken = AccessToken::where('token', $request->input('token'))->first();
         if ($accesstoken) {
             session(['token'=>$request->input('token')]);
+            Session::forget('fail');
             return redirect()->route('login');
         } else {
-            return redirect()->route('gettoken')->with('error','Invalid Token');
+            $failCount = session('fail', 0) + 1;
+            session(['fail' => $failCount]);
+            if ($failCount > 3) {
+                session()->forget('token');
+                session()->forget('fail');
+                abort(403);
+            }
+            return redirect()->route('gettoken')->with('error','Invalid Token, '.$failCount.' dari 3 kesempatan terpakai');
         }
     }
 }

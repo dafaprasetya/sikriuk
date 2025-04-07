@@ -9,7 +9,7 @@
         <meta name="author" content="modinatheme">
         <meta name="description" content="{{ $about->deskripsi }}">
         <!-- ======== Page title ============ -->
-        <title>{{ $about->nama }}</title>
+        <title>{{ $about->nama }} | {{ $title }}</title>
         <!--<< Favcion >>-->
         <link rel="shortcut icon" href="{{ asset('img/logo/Logo_IKI-besar.png') }}">
         <!--<< Bootstrap min.css >>-->

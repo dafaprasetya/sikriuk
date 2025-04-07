@@ -39,6 +39,8 @@ Route::middleware(['auth', 'role:admin,user'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::post('/admin/about/{id}', [AdminController::class, 'editAbout'])->name('editAbout');
     Route::post('/admin/about/{id}/mnp', [AdminController::class, 'delPhonenMail'])->name('delPhonenMail');
+    Route::post('/admin/about/jam/tambah', [AdminController::class, 'createjamBuka'])->name('createjamBuka');
+    Route::post('/admin/about/{id}/jam/edit', [AdminController::class, 'editjamBuka'])->name('editjamBuka');
     Route::get('/admin/about', [AdminController::class, 'index'])->name('about');
 
     Route::get('/admin/promo', [AdminController::class, 'promo'])->name('promo');

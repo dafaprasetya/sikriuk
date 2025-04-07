@@ -9,7 +9,7 @@
     <div class="container">
         <div class="footer-widgets-wrapper">
             <div class="row">
-                <div class="col-xl-3 col-sm-6 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".2s">
+                <div class="col-md-3 wow fadeInUp" data-wow-delay=".2s">
                     <div class="single-footer-widget">
                         <div class="widget-head">
                             <a href="index.html">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 ps-lg-5 col-sm-6 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay=".4s">
+                <div class="col-md-2 wow fadeInUp" data-wow-delay=".4s">
                     <div class="single-footer-widget">
                         <div class="widget-head">
                             <h4>Link website</h4>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-4 col-sm-6 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".8s">
+                <div class="col-md-3 wow fadeInUp" data-wow-delay=".8s">
                     <div class="single-footer-widget">
                         <div class="widget-head">
                             <h4>Alamat:</h4>
@@ -89,11 +89,39 @@
                             <h6>
                                 {{ $about->lokasi }}
                             </h6>
-                            <h5>Jam buka:</h5>
-                            <h6>
-                                9.30am – 6.30pm <br>
-                                Monday to Friday
-                            </h6>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-4 wow fadeInUp" data-wow-delay=".8s">
+                    <div class="single-footer-widget">
+                        <div class="widget-head">
+                            <h4>Jam Operasional Kemitraan:</h4>
+                        </div>
+                        <div class="footer-address-text">
+                            <table style="width: 100%; background-color: red; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background-color: yellow; color: black;">
+                                        <th style="padding: 10px; border: 1px solid yellow;">Hari</th>
+                                        <th style="padding: 10px; border: 1px solid yellow;">Jam Buka</th>
+                                    </tr>
+                                </thead>
+                                @if ($about->jambuka->isNotEmpty())
+                                <tbody>
+                                    @foreach ($about->jambuka as $jam)
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid yellow; color: white;">{{ $jam->hari }}</td>
+                                        <td style="padding: 10px; border: 1px solid yellow; color: white;">{{ $jam->jam_buka }}</td>
+                                    </tr>
+                                    @endforeach
+                                    @else
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid yellow; color: white;">Setiap Hari</td>
+                                        <td style="padding: 10px; border: 1px solid yellow; color: white;">08:00 - 22:00</td>
+                                    </tr>
+                                    @endif
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

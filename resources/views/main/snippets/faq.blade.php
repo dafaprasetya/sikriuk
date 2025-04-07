@@ -1,6 +1,6 @@
 <section class="faq" id="faq">
     <div class="container">
-        <div class="section-title text-center">
+        <div class="section-title text-center wow fadeInUp" data-wow-delay=".3s">
             <span class="wow fadeInUp">FAQ</span>
             <h3 class="wow fadeInUp" data-wow-delay=".3s">
                 Pertanyaan Umum Tentang Kemitraan Sikriuk

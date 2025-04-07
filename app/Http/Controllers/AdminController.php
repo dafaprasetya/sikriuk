@@ -19,6 +19,7 @@ use App\Models\StepKemitraan;
 use App\Models\LokasiMitra;
 use App\Models\SyaratMitra;
 use App\Models\Testimonial;
+use App\Models\JamOperasional;
 use App\Models\Faq;
 use App\Models\Blog;
 use App\Models\ProposalKemitraan;
@@ -55,12 +56,14 @@ class AdminController extends Controller
         $email = EmailAbout::where('about_id', $about->id)->get();
         $phone = PhoneAbout::where('about_id', $about->id)->get();
         $sosmed = SosmedAbout::where('about_id', $about->id)->get();
+        $jambuka = JamOperasional::where('about_id', $about->id)->get();
         $data = [
             'title' => 'Admin',
             'about' => $about,
             'email' => $email,
             'phone' => $phone,
             'sosmed' => $sosmed,
+            'jambuka' => $jambuka,
         ];
         return view('admin/index', $this->data, $data);
     }
@@ -84,6 +87,34 @@ class AdminController extends Controller
             $phones->delete();
             return redirect()->back()->with('message', 'Nomor HP berhasil dihapus');
         }
+    }
+    public function createjamBuka(Request $request){
+        $validatedData = $request->validate([
+            'hari' => 'required',
+            'jam_buka' => 'required',
+        ]);
+        $jam = new JamOperasional();
+        $jam->hari = $validatedData['hari'];
+        $jam->jam_buka = $validatedData['jam_buka'];
+        $jam->about_id = $request->about_id;
+        $jam->save();
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+    }
+    public function editjamBuka(Request $request, $id){
+        $jam = JamOperasional::find(decrypt($id));
+        $validatedData = $request->validate([
+            // 'hari' => 'required',
+            'jam_buka' => 'required',
+        ]);
+        // $jam->hari = $validatedData['hari'];
+        $jam->jam_buka = $validatedData['jam_buka'];
+        $jam->save();
+        return response()->json([
+            'success' => 'Data berhasil diubah',
+            'id' => $jam->id,
+            'hari' => $jam->hari,
+            'jam_buka' => $jam->jam_buka,
+        ]);
     }
     public function editAbout(Request $request, $id) {
         $aboutId = decrypt($id);
@@ -441,7 +472,7 @@ class AdminController extends Controller
         }else{
             $phone = $calon->phone;
         }
-        $url = 'https://wa.me/'.$phone;
+        $url = 'https://wa.me/'.$phone.'?text=Hallo%20'.$calon->nama.urlencode(' Terimakasih sudah mendaftar melalui website sikriuk!, Saya '.Auth::user()->name.' [Lanjutkan Pesan]');
 
         $data = [
             'title' => 'Admin Calon Mitra',
@@ -460,7 +491,7 @@ class AdminController extends Controller
         }else{
             $phone = $calon->phone;
         }
-        $url = 'https://wa.me/'.$phone;
+        $url = 'https://wa.me/'.$phone.'?text=Hallo%20'.$calon->nama.urlencode(' Terimakasih sudah mendaftar melalui website sikriuk!, Saya '. Auth::user()->name .' [Lanjutkan Pesan]');
         $calon->save();
         return response()->json([
             'success' => 'Data berhasil diubah',
@@ -469,11 +500,25 @@ class AdminController extends Controller
             'url' => $url,
         ]);
     }
-    public function deleteCalonMitra($id) {
+    public function deleteCalonMitra(Request $request, $id) {
+        $beruntun = $request->input('selected_ids');
+        if($beruntun){
+            $dataTerpilih = CalonMitra::whereIn('id', $beruntun)->get();
+
+            // Lakukan apa pun, contoh:
+            foreach ($dataTerpilih as $data) {
+                $data->delete();
+            }
+            return redirect()->route('calonMitra')->with('success', 'Data berhasil dihapus');
+        }
         $ids = decrypt($id);
         $calon = CalonMitra::find($ids);
-        $calon->delete();
-        return redirect()->route('calonMitra')->with('success', 'Data berhasil dihapus');
+        if($calon){
+            $calon->delete();
+            return redirect()->route('calonMitra')->with('success', 'Data berhasil dihapus');
+        }else{
+            return redirect()->route('calonMitra')->with('error', 'Data tidak ditemukan');
+        }
     }
     // ENDOFECALONMITRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     // GEROBAKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK

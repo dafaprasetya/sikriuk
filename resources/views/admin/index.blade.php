@@ -24,6 +24,10 @@
                     @csrf
                     <div class="row">
                         <div class="col-sm-12">
+                            <img src="{{ asset('storage/banner_image/'.$about->banner) }}" class="img-thumbnail" style="width: 981px; height: 754px;" alt="" srcset="">
+                        </div>
+                        <div class="col-sm-12">
+                            
                             <div class="mb-20">
                                 <label for="banner" class="form-label fw-semibold text-primary-light text-sm mb-8">Banner <span class="text-danger-600">*981x754</span></label>
                                 <input type="file" name="banner" class="form-control radius-8" id="banner">
@@ -366,6 +370,124 @@
                                     });
                                 });
                             </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-24">
+                    <div class="col-sm-12">
+                        <div class="mb-20">
+                            <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Jam Buka Operasional Kemitraan</label>
+                            <table class="table bordered-table mb-8" id="dataTable" data-page-length='10'>
+                                <tbody id="sosmedTableBody">
+                                    @foreach ($jambuka as $jambukas)
+                                    <tr>
+                                        <td>{{ $jambukas->hari }}</td>
+                                        <td style="width: 500px">
+                                            <form id="editjam{{ $jambukas->id }}" data-id="{{ route('editjamBuka', encrypt($jambukas->id)) }}" method="post">
+                                                @csrf
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <input type="text" name="jambuka" id="jambuka{{ $jambukas->id }}" class="form-control radius-8" value="{{ $jambukas->jam_buka }}" placeholder="Masukan Jam buka, contoh : 08:00 - 17:00/Libur">
+                                                    <button type="submit" href="javascript:void(0)" class="btn btn-info btn-sm d-flex align-items-center justify-content-center">
+                                                        <iconify-icon icon="ic:outline-save"></iconify-icon>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            <script>
+                                                $(document).ready(function () {
+                                                    $('#editjam{{ $jambukas->id }}').submit(function (e) { 
+                                                        e.preventDefault();
+                                                        let jam_buka = $("#jambuka{{ $jambukas->id }}").val();
+                                                        $.ajax({
+                                                            url: "{{ route('editjamBuka', encrypt($jambukas->id)) }}",
+                                                            type: "POST",
+                                                            data: {
+                                                                "_token": "{{ csrf_token() }}",
+                                                                "jam_buka": jam_buka,
+                                                                // 'hari': "{{ $jambukas->hari }}",
+                                                            },
+                                                            success: function (response) {
+                                                                console.log('success');
+                                                                var toastEl = document.getElementById('successToast');
+                                                                var toast = new bootstrap.Toast(toastEl);
+                                                                toast.show();
+                                                            },error: function (xhr) {
+                                                                console.log(xhr.responseText);
+                                                                console.log("Terjadi kesalahan: " + xhr.responseText);
+                                                            }
+                                                        });
+                                                        
+                                                    });
+                                                });
+                                            </script>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            @if ($about->jambuka->count() > 7)
+                                                                
+                            <form id="tambahjambuka" action="{{ route('createjamBuka') }}" method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="text" name="about_id" value="{{ $about->id }}" hidden>
+                                        <input type="text" name="hari" class="form-control radius-8" id="hari" placeholder="Masukan Hari" >
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="jam_buka" class="form-control radius-8" id="jam_buka" placeholder="Masukan Jam buka, contoh : 08:00 - 17:00/Libur" >
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm mt-8">
+                                    Tambah Jam Buka
+                                </button>
+                            </form>
+                            @endif
+                            {{-- <script>
+                                $(document).ready(function () {
+                                    $('#tambahsosmed').submit(function (e) {
+                                        e.preventDefault();
+                                        let aboutId = $(this).data("id");
+                                        let nama = $("#nama").val();
+                                        let logo = $("#logo").val();
+                                        let links = $("#links").val();
+                                        $.ajax({
+                                            url: aboutId,
+                                            type: "POST",
+                                            data: {
+                                                "_token": "{{ csrf_token() }}",
+                                                "sosmed": $("#nama").val(),
+                                                "nama": $("#nama").val(),
+                                                "logo": $("#logo").val(),
+                                                "links": $("#links").val(),
+                                            },
+                                            success: function (response) {
+                                                console.log('success');
+                                                $("#sosmedTableBody").append(`
+                                                    <tr>
+                                                        <td style="width: 20px"><i class="${logo}"></i></td>
+                                                        <td><a href="${links}">${nama}</a></td>
+                                                        <td style="width: 10px">
+
+                                                        </td>
+                                                    </tr>
+                                                `);
+
+                                                // Kosongkan input setelah menambahkan
+                                                $("#nama").val('');
+                                                $("#links").val('');
+                                                $("#logo").val('');
+                                                var toastEl = document.getElementById('successToast');
+                                                var toast = new bootstrap.Toast(toastEl);
+                                                toast.show();
+
+                                            },error: function (xhr) {
+                                                console.log(xhr.responseText);
+                                                console.log("Terjadi kesalahan: " + xhr.responseText);
+                                            }
+                                        });
+                                    });
+                                });
+                            </script> --}}
                         </div>
                     </div>
                 </div>

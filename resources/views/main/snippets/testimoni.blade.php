@@ -1,6 +1,6 @@
 <!-- TESTIMONI SECTION -->
 <section class="testimonial-section-2">
-    <div class="container">
+    <div class="container wow fadeInUp" data-wow-delay=".3s">
         <div class="testimonial-wrapper-2 bg-cover">
             <div class="section-title text-center">
                 <h2 class="wow fadeInUp" data-wow-delay=".3s">

@@ -32,7 +32,7 @@
 
                 <div class="col-xl-5 col-lg-6 mt-5 mt-lg-0">
                     <div class="about-image-2">
-                        <div class="swiper gallery-slider">
+                        <div class="swiper gallery-slider wow fadeInUp" data-wow-delay=".3s">
                             <div class="swiper-wrapper">
                                 <!-- START LOOPING GAMBAR GEROBAK -->
                                 @foreach ($kemitraan as $kemitraans)

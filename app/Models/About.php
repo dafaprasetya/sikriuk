@@ -17,4 +17,7 @@ class About extends Model
     public function sosmed() {
         return $this->hasMany(SosmedAbout::class);
     }
+    public function jambuka() {
+        return $this->hasMany(JamOperasional::class);
+    }
 }

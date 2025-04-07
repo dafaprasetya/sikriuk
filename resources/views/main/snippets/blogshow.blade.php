@@ -8,7 +8,7 @@
     </div>
     <div class="container">
         <div class="section-title text-center">
-            <span class="wow fadeInUp">BLOG SIKRIUK</span>
+            <span class="wow fadeInUp" data-wow-delay=".3s">BLOG SIKRIUK</span>
             <h2 class="wow fadeInUp" data-wow-delay=".3s">berita update sikriuk</h2>
         </div>
         <div class="row">
