@@ -2,6 +2,7 @@
 @section('body')
 @include('admin.sidebar')
 @include('admin.alert.aler')
+
 <main class="dashboard-main">
     @include('admin.topbar')
     <div class="dashboard-main-body">
@@ -280,6 +281,14 @@
                             </div>
                         </div>
                         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <div id="formLoading" style="display: none;">
+                            <div class="d-flex justify-content-center my-3">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p>Klik sekali lagi jika tidak terjadi apa-apa</p>
+                            </div>
+                        </div>
                         <script>
                             $(document).ready(function () {
                                 $("#BlogaddForm").submit(function (e) {
@@ -287,6 +296,7 @@
 
                                     let formData = new FormData(this);
                                     let url = $(this).data("id");
+                                    $("#formLoading").show();
                                     $.ajax({
                                         url: url, // Gunakan URL dari data-id
                                         type: "POST",
@@ -321,6 +331,7 @@
                                                 </tr>
 
                                             `);
+                                            $("#formLoading").hide();
                                         },
                                         error: function (xhr) {
                                             console.log("Error:", xhr.responseText);

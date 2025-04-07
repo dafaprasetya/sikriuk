@@ -30,7 +30,7 @@
                             </a>
                         </h3>
                         <p>
-
+                            {{ strip_tags(\Illuminate\Support\Str::substr($blogs->content, 0, 200)) }}
                         </p>
 
                         <a href="{{ route('blogDetail',$blogs->slug) }}" class="theme-btn style-box-shadow mt-4">baca selengkapnya</a>

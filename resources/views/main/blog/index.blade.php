@@ -21,7 +21,7 @@
                                 </div>
                                 <h2><a href="{{ route('blogDetail', $blogs->slug) }}">{{ $blogs->title }}</a></h2>
                                 <p>
-                                    {!! \Illuminate\Support\Str::substr($blogs->content, 0, 200) !!}
+                                    {{ strip_tags(\Illuminate\Support\Str::substr($blogs->content, 0, 200)) }}
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center mt-4">
                                     <div class="post-link">

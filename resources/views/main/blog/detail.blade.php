@@ -1,7 +1,16 @@
 @extends('main.snippets.core')
 
 @section('content')
-@include('main.snippets.navbar')
+@php
+    $navbars = [
+        'main.snippets.navbar',
+        'main.snippets.navbar2',
+        'main.snippets.navbar3'
+    ];
+    $randomNavbar = $navbars[array_rand($navbars)];
+@endphp
+
+@include($randomNavbar)
 @include('main.snippets.loadingscreen')
 
 <!--<< Breadcrumb Section Start >>-->
@@ -35,13 +44,34 @@
                             <div class="col-lg-8 col-12">
                                 <h4>Share Blog</h4>
                                 <div class="social-share">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    @php
+                                        $shareUrl = urlencode(route('blogDetail', $blog->slug));
+                                        $blogTitle = urlencode($blog->title);
+                                    @endphp
+
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" target="_blank">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+
+                                    <a href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&text={{ $blogTitle }}" target="_blank">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+
+                                    <a href="https://www.linkedin.com/shareArticle?url={{ $shareUrl }}&title={{ $blogTitle }}" target="_blank">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+
+                                    <a href="https://api.whatsapp.com/send?text={{ $blogTitle }}%20{{ $shareUrl }}" target="_blank">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+
+                                    <a href="https://www.instagram.com/" target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
+
 
                     </div>
                 </div>
