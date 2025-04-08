@@ -8,6 +8,7 @@
             <span class="wow fadeInUp">Lokasi</span>
             <h3 class="wow fadeInUp" data-wow-delay=".3s">
                 Cari Lokasi Sikriuk Disekitarmu
+
             </h3>
         </div>
         <div id="map" style="height: 400px; z-index: 1"></div>
@@ -91,7 +92,7 @@
     });
 
     @foreach ($lokasi as $lokasis)
-    L.marker([{{ $lokasis->latitude }}, {{ $lokasis->longitude }}], { icon: mitraIcon }).addTo(map)
+    L.marker([{{ floatval($lokasis->latitude) }}, {{ floatval($lokasis->longitude) }}], { icon: mitraIcon }).addTo(map)
         .bindPopup('<b>{{ $lokasis->nama }} | {{ $lokasis->kota }}</b><br><a href="{{ $lokasis->linkmaps }}" target="_blank">Buka di Google Maps</a>');
     @endforeach
 </script>

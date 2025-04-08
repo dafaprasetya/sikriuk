@@ -39,6 +39,7 @@
                                     </div>
                                     <div class="food-content">
                                         <h3><a href="#">{{ $menu->nama }}</a></h3>
+                                        <h4><a href="#">{{ $menu->deskripsi }}</a></h4>
                                         <p>
                                             Rp. {{ number_format($menu->harga, 0, ',', '.') }}
                                         </p>
@@ -68,6 +69,7 @@
                                     </div>
                                     <div class="food-content">
                                         <h3><a href="#">{{ $menus->nama }}</a></h3>
+                                        <h4><a href="#">{{ $menu->deskripsi }}</a></h4>
                                         <p>
                                             Rp. {{ number_format($menus->harga, 0, ',', '.') }}
                                         </p>

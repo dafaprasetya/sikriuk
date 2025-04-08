@@ -4,27 +4,11 @@
         <div class="spinner">
         </div>
         <div class="txt-loading">
-            <span data-text-preloader="S" class="letters-loading">
-            S
-            </span>
-            <span data-text-preloader="I" class="letters-loading">
-            I
-            </span>
-            <span data-text-preloader="K" class="letters-loading">
-            K
-            </span>
-            <span data-text-preloader="R" class="letters-loading">
-            R
-            </span>
-            <span data-text-preloader="I" class="letters-loading">
-            I
-            </span>
-            <span data-text-preloader="U" class="letters-loading">
-            U
-            </span>
-            <span data-text-preloader="K" class="letters-loading">
-            K
-            </span>
+            @foreach(str_split($about->nama) as $char)
+                <span data-text-preloader="{{ $char }}" class="letters-loading">
+                    {!! $char === ' ' ? '&nbsp;' : $char !!}
+                </span>
+            @endforeach
         </div>
         <p class="text-center">Loading</p>
     </div>

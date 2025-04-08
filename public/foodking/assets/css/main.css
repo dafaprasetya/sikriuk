@@ -12069,3 +12069,15 @@ p.sticky-label {
         height: 100px;
     }
   }
+
+
+  #pdf-canvas {
+    width: 100%;
+    border: 1px solid #ccc;
+  }
+
+  #pdf-container {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
