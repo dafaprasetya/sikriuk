@@ -36,7 +36,7 @@
             </div>
             <div class="col-sm-6 d-flex justify-content-center align-items-center">
                 <div class="counter-items wow fadeInUp" data-wow-delay=".3s">
-                    <h5>Total Mitra</h5>
+                    <h5>Total Followers IG</h5>
                     <h2><span class="count merah">{{ $about->followersig }}</h2>
                 </div>
             </div>

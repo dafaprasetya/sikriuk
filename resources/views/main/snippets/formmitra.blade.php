@@ -16,13 +16,6 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-4">
-
-                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">NIK:</label>
-                        <input class="form-control radius-8" type="number" name="nik" required placeholder="Masukan NIK sesuai KTP" value="{{ old('nik') }}">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-4">
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Email:</label>
                         <input class="form-control radius-8" type="email" name="email" required placeholder="Masukan email aktif" value="{{ old('email') }}">
                     </div>

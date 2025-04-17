@@ -80,7 +80,7 @@ class MainController extends Controller
     public function sendCalonMitra(Request $request) {
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
-            'nik' => 'required',
+            'nik' => 'nullable',
             'email' => 'required|email',
             'phone' => 'required',
             'lokasi' => 'required',
