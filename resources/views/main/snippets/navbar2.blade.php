@@ -75,7 +75,7 @@
 <!-- Header Area Start -->
 
 <!-- Header Area Start -->
-<header id="header-sticky" class="header-1 style-6">
+<header id="" class="header-2 style-6">
     <div class="container">
         <div class="mega-menu-wrapper">
             <div class="header-main">
@@ -91,32 +91,32 @@
                             <nav id="mobile-menu">
                                 <ul>
                                     <li class="active">
-                                        <a href="{{ route('home') }}" style="{{ Route::is('home') ? 'color:#FFB936;' : '' }}">
+                                        <a href="{{ route('home') }}" style="{{ Route::is('home') ? 'color:#fddd00;' : '' }}">
                                         Home
                                     </li>
                                     <li>
-                                        <a href="{{ route('profile') }}" style="{{ Route::is('profile') ? 'color:#FFB936;' : '' }}">
+                                        <a href="{{ route('profile') }}" style="{{ Route::is('profile') ? 'color:#fddd00;' : '' }}">
                                         Profil
                                     </li>
                                     <li>
-                                        <a href="{{ route('menumain') }}" style="{{ Route::is('menumain') ? 'color:#FFB936;' : '' }}">
+                                        <a href="{{ route('menumain') }}" style="{{ Route::is('menumain') ? 'color:#fddd00;' : '' }}">
                                         Menu
                                     </li>
                                     <li>
-                                        <a href="{{ route('kemitraan') }}" style="{{ Route::is('kemitraan') ? 'color:#FFB936;' : '' }}">
+                                        <a href="{{ route('kemitraan') }}" style="{{ Route::is('kemitraan') ? 'color:#fddd00;' : '' }}">
                                         Kemitraan
                                     </li>
                                     <li>
-                                        <a href="{{ route('blogmain') }}" style="{{ Route::is('blogmain') || Route::is('blogDetail') ? 'color:#FFB936;' : '' }}">Blog</a>
+                                        <a href="{{ route('blogmain') }}" style="{{ Route::is('blogmain') || Route::is('blogDetail') ? 'color:#fddd00;' : '' }}">Blog</a>
                                     </li>
                                 </ul>
                             </nav>
                             <!-- for wp -->
                         </div>
                     </div>
-                    <div class="header__hamburger d-lg-none my-auto">
+                    <div class="header__hamburger d-lg-none">
                         <div class="sidebar__toggle">
-                            <i class="far fa-bars"></i>
+                            <i class="far fa-bars" style="color: white"></i>
                         </div>
                     </div>
                 </div>
@@ -128,15 +128,21 @@
 <!-- Hero Section Start -->
 <section class="hero-section-5 fix hero-6 section-padding bg-cover" style="background-image: url('{{ asset('foodking/assets/img/hero/hero-bg-2.jpg') }}');">
     <div class="hero-shape">
-        <img src="{{ asset('foodking/assets/img/hero-6/hero/hero-shape.png') }}" alt="shape-img">
+        {{-- <img src="{{ asset('foodking/assets/img/hero-6/hero/hero-shape.png') }}" alt="shape-img"> --}}
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="hero-content">
-                    <h3 class="wow fadeInUp" data-wow-delay=".3s">{{ $about->namapt }}</h3>
-                    <h1 class="wow fadeInUp" data-wow-delay=".5s">{{ $about->nama }}</h1>
-                    <h2 class="wow fadeInUp" data-wow-delay=".7s">{{ $about->moto }}</h2>
+            <div class="col-lg-6">
+                <div class="hero-image wow fadeInUp" data-wow-delay=".4s">
+                    <img src="{{ asset('img/Home (SAMPING SLOGAN).png') }}" alt="img">
+                    <div class="ganjelanheader"></div>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-5">
+                <div class="hero-content text-start">
+                    <h3 class="wow fadeInUp lalitfont" data-wow-delay=".3s">{{ $about->namapt }}</h3>
+                    <h1 class="wow fadeInUp lalitfont" data-wow-delay=".5s">{{ $about->nama }}</h1>
+                    <h2 class="wow fadeInUp lalitfont" data-wow-delay=".7s">{{ $about->moto }}</h2>
                 </div>
                 <div class="hero-image wow fadeInUp" data-wow-delay=".4s">
                     {{-- <img src="{{ asset('foodking/assets/img/hero-6/hero/02.png') }}" alt="img"> --}}

@@ -63,23 +63,27 @@
 
 @if ($promo->count() >= 1)
 @include('main.snippets.navbar')
-@include('main.snippets.promo')
+{{-- @include('main.snippets.promo') --}}
 @else
 @include('main.snippets.navbar2')
 @endif
-@include('main.snippets.tetangperusahaan')
 @include('main.snippets.jargon')
-@include('main.snippets.menu')
-@include('main.snippets.kemitraanshow')
-@include('main.snippets.faq')
-@include('main.snippets.stepbystep')
-@include('main.snippets.formmitra')
-@if ($testimoni->count() >= 1)
-@include('main.snippets.testimoni')
-@endif
-@if ($blog->count() >= 1)
-@include('main.snippets.blogshow')
-@endif
-@include('main.lokasi.lokasi')
-@include('main.snippets.footer')
+<div class="container">
+
+    @include('main.snippets.tetangperusahaan')
+    @include('main.snippets.menu')
+    @include('main.snippets.kemitraanshow')
+    @include('main.snippets.faq')
+    {{-- @include('main.snippets.stepbystep') --}}
+    @include('main.snippets.formmitra')
+    @if ($testimoni->count() >= 1)
+    @include('main.snippets.testimoni')
+    @endif
+    {{-- @if ($blog->count() >= 1)
+    @include('main.snippets.blogshow')
+    @endif --}}
+    @include('main.lokasi.lokasi')
+    @include('main.sosmed.sosmed')
+    @include('main.snippets.footer')
+</div>
 @endsection

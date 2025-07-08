@@ -7,23 +7,23 @@
         <div class="row">
             <div class="col-xl-12 text-center">
                 <div class="container-fluid wow fadeInUp" data-wow-delay=".3s">
-                    <img class="img-thumbnail" src="{{ asset('storage/banner_image/'.$about->banner) }}" alt="pizza-img">
+                    <img class="img-fluid" width="710" src="{{ asset('storage/banner_image/'.$about->banner) }}" alt="pizza-img">
                 </div>
             </div>
             <div class="col-xl-12 text-center mt-4">
                 <div class="container-fluid wow fadeInUp" data-wow-delay=".3s">
-                    <h2>Profil Perusahaan <span class="merah">{{ $about->nama }}</span></h2>
-                    <h3>{{ $about->namapt }}</h3>
+                    <h2 class="lalitfont">Profil Perusahaan <span class="merah">{{ $about->nama }}</span></h2>
+                    <h3 class="lalitfont">{{ $about->namapt }}</h3>
                 </div>
             </div>
             <div class="col-xl-12 mt-4">
                 <div class="container text-center d-flex justify-content-center align-items-center wow fadeInUp" data-wow-delay=".3s">
-                    <p>{{ $about->deskripsi }}</p>
+                    <p class="popinsfont">{{ $about->deskripsi }}</p>
                 </div>
             </div>
             <div class="col-xl-12 mt-4">
                 <div class="container text-center d-flex justify-content-center align-items-center wow fadeInUp" data-wow-delay=".3s">
-                    <p>{{ $about->deskripsi_lengkap }}</p>
+                    <p class="popinsfont">{{ $about->deskripsi_lengkap }}</p>
                 </div>
             </div>
         </div>
@@ -75,18 +75,18 @@
     @endif
 
 </section>
-<section id="legalitas">
+<section class="section-padding" id="legalitas">
     <div class="container">
         <div class="row">
             <div class="col-xl-6">
                 <div class="container-fluid wow fadeInUp" data-wow-delay=".3s">
-                    <h2>Legalitas Perusahaan <span class="merah">{{ $about->namapt }}</span></h2>
-                    <h3>{{ $about->nama }}</h3>
+                    <h2 class="lalitfont">Legalitas Perusahaan <span class="merah">{{ $about->namapt }}</span></h2>
+                    <h3 class="lalitfont">{{ $about->nama }}</h3>
                 </div>
             </div>
             <div class="col-xl-6">
                 <div class="container-fluid wow fadeInUp" data-wow-delay=".3s">
-                    <h4>{{ $about->legalitas }}</h4>
+                    <h4 class="popinsfont">{{ $about->legalitas }}</h4>
                 </div>
             </div>
         </div>

@@ -3,6 +3,10 @@
 
     <div class="gallery-section fix section-padding wow fadeInUp" data-wow-delay=".3s">
         <div class="container">
+            <div class="section-title text-center">
+                <span class="wow fadeInUp">step by step</span>
+                <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">Step By Step Menjadi Mitra Sikriuk</h2>
+            </div>
             <div class="array-button">
                 <button class="array-prev"><i class="far fa-long-arrow-left"></i></button>
                 <button class="array-next"><i class="far fa-long-arrow-right"></i></button>

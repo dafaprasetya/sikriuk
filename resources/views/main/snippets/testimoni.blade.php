@@ -1,9 +1,9 @@
 <!-- TESTIMONI SECTION -->
-<section class="testimonial-section-2">
+<section class="section-padding">
     <div class="container wow fadeInUp" data-wow-delay=".3s">
         <div class="testimonial-wrapper-2 bg-cover">
             <div class="section-title text-center">
-                <h2 class="wow fadeInUp" data-wow-delay=".3s">
+                <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">
                     Apa kata mereka?
                 </h2>
             </div>
@@ -14,7 +14,7 @@
                         <div class="swiper-wrapper">
                             <!-- START LOOPING TESTIMONI -->
                             @foreach ($testimoni as $testi)
-                                
+
                             <div class="swiper-slide">
                                 <div class="testimonial-content center">
                                     <div class="client-info">
@@ -29,10 +29,7 @@
                             </div>
                             @endforeach
                             <!-- START LOOPING TESTIMONI -->
-                            
-                        </div>
-                        <div class="swiper-dot style-2">
-                            <div class="dot-2"></div>
+
                         </div>
                     </div>
                 </div>

@@ -1,10 +1,10 @@
 <!-- ASECTION MENU -->
-<section class="about-food-section">
+<section class="section-padding" >
     <div class="container">
         <div class="about-food-wrapper bg-cover" style="background-image: url('foodking/assets/img/shape/about-food-bg.png');">
             <div class="section-title text-center">
-                <span class="wow fadeInUp">menu</span>
-                <h2 class="wow fadeInUp" data-wow-delay=".3s">
+                <span class="wow fadeInUp ">menu</span>
+                <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">
                     Menu {{ $about->nama }}
                 </h2>
             </div>
@@ -34,8 +34,8 @@
                                         <img style="width: 188px; height: 181px;" src="{{ asset('storage/product_image/'.$menu->gambar) }}" alt="food-img">
                                     </div>
                                     <div class="food-content">
-                                        <h3><a href="{{ route('menumain') }}">{{ $menu->nama }}</a></h3>
-                                        <h4><a href="{{ route('menumain') }}">{{ $menu->deskripsi }}</a></h4>
+                                        <h3><a href="{{ route('menumain') }}" class="lalitfont">{{ $menu->nama }}</a></h3>
+                                        <h4><a href="{{ route('menumain') }}" >{{ $menu->deskripsi }}</a></h4>
                                         <p>
                                             Rp. {{ number_format($menu->harga, 0, ',', '.') }}
                                         </p>
@@ -90,24 +90,19 @@
                 <h4 class="text-muted" style="margin-bottom: 50px">produk kami bisa ditemukan di</h4>
                 <div class="row mt-2 gambaronline">
                     <div class="col-md-3">
-                        <img src="{{ asset('img/grabfood.png') }}" alt="">
+                        <img class="img-fluid" src="{{ asset('img/grabfood.png') }}" alt="">
                     </div>
                     <div class="col-md-3">
-                        <img src="{{ asset('img/maxim.png') }}" alt="">
+                        <img class="img-fluid" src="{{ asset('img/maxim.png') }}" alt="">
                     </div>
                     <div class="col-md-3">
-                        <img src="{{ asset('img/gofood.png') }}" alt="">
+                        <img class="img-fluid" src="{{ asset('img/gofood.png') }}" alt="">
                     </div>
                     <div class="col-md-3">
-                        <img src="{{ asset('img/shopee-food.png') }}" alt="">
+                        <img class="img-fluid" src="{{ asset('img/shopee-food.png') }}" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<!-- Video Banner Section Start -->
-<div class="video-section section-padding bg-cover">
-
-</div>

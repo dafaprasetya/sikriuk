@@ -1,10 +1,10 @@
-<section class="faq" id="faq">
+<section class="section-padding" id="faq">
     <div class="container">
         <div class="section-title text-center wow fadeInUp" data-wow-delay=".3s">
             <span class="wow fadeInUp">FAQ</span>
-            <h3 class="wow fadeInUp" data-wow-delay=".3s">
+            <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">
                 Pertanyaan Umum Tentang Kemitraan Sikriuk
-            </h3>
+            </h2>
         </div>
         <div class="row">
             @foreach ($faq as $faqs)

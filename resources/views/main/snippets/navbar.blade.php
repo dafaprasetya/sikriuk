@@ -1,3 +1,4 @@
+
 <!-- Offcanvas Area Start -->
 <div class="fix-area">
     <div class="offcanvas__info">
@@ -6,7 +7,7 @@
                 <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                     <div class="offcanvas__logo">
                         <a href="{{ route('home') }}">
-                        <img src="{{ asset('img/logo/Logo_IKI-besar.png') }}" alt="logo">
+                        <img src="{{ asset('img/logo/LOGO SKK.png') }}" alt="logo">
                         </a>
                     </div>
                     <div class="offcanvas__close">
@@ -73,72 +74,121 @@
 <div class="offcanvas__overlay"></div>
 
 <!-- Header Area Start -->
-<header>
-    <div class="header-top">
 
-    </div>
-    <div id="header-sticky" class="header-4">
-        <div class="container">
-            <div class="mega-menu-wrapper">
-                <div class="header-main">
-                    <div class="logo-left">
+<!-- Header Area Start -->
+<header id="" class="header-2 style-6">
+    <div class="container">
+        <div class="mega-menu-wrapper">
+            <div class="header-main">
+                <div class="logo">
+                    <a href="{{ route('home') }}" class="header-logo">
+                        <img src="{{ asset('img/logo/logo-2.png') }}" alt="logo-img">
+                    </a>
+                </div>
 
-                        <a href="index.html" class="logo-1">
-                        <img src="{{ asset('img/logo/Logo_IKI.png') }}" alt="logo-img">
-                        </a>
-                        <a href="index.html" class="logo-2">
-                        <img src="{{ asset('img/logo/Logo_IKI.png') }}" alt="logo-img">
-                        </a>
-                    </div>
-                    <div class="header-left {{ Route::is('home') ? 'header-left' : 'header-right d-flex justify-content-end align-items-center' }}">
-                        <div class="mean__menu-wrapper d-none d-lg-block">
-                            <div class="main-menu">
-                                <nav id="mobile-menu">
-                                    <ul>
-                                        <li class="active">
-                                            <a href="{{ route('home') }}" style="{{ Route::is('home') ? 'color:#FFB936;' : '' }}">
-                                            Home
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('profile') }}" style="{{ Route::is('profile') ? 'color:#FFB936;' : '' }}">
-                                            Profil
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('menumain') }}" style="{{ Route::is('menumain') ? 'color:#FFB936;' : '' }}">
-                                            Menu
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('kemitraan') }}" style="{{ Route::is('kemitraan') ? 'color:#FFB936;' : '' }}">
-                                            Kemitraan
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('blogmain') }}" style="{{ Route::is('blogmain') || Route::is('blogDetail') ? 'color:#FFB936;' : '' }}">Blog</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                                <!-- for wp -->
-                            </div>
+                <div class="header-right d-flex justify-content-end align-items-center">
+                    <div class="mean__menu-wrapper d-none d-lg-block">
+                        <div class="main-menu">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li class="active">
+                                        <a href="{{ route('home') }}" style="{{ Route::is('home') ? 'color:#fddd00;' : '' }}">
+                                        Home
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('profile') }}" style="{{ Route::is('profile') ? 'color:#fddd00;' : '' }}">
+                                        Profil
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('menumain') }}" style="{{ Route::is('menumain') ? 'color:#fddd00;' : '' }}">
+                                        Menu
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('kemitraan') }}" style="{{ Route::is('kemitraan') ? 'color:#fddd00;' : '' }}">
+                                        Kemitraan
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('blogmain') }}" style="{{ Route::is('blogmain') || Route::is('blogDetail') ? 'color:#fddd00;' : '' }}">Blog</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!-- for wp -->
                         </div>
                     </div>
-
-                    <div class="header-right d-flex justify-content-end align-items-center">
-
-                        <div class="header-button">
-                            <a href="#joinmitra" class="theme-btn bg-red-2">Gabung Mitra Sekarang</a>
-                        </div>
-                        <div class="header__hamburger d-xl-block my-auto">
-                            <div class="sidebar__toggle">
-                                <div class="header-bar">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
+                    <div class="header__hamburger d-lg-none">
+                        <div class="sidebar__toggle">
+                            <i class="far fa-bars" style="color: white"></i>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </header>
+<!-- SECTION PROMO -->
+<section class="hero-section">
+    <div class="swiper hero-slider">
+        <div class="swiper-wrapper">
+            <!-- START PROMOOO -->
+            <div class="swiper-slide">
+                <div class="hero-2 bg-cover" style="background-image: url('{{ asset('foodking/assets/img/hero/hero-bg-2.jpg') }}');">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6" data-animation="fadeInUp" data-delay="1.3s">
+                                <img class="img-fluid" src="{{ asset('img/Home (SAMPING SLOGAN).png') }}" alt="shape-img">
+                            </div>
+                            <div class="col-xl-6 d-flex justify-content-center align-items-center">
+                                <div class="hero-content text-start">
+                                    <h3 class="wow fadeInUp lalitfont" style="color: #fddd00" data-wow-delay=".3s">{{ $about->namapt }}</h3>
+                                    <h1 class="wow fadeInUp lalitfont" data-wow-delay=".5s">{{ $about->nama }}</h1>
+                                    <h2 class="wow fadeInUp lalitfont" style="color: #fddd00" data-wow-delay=".7s">{{ $about->moto }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @foreach ($promo as $promos)
+            <div class="swiper-slide">
+                <div class="hero-2 bg-cover" style="background-image: url('{{ asset('foodking/assets/img/hero/hero-bg-2.jpg') }}');">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6" data-animation="fadeInUp" data-delay="1.3s">
+                                <img class="img-thumbnail" src="{{ asset('storage/promo_image/'.$promos->gambar) }}" alt="shape-img">
+                            </div>
+                            <div class="col-xl-6 d-flex justify-content-center align-items-center">
+                                <div class="hero-content">
+                                    <h1 class="lalitfont" data-animation="fadeInUp" data-delay="1.5s">
+                                        {{ $promos->nama }}
+                                    </h1>
+                                    <div class="lalitfont" data-animation="fadeInUp" data-delay="1.7s" class="price-text">
+                                        <h3>{{ $promos->deskripsi }}</h3>
+                                    </div>
+                                    <div class="hero-button">
+                                        <a href="#joinmitra" class="theme-btn" data-animation="fadeInUp" data-delay="1.9s">
+                                        <span class="button-content-wrapper d-flex align-items-center">
+                                        <span class="button-text">Gabung Mitra Sekarang</span>
+                                        </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+
+            <!-- END PROMOOO -->
+
+        </div>
+
+    </div>
+    <div class="swiper-dot text-center pt-5">
+        <div class="dot"></div>
+    </div>
+
+</section>
+

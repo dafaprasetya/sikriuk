@@ -11,7 +11,7 @@
         <!-- ======== Page title ============ -->
         <title>{{ $about->nama }} | {{ $title }}</title>
         <!--<< Favcion >>-->
-        <link rel="shortcut icon" href="{{ asset('img/logo/Logo_IKI-besar.png') }}">
+        <link rel="shortcut icon" href="{{ asset('img/logo/LOGO SKK 2.png') }}">
         <!--<< Bootstrap min.css >>-->
         <link rel="stylesheet" href="{{ asset('foodking/assets/css/bootstrap.min.css') }}">
         <!--<< Font Awesome.css >>-->

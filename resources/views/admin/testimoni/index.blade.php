@@ -175,7 +175,7 @@
                                 <div class="col-sm-12">
                                     <div class="mb-20">
                                         <label for="gambar" class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                            Gambar <span class="text-danger-600">*</span>
+                                            Foto <span class="text-danger-600">*</span>
                                         </label>
                                         <div class="imagePreview d-flex justify-content-center align-items-center">
                                             <img id="previewImg" class="rounded" style="display: none; max-width: 200px; height: auto;">
@@ -208,7 +208,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="mb-20">
-                                        <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Nama <span class="text-danger-600">*</span></label>
+                                        <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Pekerjaan <span class="text-danger-600">*</span></label>
                                         <input type="text" name="pekerjaan" class="form-control radius-8" id="pekerjaan" placeholder="Masukan pekerjaan" value="">
                                     </div>
                                 </div>

@@ -70,20 +70,20 @@
     <div class="container">
         <div class="about-wrapper style-2">
             <div class="row align-items-center justify-content-between">
-                <div class="col-xl-6 col-lg-6">
+                <div class="col-lg-12">
                     <div class="about-content">
                         <div class="section-title">
                             <span class="wow fadeInUp">Kemitraan</span>
-                            <h2 class="wow fadeInUp" data-wow-delay=".3s">
+                            <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">
                                 Mari bergabung bersama kami
                             </h2>
-                            <h3 class="wow fadeInUp mt-2 merah" data-wow-delay=".5s">keunggulan mitra</h3>
+                            <h3 class="wow fadeInUp mt-2 merah lalitfont" data-wow-delay=".5s">keunggulan mitra</h3>
                         </div>
                         <div class="container">
                             <p class="wow fadeInUp" data-wow-delay=".5s">
                                 <ul style="list-style-type: disc;">
                                     @foreach ($keunggulan as $keunggulans)
-                                    <li class="wow fadeInUp" data-wow-delay=".5s"><b>{{ $keunggulans->nama }}</b>:{{ $keunggulans->deskripsi }}</li>
+                                    <li class="wow fadeInUp popinsfont" data-wow-delay=".5s"><b>{{ $keunggulans->nama }}</b>:{{ $keunggulans->deskripsi }}</li>
 
                                     @endforeach
                                 </ul>
@@ -96,55 +96,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-xl-5 col-lg-6 mt-5 mt-lg-0">
-                    <div class="about-content">
-                        @if ($proposal)
-                        <div id="pdf-container" style="width: 100%; height: 600px; border: 1px solid #ccc; overflow-y: auto;"></div>
-                        @endif
-                    </div>
-                </div>
-
-                <!-- PDF.js CDN -->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-
-                <script>
-                    document.addEventListener("DOMContentLoaded", function () {
-                        const url = "{{ asset('storage/proposal/'.$proposal->file) }}";
-                        const pdfContainer = document.getElementById("pdf-container");
-
-                        const renderPDF = async (url) => {
-                            const loadingTask = pdfjsLib.getDocument(url);
-                            const pdf = await loadingTask.promise;
-
-                            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-                                const page = await pdf.getPage(pageNum);
-
-                                // Hitung skala agar pas lebar container
-                                const containerWidth = pdfContainer.clientWidth;
-                                const unscaledViewport = page.getViewport({ scale: 1 });
-                                const scale = containerWidth / unscaledViewport.width;
-
-                                const viewport = page.getViewport({ scale: scale });
-                                const canvas = document.createElement("canvas");
-                                const context = canvas.getContext("2d");
-
-                                canvas.height = viewport.height;
-                                canvas.width = viewport.width;
-                                canvas.style.display = "block";
-                                canvas.style.margin = "0 auto 20px";
-
-                                await page.render({ canvasContext: context, viewport: viewport }).promise;
-
-                                pdfContainer.appendChild(canvas);
-                            }
-                        };
-
-                        renderPDF(url);
-                    });
-                </script>
-
-
             </div>
         </div>
     </div>
@@ -165,12 +116,12 @@
             </div>
             <div class="col-sm-6">
                 <div class="container">
-                    <h2 class="mb-2">{{ $gerobaks->nama }}</h2>
-                    <p class="mb-1">Harga mulai dari Rp. {{ number_format($gerobaks->harga, 0, ',', '.') }}</p>
-                    <h3>Benefit</h3>
+                    <h2 class="mb-2 lalitfont">{{ $gerobaks->nama }}</h2>
+                    <p class="mb-1 popinsfont">Harga mulai dari Rp. {{ number_format($gerobaks->harga, 0, ',', '.') }}</p>
+                    <h3 class="popinsfont">Benefit</h3>
                     <ul class="benefitgerobak">
                     @foreach ($gerobaks->benefit as $benefit)
-                        <li class="mt-2"><strong>{{ $benefit->benefit }}</strong></li>
+                        <li class="mt-2 popinsfont"><strong>{{ $benefit->benefit }}</strong></li>
                     @endforeach
                     </ul>
                     <div class="mt-3">
@@ -201,7 +152,7 @@
     <div class="container">
         <div class="section-title text-center">
             <span class="wow fadeInUp">frequently ask question</span>
-            <h2 class="wow fadeInUp" data-wow-delay=".3s">Frequently ask question</h2>
+            <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">Frequently ask question</h2>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -212,12 +163,12 @@
 
                             <div class="accordion-item">
                                 <h4 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq{{ $faqs->id }}" aria-expanded="false" aria-controls="faq{{ $faqs->id }}">
+                                    <button class="accordion-button collapsed popinsfont" type="button" data-bs-toggle="collapse" data-bs-target="#faq{{ $faqs->id }}" aria-expanded="false" aria-controls="faq{{ $faqs->id }}">
                                     {{ $faqs->tanya }}
                                     </button>
                                 </h4>
                                 <div id="faq{{ $faqs->id }}" class="accordion-collapse collapse" data-bs-parent="#accordion">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body popinsfont">
                                         {{ $faqs->jawab }}
                                     </div>
                                 </div>
@@ -234,7 +185,7 @@
     <div class="swiper gallery-slider">
         <div class="section-title text-center">
             <span class="wow fadeInUp">persyaratan</span>
-            <h2 class="wow fadeInUp" data-wow-delay=".3s">Syarat Menjadi Mitra Sikriuk</h2>
+            <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">Syarat Menjadi Mitra Sikriuk</h2>
         </div>
         <div class="swiper-wrapper">
             <!-- START LOOPING LANGKAH LANGKAH MENJADI MITRA -->

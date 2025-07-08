@@ -8,7 +8,7 @@
         <div class="about-food-wrapper bg-cover" style="background-image: url('foodking/assets/img/shape/about-food-bg.png');">
             <div class="section-title text-center">
                 <span class="wow fadeInUp">menu</span>
-                <h2 class="wow fadeInUp" data-wow-delay=".3s">
+                <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">
                     Menu {{ $about->nama }}
                 </h2>
             </div>
@@ -38,7 +38,7 @@
                                         <img style="width: 188px; height: 181px;" src="{{ asset('storage/product_image/'.$menu->gambar) }}" alt="food-img">
                                     </div>
                                     <div class="food-content">
-                                        <h3><a href="#">{{ $menu->nama }}</a></h3>
+                                        <h3 class="lalitfont"><a href="#">{{ $menu->nama }}</a></h3>
                                         <h4><a href="#">{{ $menu->deskripsi }}</a></h4>
                                         <p>
                                             Rp. {{ number_format($menu->harga, 0, ',', '.') }}
@@ -68,7 +68,7 @@
                                         <img style="width: 188px; height: 181px;" src="{{ asset('storage/product_image/'.$menus->gambar) }}" alt="food-img">
                                     </div>
                                     <div class="food-content">
-                                        <h3><a href="#">{{ $menus->nama }}</a></h3>
+                                        <h3 class="lalitfont"><a href="#">{{ $menus->nama }}</a></h3>
                                         <h4><a href="#">{{ $menu->deskripsi }}</a></h4>
                                         <p>
                                             Rp. {{ number_format($menus->harga, 0, ',', '.') }}
