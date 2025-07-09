@@ -1,4 +1,4 @@
-<div class="fix mt-5">
+<div class="fix mt-5 wow fadeInUp" data-wow-delay="1s">
     <div class="marquee-wrapper text-slider">
         <div class="marquee-inner to-left">
             <ul class="marqee-list d-flex">

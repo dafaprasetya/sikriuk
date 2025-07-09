@@ -1,6 +1,7 @@
 <section class="section-padding" id="joinmitra">
     <div class="container">
         <div class="section-title text-center">
+            <span class="wow fadeInUp lalitfont">Form Pendaftaran Calon Mitra</span>
             <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">
                 Form Pendaftaran Mitra Online
             </h2>

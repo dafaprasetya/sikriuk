@@ -1,105 +1,39 @@
-<!-- ASECTION MENU -->
-<section class="section-padding" >
+<section class="grilled-banner fix section-padding bg-cover">
+    <div class="offer-shape float-bob-y">
+    </div>
+    <div class="wow fadeInUp spicy-shape" data-wow-delay="1s">
+        <h3 class="merah lalitfont text-center">Hanya di<br>Si Kriuk Krispy!</h3>
+        {{-- <img src="assets/img/shape/spicy.png" alt="shape-img"> --}}
+    </div>
+    <div class="tomato-shape">
+        <img src="{{ asset("foodking/assets/img/shape/tomato-shape-2.png") }}" alt="shape-img">
+    </div>
     <div class="container">
-        <div class="about-food-wrapper bg-cover" style="background-image: url('foodking/assets/img/shape/about-food-bg.png');">
-            <div class="section-title text-center">
-                <span class="wow fadeInUp ">menu</span>
-                <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">
-                    Menu {{ $about->nama }}
-                </h2>
-            </div>
-
-            @if ($katmenu->count() >= 2)
-            <ul class="nav justify-content-center">
-                @foreach ($katmenu as $kategori)
-                <li class="nav-item wow fadeInUp" data-wow-delay=".3s">
-                    <a href="#{{ $kategori->nama }}" data-bs-toggle="tab" class="nav-link">
-                        {{ $kategori->nama }}
-                    </a>
-                </li>
-                @endforeach
-            </ul>
-
-            <div class="tab-content">
-                @foreach ($katmenu as $kategori)
-                <div id="{{ $kategori->nama }}" class="tab-pane fade show @if($loop->first) active @endif">
-
-                    <div class="description-items">
-                        <div class="row">
-                            <!-- START LOOPING MENU CAT 1 -->
-                            @foreach ($kategori->product->slice(0, 4) as $menu)
-                            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                                <div class="about-food-items center">
-                                    <div class="food-image">
-                                        <img style="width: 188px; height: 181px;" src="{{ asset('storage/product_image/'.$menu->gambar) }}" alt="food-img">
-                                    </div>
-                                    <div class="food-content">
-                                        <h3><a href="{{ route('menumain') }}" class="lalitfont">{{ $menu->nama }}</a></h3>
-                                        <h4><a href="{{ route('menumain') }}" >{{ $menu->deskripsi }}</a></h4>
-                                        <p>
-                                            Rp. {{ number_format($menu->harga, 0, ',', '.') }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                            <!-- END LOOPING MENU -->
-
+        <div class="grilled-wrapper">
+            <div class="row align-items-center">
+                <div class="col-xl-6 col-lg-6 mt-5 mt-lg-0 wow fadeInUp" data-wow-delay="1s">
+                    <div class="grilled-image">
+                        <img src="{{ asset('img/Home (MENU)_.png') }}" alt="grilled-img">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="grilled-content">
+                        <span class="wow fadeInUp lalitfont merah">MENU</span>
+                        <h2 class="wow fadeInUp lalitfont" data-wow-delay="1s">
+                            MENU <span style="color: #dc000f">{{ $about->nama }}</span>
+                        </h2>
+                        <h3 class="wow fadeInUp" data-wow-delay="1s">
+                            <a href="{{ route('menumain') }}">
+                            Rasakan Kenikmatan Makanan Kami
+                            </a>
+                        </h3>
+                        <div class="grilled-button wow fadeInUp" data-wow-delay="1s">
+                            <a href="{{ route('menumain') }}" class="theme-btn">
+                                <span class="button-content-wrapper d-flex align-items-center">
+                                    <span class="button-text popinsfont">Lihat Menu</span>
+                                </span>
+                            </a>
                         </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            @else
-            <div class="tab-content">
-                <div id="makanan" class="tab-pane fade show active">
-                    <div class="description-items">
-                        <div class="row">
-                            <!-- START LOOPING MENU CAT 1 -->
-                            @foreach ($menu->slice(0, 4) as $menus)
-
-                            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                                <div class="about-food-items center">
-                                    <div class="food-image">
-                                        <img style="width: 188px; height: 181px;" src="{{ asset('storage/product_image/'.$menus->gambar) }}" alt="food-img">
-                                    </div>
-                                    <div class="food-content">
-                                        <h3><a href="{{ route('menumain') }}">{{ $menus->nama }}</a></h3>
-                                        <h4><a href="{{ route('menumain') }}">{{ $menus->deskripsi }}</a></h4>
-                                        <p>
-                                            Rp. {{ number_format($menus->harga, 0, ',', '.') }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                            <!-- END LOOPING MENU -->
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            @endif
-            <div class="row mt-6" style="margin-top: 80px">
-                <div class="col-sm-12">
-                        <a href="{{ route('menumain') }}" class="theme-btn btn-sm wow style-line-height fadeInUp w-100" data-wow-delay=".5s">Lihat menu lengkap {{ $about->nama }}</a>
-                </div>
-            </div>
-            <hr>
-            <div class="text-center produkonline wow style-line-height fadeInUp w-100" data-wow-delay=".5s">
-                <h4 class="text-muted" style="margin-bottom: 50px">produk kami bisa ditemukan di</h4>
-                <div class="row mt-2 gambaronline">
-                    <div class="col-md-3">
-                        <img class="img-fluid" src="{{ asset('img/grabfood.png') }}" alt="">
-                    </div>
-                    <div class="col-md-3">
-                        <img class="img-fluid" src="{{ asset('img/maxim.png') }}" alt="">
-                    </div>
-                    <div class="col-md-3">
-                        <img class="img-fluid" src="{{ asset('img/gofood.png') }}" alt="">
-                    </div>
-                    <div class="col-md-3">
-                        <img class="img-fluid" src="{{ asset('img/shopee-food.png') }}" alt="">
                     </div>
                 </div>
             </div>

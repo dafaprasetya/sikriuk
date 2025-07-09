@@ -135,14 +135,14 @@
 
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-6" data-animation="fadeInUp" data-delay="1.3s">
+                            <div class="col-xl-6" data-animation="fadeInUp" data-delay="1s">
                                 <img class="img-fluid" src="{{ asset('img/Home (SAMPING SLOGAN).png') }}" alt="shape-img">
                             </div>
-                            <div class="col-xl-6 d-flex justify-content-center align-items-center">
+                            <div class="col-xl-6 d-flex justify-content-center align-items-center" data-animation="fadeInUp" data-delay="1s">
                                 <div class="hero-content text-start">
-                                    <h3 class="wow fadeInUp lalitfont" style="color: #fddd00" data-wow-delay=".3s">{{ $about->namapt }}</h3>
-                                    <h1 class="wow fadeInUp lalitfont" data-wow-delay=".5s">{{ $about->nama }}</h1>
-                                    <h2 class="wow fadeInUp lalitfont" style="color: #fddd00" data-wow-delay=".7s">{{ $about->moto }}</h2>
+                                    <h3 class="wow fadeInUp lalitfont" style="color: #fddd00" data-wow-delay="1s">{{ $about->namapt }}</h3>
+                                    <h1 class="wow fadeInUp lalitfont" data-wow-delay="1s">{{ $about->nama }}</h1>
+                                    <h2 class="wow fadeInUp lalitfont" style="color: #fddd00" data-wow-delay="1s">{{ $about->moto }}</h2>
                                 </div>
                             </div>
                         </div>
@@ -155,19 +155,19 @@
 
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-6" data-animation="fadeInUp" data-delay="1.3s">
+                            <div class="col-xl-6" data-animation="fadeInUp" data-delay="1s">
                                 <img class="img-thumbnail" src="{{ asset('storage/promo_image/'.$promos->gambar) }}" alt="shape-img">
                             </div>
                             <div class="col-xl-6 d-flex justify-content-center align-items-center">
                                 <div class="hero-content">
-                                    <h1 class="lalitfont" data-animation="fadeInUp" data-delay="1.5s">
+                                    <h1 class="lalitfont" data-animation="fadeInUp" data-delay="1s">
                                         {{ $promos->nama }}
                                     </h1>
-                                    <div class="lalitfont" data-animation="fadeInUp" data-delay="1.7s" class="price-text">
+                                    <div class="lalitfont" data-animation="fadeInUp" data-delay="1s" class="price-text">
                                         <h3>{{ $promos->deskripsi }}</h3>
                                     </div>
                                     <div class="hero-button">
-                                        <a href="#joinmitra" class="theme-btn" data-animation="fadeInUp" data-delay="1.9s">
+                                        <a href="#joinmitra" class="theme-btn" data-animation="fadeInUp" data-delay="1s">
                                         <span class="button-content-wrapper d-flex align-items-center">
                                         <span class="button-text">Gabung Mitra Sekarang</span>
                                         </span>

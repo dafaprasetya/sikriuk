@@ -68,8 +68,6 @@
 @include('main.snippets.navbar2')
 @endif
 @include('main.snippets.jargon')
-<div class="container">
-
     @include('main.snippets.tetangperusahaan')
     @include('main.snippets.menu')
     @include('main.snippets.kemitraanshow')
@@ -85,5 +83,4 @@
     @include('main.lokasi.lokasi')
     @include('main.sosmed.sosmed')
     @include('main.snippets.footer')
-</div>
 @endsection

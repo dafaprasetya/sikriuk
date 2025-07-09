@@ -132,19 +132,19 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="hero-image wow fadeInUp" data-wow-delay=".4s">
+            <div class="col-lg-6 ">
+                <div class="hero-image wow fadeInLeft" data-wow-delay="1s">
                     <img src="{{ asset('img/Home (SAMPING SLOGAN).png') }}" alt="img">
                     <div class="ganjelanheader"></div>
                 </div>
             </div>
-            <div class="col-lg-6 mt-5">
-                <div class="hero-content text-start">
-                    <h3 class="wow fadeInUp lalitfont" data-wow-delay=".3s">{{ $about->namapt }}</h3>
-                    <h1 class="wow fadeInUp lalitfont" data-wow-delay=".5s">{{ $about->nama }}</h1>
-                    <h2 class="wow fadeInUp lalitfont" data-wow-delay=".7s">{{ $about->moto }}</h2>
+            <div class="col-lg-6">
+                <div class="hero-content sloganatas">
+                    <h3 class="wow fadeInRight lalitfont" data-wow-delay="1s">{{ $about->namapt }}</h3>
+                    <h1 class="wow fadeInRight lalitfont" data-wow-delay="1s">{{ $about->nama }}</h1>
+                    <h2 class="wow fadeInRight lalitfont" data-wow-delay="1s">{{ $about->moto }}</h2>
                 </div>
-                <div class="hero-image wow fadeInUp" data-wow-delay=".4s">
+                <div class="hero-image wow fadeInUp" data-wow-delay="1s">
                     {{-- <img src="{{ asset('foodking/assets/img/hero-6/hero/02.png') }}" alt="img"> --}}
                     <div class="ganjelanheader"></div>
                 </div>

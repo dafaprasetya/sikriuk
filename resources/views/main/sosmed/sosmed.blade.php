@@ -1,7 +1,7 @@
 <section id="lokasi" class="section-padding" data-wow-delay=".3s" >
     <div class="container">
         <div class="section-title text-center">
-            <span class="wow fadeInUp">SOSIAL MEDIA</span>
+            <span class="wow fadeInUp lalitfont">SOSIAL MEDIA</span>
             <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">
                 Follow Sosmed Sikriuk Untuk Mendapatkan Informasi Terbaru!
             </h2>

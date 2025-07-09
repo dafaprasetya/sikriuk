@@ -1,7 +1,7 @@
 <section id="lokasi" class="section-padding" data-wow-delay=".3s" >
     <div class="container">
         <div class="section-title text-center">
-            <span class="wow fadeInUp">Lokasi</span>
+            <span class="wow fadeInUp lalitfont">Lokasi</span>
             <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">
                 Mau ngerasain sikriuk?, yuk cek sikriuk disekitarmu
             </h2>

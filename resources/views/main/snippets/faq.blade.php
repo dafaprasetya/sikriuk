@@ -1,7 +1,7 @@
 <section class="section-padding" id="faq">
     <div class="container">
         <div class="section-title text-center wow fadeInUp" data-wow-delay=".3s">
-            <span class="wow fadeInUp">FAQ</span>
+            <span class="wow fadeInUp lalitfont">FAQ</span>
             <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">
                 Pertanyaan Umum Tentang Kemitraan Sikriuk
             </h2>
