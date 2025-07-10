@@ -116,7 +116,7 @@
     </div>
 </section> --}}
 <section class="food-category-section fix section-padding section-bg">
-    <div class="container">
+    <div class="container" >
         <div class="row">
             <div class="col-md-7 col-9">
                 <div class="section-title">

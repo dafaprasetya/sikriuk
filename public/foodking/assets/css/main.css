@@ -696,7 +696,7 @@ input.main-search-input::placeholder {
 }
 
 .section-bg {
-  background-color: var(--bg);
+  background-color: white;
 }
 
 .section-bg-2 {
