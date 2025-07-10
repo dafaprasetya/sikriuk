@@ -182,12 +182,12 @@
                         </div>
                         <div class="catagory-product-content text-center">
                             <div class="catagory-product-icon">
-                                {{-- <img src="{{ asset('foodking/assets/img/shape/food-shape.svg') }}" alt="shape-text"> --}}
                                 <h4 class="text-center" style="color: white">Mulai Dari<br>Rp.100.000.000,-</h4>
+                                {{-- <img src="{{ asset('foodking/assets/img/shape/food-shape.svg') }}" alt="shape-text"> --}}
                             </div>
                             <h3>
                                 <a href="{{ route('kemitraan') }}">
-                                    Resto 2
+                                    Resto 1
                                 </a>
                             </h3>
                         </div>
