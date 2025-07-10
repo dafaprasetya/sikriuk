@@ -33,14 +33,14 @@
         </div>
     </div>
 </section> --}}
-<section class="food-comboo-section fix bg-cover section-padding" style="background-image: url( {{ asset('foodking/assets/img/bg-image/bg.jpgs') }});">
+{{-- <section class="food-comboo-section fix bg-cover section-padding" style="background-image: url( {{ asset('foodking/assets/img/bg-image/bg.jpgs') }});">
     <div class="drinks-shape">
-        <img src="{{ asset('foodking/assets/img/shape/drinkss.png') }}" alt="shape-img">
+        <img src="{{ asset('foodking/assets/img/shape/drinks.png') }}" alt="shape-img">
     </div>
     <div class="container">
         <div class="comboo-wrapper">
             <div class="row align-items-center">
-                <div class="col-xl-6">
+                <div class="col-xl-12">
                     <div class="food-comboo-content">
                         <div class="section-title centeresponsip">
                             <span class="wow fadeInUp lalitfont">KEMITRAAN</span>
@@ -102,7 +102,99 @@
                         </div>
 
                     </div>
+                    <div class="col-xl-6">
+                    <div class="about-content">
+                        <div class="container">
+
+                            <img class="img-fluid" src="{{ asset('img/STORE DEPAN 2.png') }}" alt="grilled-img">
+                        </div>
+                    </div>
                 </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> --}}
+<section class="food-category-section fix section-padding section-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-9">
+                <div class="section-title">
+                    <span class="wow fadeInUp lalitfont">KEMITRAAN</span>
+                    <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">Bergabung bersama kami <span>dan</span> miliki resto sendiri</h2>
+                </div>
+            </div>
+            <div class="col-md-5 ps-0 col-3 text-end wow fadeInUp" data-wow-delay=".5s">
+                <div class="array-button">
+                    <button class="array-prev"><i class="far fa-long-arrow-left"></i></button>
+                    <button class="array-next"><i class="far fa-long-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="swiper food-catagory-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="catagory-product-card bg-cover" style="background-image: url('assets/img/shape/catagory-card-shape.jpg');">
+                        <h5>Tampilan 1</h5>
+                        <div class="catagory-product-image text-center">
+                            <a href="{{ route('kemitraan') }}">
+                                <img src="{{ asset('img/STORE DEPAN.png') }}" class="img-fluid" alt="product-img">
+                                <div class="decor-leaf">
+                                    <img src='{{ asset("foodking/assets/img/shape/decor-leaf.svg") }}' alt="shape-img">
+                                </div>
+                                <div class="decor-leaf-2">
+                                    <img src='{{ asset("foodking/assets/img/shape/decor-leaf-2.svg") }}' alt="shape-img">
+                                </div>
+                                <div class="burger-shape">
+                                    <img src="{{ asset('foodking/assets/img/shape/burger-shape.png') }}" alt="shape-img">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="catagory-product-content text-center">
+                            <div class="catagory-product-icon">
+                                <h4 class="text-center" style="color: white">Mulai Dari<br>Rp.100.000.000,-</h4>
+                                {{-- <img src="{{ asset('foodking/assets/img/shape/food-shape.svg') }}" alt="shape-text"> --}}
+                            </div>
+                            <h3>
+                                <a href="{{ route('kemitraan') }}">
+                                    Resto 1
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="catagory-product-card bg-cover" style="background-image: url('assets/img/shape/catagory-card-shape.jpg');">
+                        <h5>Tampilan 2</h5>
+                        <div class="catagory-product-image text-center">
+                            <a href="{{ route('kemitraan') }}">
+                                <img src="{{ asset('img/STORE DEPAN 2.png') }}" class="img-fluid" alt="product-img">
+                                <div class="decor-leaf">
+                                    <img src='{{ asset("foodking/assets/img/shape/decor-leaf.svg") }}' alt="shape-img">
+                                </div>
+                                <div class="decor-leaf-2">
+                                    <img src='{{ asset("foodking/assets/img/shape/decor-leaf-2.svg") }}' alt="shape-img">
+                                </div>
+                                <div class="burger-shape">
+                                    <img src="{{ asset('foodking/assets/img/shape/burger-shape.png') }}" alt="shape-img">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="catagory-product-content text-center">
+                            <div class="catagory-product-icon">
+                                {{-- <img src="{{ asset('foodking/assets/img/shape/food-shape.svg') }}" alt="shape-text"> --}}
+                                <h4 class="text-center" style="color: white">Mulai Dari<br>Rp.100.000.000,-</h4>
+                            </div>
+                            <h3>
+                                <a href="{{ route('kemitraan') }}">
+                                    Resto 2
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>

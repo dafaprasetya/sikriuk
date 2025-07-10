@@ -6,11 +6,6 @@
                 <div class="col-xl-5 col-lg-5 wow fadeInUp" data-wow-delay=".7s">
                     <div class="pizza-image">
                         <img class="wow fadeInUp img-fluid" data-wow-delay=".7s" src="{{ asset('storage/banner_image/'.$about->banner) }}" alt="pizza-img">
-                        <div class="wow fadeInUp quate-content" data-wow-delay=".7s">
-                            <h3 class="lalitfont">
-                                {{ $about->moto }}
-                            </h3>
-                        </div>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7 mt-5 mt-lg-0">
