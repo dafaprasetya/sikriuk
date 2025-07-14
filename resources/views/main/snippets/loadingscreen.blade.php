@@ -3,13 +3,6 @@
     <div class="animation-preloader">
         <div class="spinner">
         </div>
-        <div class="txt-loading">
-            @foreach(str_split($about->nama) as $char)
-                <span data-text-preloader="{{ $char }}" class="letters-loading">
-                    {!! $char === ' ' ? '&nbsp;' : $char !!}
-                </span>
-            @endforeach
-        </div>
         <p class="text-center">Loading</p>
     </div>
     <div class="loader">

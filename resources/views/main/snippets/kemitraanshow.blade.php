@@ -121,7 +121,7 @@
             <div class="col-md-7 col-9">
                 <div class="section-title">
                     <span class="wow fadeInUp lalitfont">KEMITRAAN</span>
-                    <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">Bergabung bersama kami <span>dan</span> miliki resto sendiri</h2>
+                    <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">Bergabung bersama kami dan miliki resto sendiri</h2>
                 </div>
             </div>
             <div class="col-md-5 ps-0 col-3 text-end wow fadeInUp" data-wow-delay=".5s">

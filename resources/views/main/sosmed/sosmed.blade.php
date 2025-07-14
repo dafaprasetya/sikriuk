@@ -1,5 +1,5 @@
-<section id="lokasi" class="section-padding" data-wow-delay=".3s" >
-    <div class="container">
+<section id="lokasi" class="section-padding  wow fadeInUp" data-wow-delay=".7s"  >
+    <div class="container wow fadeInUp" data-wow-delay=".7s">
         <div class="section-title text-center">
             <span class="wow fadeInUp lalitfont">SOSIAL MEDIA</span>
             <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">

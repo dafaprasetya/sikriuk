@@ -85,7 +85,7 @@ class MainController extends Controller
             'phone' => 'required',
             'lokasi' => 'required',
             'kota' => 'required',
-            'g-recaptcha-response' => 'required|captcha',
+            // 'g-recaptcha-response' => 'required|captcha',
         ]);
 
         if ($validator->fails()) {
@@ -102,8 +102,16 @@ class MainController extends Controller
         $calon->lokasi = $request->lokasi;
         $calon->kota = $request->kota;
         $calon->save();
+        $data = [
+            'nama' => $request->nama,
+            'nik' => $request->nik,
+            'email' => $request->email,
+            'notelp' => $request->phone,
+            'lokasi' => $request->lokasi,
+            'kota' => $request->kota,
+        ];
 
-        return redirect()->back()->with('success', 'Data Calon Mitra Berhasil Dikirim');
+        return redirect()->back()->with('success', $data);
     }
     public function blogDetail($slug) {
         $blog = Blog::where('slug', $slug)->first();

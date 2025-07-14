@@ -8,7 +8,7 @@
         </div>
         <form action="{{ route('sendCalonMitra') }}" method="POST" class="wow fadeInUp" data-wow-delay=".3s">
             @csrf
-            <div class="row">
+            <div class="row popinsfont">
                 <div class="col-sm-6">
                     <div class="mb-4">
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Nama:</label>

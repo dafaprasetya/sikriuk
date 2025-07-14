@@ -6,7 +6,7 @@
                 Pertanyaan Umum Tentang Kemitraan Sikriuk
             </h2>
         </div>
-        <div class="row">
+        <div class="row popinsfont">
             @foreach ($faq as $faqs)
 
             <div class="col-md-3 mt-2">

@@ -1,13 +1,13 @@
-<section id="lokasi" class="section-padding" data-wow-delay=".3s" >
+<section id="lokasi" class="section-padding wow fadeInUp" data-wow-delay=".7s" >
     <div class="container">
-        <div class="section-title text-center">
+        <div class="section-title text-center wow fadeInUp" data-wow-delay=".7s">
             <span class="wow fadeInUp lalitfont">Lokasi</span>
             <h2 class="wow fadeInUp lalitfont" data-wow-delay=".3s">
                 Mau ngerasain sikriuk?, yuk cek sikriuk disekitarmu
             </h2>
         </div>
-        <div>
-            <img class="img-fluid" src="{{ asset('img/Home (LOKASI)_.png') }}" alt="" srcset="">
+        <div class=" wow fadeInUp" data-wow-delay=".7s">
+            <img class="img-fluid src="{{ asset('img/Home (LOKASI)_.png') }}" alt="" srcset="">
         </div>
         <div class="row mt-3 text-center">
             <div class="col-sm-12">

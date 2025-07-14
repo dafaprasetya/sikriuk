@@ -6,7 +6,7 @@
     <div class="fry-shape">
         <img src="{{ asset('foodking/assets/img/shape/fry-shape-2.png') }}" alt="burger-shape">
     </div>
-    <div class="container">
+    <div class="container popinsfont">
         <div class="footer-widgets-wrapper">
             <div class="row">
                 <div class="col-md-3 wow fadeInUp" data-wow-delay=".2s">
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-xl-4 wow fadeInUp" data-wow-delay=".8s">
                     <div class="single-footer-widget">
                         <div class="widget-head">

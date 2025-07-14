@@ -12113,10 +12113,10 @@ p.sticky-label {
     color: var(--header);
 }
 .merah{
-    color: var(--theme);
+    color: var(--theme) !important;
 }
 .kuning{
-    color: var(--theme3);
+    color: var(--theme3) !important;
 }
 .ganjelanheader{
     height: 200px;
@@ -12135,10 +12135,10 @@ p.sticky-label {
     max-width: 100%;
 }
 .lalitfont{
-    font-family: 'Lilita One';
+    font-family: 'Lilita One' !important;
 }
 .popinsfont{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 .sloganatas{

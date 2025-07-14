@@ -12,7 +12,9 @@
             <path d="M16 8a8 8 0 1 1-16 0 8 8 0 0 1 16 0zM6.97 10.97a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.44 5.53 7.47a.75.75 0 0 0-1.06 1.06l2.5 2.5z"/>
           </svg>
         </div>
-        <h5 class="text-success">Terimakasih Sudah Mendaftar, Tim kami akan menindak lanjuti proses pendaftaran anda</h5>
+        <h5 class="text-success"> Terimakasih Sudah Mendaftar, Tim kami akan menindak lanjuti proses pendaftaran anda</h5>
+        {{-- <li>Nama: {{ session('success')['nama'] }}</li>
+        <li>Email: {{ session('success')['email'] }}</li> --}}
         <div class="mt-3">
             <button type="button" class="btn btn-success" data-bs-dismiss="modal">Tutup</button>
         </div>
@@ -24,6 +26,19 @@
       var myModal = new bootstrap.Modal(document.getElementById('successModal'));
       myModal.show();
     });
+    const nama = "{{ session('success')['nama'] }}";
+    const kota = "{{ session('success')['kota'] }}";
+    const lokasi = "{{ session('success')['lokasi'] }}";
+    const notelp = [
+        @foreach ($about->phone as $phone)
+            "{{ $phone->phone }}",
+        @endforeach
+    ];
+    const message = `Halo saya ${nama}, tertarik untuk menjadi mitra di kota ${kota}. Alamat lengkapnya ${lokasi}`;
+    const randomNotelp = notelp[Math.floor(Math.random() * notelp.length)];
+    console.log(randomNotelp);
+    const url = `https://wa.me/${randomNotelp}/?text=${encodeURIComponent(message)}`;
+    window.location.href = url;
 </script>
 @endif
 @if($errors->any())
@@ -67,7 +82,7 @@
 @else
 @include('main.snippets.navbar2')
 @endif
-@include('main.snippets.jargon')
+{{-- @include('main.snippets.jargon') --}}
     @include('main.snippets.tetangperusahaan')
     @include('main.snippets.menu')
     @include('main.snippets.kemitraanshow')
@@ -83,4 +98,5 @@
     @include('main.lokasi.lokasi')
     @include('main.sosmed.sosmed')
     @include('main.snippets.footer')
+
 @endsection

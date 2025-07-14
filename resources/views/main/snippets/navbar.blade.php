@@ -1,6 +1,6 @@
 
 <!-- Offcanvas Area Start -->
-<div class="fix-area">
+<div class="fix-area popinsfont">
     <div class="offcanvas__info">
         <div class="offcanvas__wrapper">
             <div class="offcanvas__content">
@@ -140,9 +140,9 @@
                             </div>
                             <div class="col-xl-6 d-flex justify-content-center align-items-center" data-animation="fadeInUp" data-delay="1s">
                                 <div class="hero-content text-start">
-                                    <h3 class="wow fadeInUp lalitfont" style="color: #fddd00" data-wow-delay="1s">{{ $about->namapt }}</h3>
-                                    <h1 class="wow fadeInUp lalitfont" data-wow-delay="1s">{{ $about->nama }}</h1>
-                                    <h2 class="wow fadeInUp lalitfont" style="color: #fddd00" data-wow-delay="1s">{{ $about->moto }}</h2>
+                                    <h3 class="wow fadeInRight lalitfont popinsfont" style="color: white" data-wow-delay="1s">{{ $about->namapt }}</h3>
+                                    <h1 class="wow fadeInRight lalitfont" style="color: #fddd00" data-wow-delay="1s">{{ $about->nama }}</h1>
+                                    <h2 class="wow fadeInRight lalitfont" style="color: white" data-wow-delay="1s">{{ $about->moto }}</h2>
                                 </div>
                             </div>
                         </div>

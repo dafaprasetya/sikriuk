@@ -140,9 +140,9 @@
             </div>
             <div class="col-lg-6">
                 <div class="hero-content sloganatas">
-                    <h3 class="wow fadeInRight lalitfont" data-wow-delay="1s">{{ $about->namapt }}</h3>
-                    <h1 class="wow fadeInRight lalitfont" data-wow-delay="1s">{{ $about->nama }}</h1>
-                    <h2 class="wow fadeInRight lalitfont" data-wow-delay="1s">{{ $about->moto }}</h2>
+                    <h4 class="wow fadeInRight lalitfont popinsfont kuning" style="color: white" data-wow-delay="1s">{{ $about->namapt }}</h4>
+                    <h1 class="wow fadeInRight lalitfont" style="color: #fddd00" data-wow-delay="1s">{{ $about->nama }}</h1>
+                    <h2 class="wow fadeInRight lalitfont" style="color: white" data-wow-delay="1s">{{ $about->moto }}</h2>
                 </div>
                 <div class="hero-image wow fadeInUp" data-wow-delay="1s">
                     {{-- <img src="{{ asset('foodking/assets/img/hero-6/hero/02.png') }}" alt="img"> --}}
