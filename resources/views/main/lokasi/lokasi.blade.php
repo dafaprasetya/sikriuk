@@ -7,7 +7,7 @@
             </h2>
         </div>
         <div class=" wow fadeInUp" data-wow-delay=".7s">
-            <img class="img-fluid src="{{ asset('img/Home (LOKASI)_.png') }}" alt="" srcset="">
+            <img class="img-fluid" src="{{ asset('img/Home (LOKASI)_.png') }}" alt="" srcset="">
         </div>
         <div class="row mt-3 text-center">
             <div class="col-sm-12">
